@@ -1,11 +1,13 @@
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
-
-const config = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
   },
+  plugins: [
+    require('tailwindcss-rtl'),
+    // other plugins if any
+  ],
 };
-
-export default config;
