@@ -22,6 +22,18 @@ export default function Home({ params }) {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Simple Header */}
+      <header className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-xl font-bold text-primary">Faruk Aminu</div>
+          <div className="flex space-x-4 rtl:space-x-reverse">
+            <a href="/en" className="text-text hover:text-primary">EN</a>
+            <span className="text-gray-300">|</span>
+            <a href="/ar" className="text-text hover:text-primary">AR</a>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="py-20 px-4 text-center">
         <div className="max-w-4xl mx-auto">
