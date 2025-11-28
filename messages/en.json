@@ -1,0 +1,20 @@
+{
+  "home": {
+    "hero": {
+      "title": "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
+      "subtitle": "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services", 
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "common": {
+    "viewWork": "View My Work",
+    "contactMe": "Contact Me",
+    "language": "Language"
+  }
+}
