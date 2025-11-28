@@ -1,13 +1,13 @@
 import withNextIntl from 'next-intl/plugin';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true
+const nextConfig = withNextIntl({
+  i18n: {
+    locales: ['en', 'ar'],
+    defaultLocale: 'en',
   },
   env: {
-    _next_intl_trailing_slash: 'always'
-  }
-};
+    // your environment variables
+  },
+});
 
-export default withNextIntl('./i18n.js')(nextConfig);
+export default nextConfig;

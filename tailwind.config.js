@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}', // updated path
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
         primary: '#1e3a8a', // Navy Blue
-        accent: '#d4af37',  // Gold
+        accent: '#d4af37',   // Gold
         background: '#fafafa', // Off-White
-        text: '#334155',    // Dark Gray
+        text: '#334155',     // Dark Gray
       },
       fontFamily: {
         english: ['Inter', 'sans-serif'],
@@ -18,6 +19,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwindcss-rtl')(), // include parentheses if needed
+    require('tailwindcss-rtl'),
   ],
 };
