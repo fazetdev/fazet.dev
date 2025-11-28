@@ -1,16 +1,17 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Inter, Cairo } from 'next/font/google';
-import '../globals.css'; // <- fixed path
+import '../globals.css'; // Correct path relative to this file
 
+// Google Fonts
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter'
+  variable: '--font-inter',
 });
 
 const cairo = Cairo({
   subsets: ['arabic'],
-  variable: '--font-cairo'
+  variable: '--font-cairo',
 });
 
 export const metadata = {
@@ -20,7 +21,9 @@ export const metadata = {
 
 export default async function LocaleLayout({ children, params }) {
   const { slug } = params;
-  const locale = slug?.[0] || 'en';
+  const locale = slug?.[0] || 'en'; // Default to 'en'
+  
+  // Load messages for the current locale
   const messages = await getMessages({ locale });
 
   return (
