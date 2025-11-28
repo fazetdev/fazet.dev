@@ -18,9 +18,16 @@ export const metadata = {
 };
 
 export default async function LocaleLayout({ children, params }) {
-  const { slug } = await params;
-  const locale = slug?.[0] || 'en';
-  const messages = await getMessages();
+  // Safely extract locale from params
+  const locale = params?.slug?.[0] || 'en';
+  let messages;
+  
+  try {
+    messages = await getMessages();
+  } catch (error) {
+    // Fallback if messages can't be loaded
+    messages = {};
+  }
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
