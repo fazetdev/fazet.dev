@@ -76,7 +76,7 @@ export default function Services({ params }) {
         </div>
         <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
           <Link href={`/${locale}`} className="text-text hover:text-primary">{t.nav.home}</Link>
-          <Link href={`/${locale}/services`} className="text-primary font-semibold">Services</Link>
+          <Link href={`/${locale}/services`} className="text-primary font-semibold">{locale === 'ar' ? 'الخدمات' : 'Services'}</Link>
           <Link href={`/${locale}/portfolio`} className="text-text hover:text-primary">{t.nav.portfolio}</Link>
           <Link href={`/${locale}/about`} className="text-text hover:text-primary">{t.nav.about}</Link>
           <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{t.nav.contact}</Link>
