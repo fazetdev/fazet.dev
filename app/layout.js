@@ -7,7 +7,7 @@ const inter = Inter({
 });
 
 const cairo = Cairo({
-  subsets: ['arabic'], 
+  subsets: ['arabic'],
   variable: '--font-cairo'
 });
 
