@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function Services({ params }) {
-  const locale = params.locale || 'en';
+  const locale = params?.slug?.[0] || 'en';
   
   const content = {
     en: {
