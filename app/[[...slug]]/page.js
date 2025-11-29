@@ -11,6 +11,35 @@ export default function Home({ params }) {
         viewWork: "View My Work",
         contactMe: "Contact Me"
       },
+      services: {
+        title: "My Services",
+        items: [
+          {
+            title: "Bayt Elite – Property Tech",
+            description: "Custom platforms for real estate developers with payment calculators & virtual tours.",
+            link: "#bayt-elite-case-study",
+            linkText: "View the Bayt Elite Case Study"
+          },
+          {
+            title: "Tawasul AI – Business Automation",
+            description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
+            link: "#tawasul-ai-case-study", 
+            linkText: "View the Tawasul AI Case Study"
+          },
+          {
+            title: "Zimam Delivery – Logistics Tech",
+            description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
+            link: "#zimam-delivery-case-study",
+            linkText: "View the Zimam Delivery Case Study"
+          },
+          {
+            title: "Al-Multaqa – Business Dashboards",
+            description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
+            link: "#al-multaqa-case-study",
+            linkText: "View the Al-Multaqa Case Study"
+          }
+        ]
+      },
       nav: {
         home: "Home",
         services: "Services",
@@ -25,6 +54,35 @@ export default function Home({ params }) {
         subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
         viewWork: "شاهد أعمالي",
         contactMe: "اتصل بي"
+      },
+      services: {
+        title: "خدماتي",
+        items: [
+          {
+            title: "بيت إيليت – تقنية العقارات",
+            description: "منصات مخصصة لمطوري العقارات مع حاسبات الدفع والجولات الافتراضية.",
+            link: "#bayt-elite-case-study",
+            linkText: "عرض دراسة حالة بيت إيليت"
+          },
+          {
+            title: "تواصل AI – أتمتة الأعمال",
+            description: "مراكز خدمة عملاء مدعومة بالذكاء الاصطناعي لإدارة الاستفسارات من واتساب وإنستغرام والبريد الإلكتروني.",
+            link: "#tawasul-ai-case-study",
+            linkText: "عرض دراسة حالة تواصل AI"
+          },
+          {
+            title: "زِمَام دليفري – تقنية الخدمات اللوجستية",
+            description: "لوحات تحكم السائقين وأدوات إدارة التوصيل لشركات الخدمات اللوجستية من الميل الأخير.",
+            link: "#zimam-delivery-case-study",
+            linkText: "عرض دراسة حالة زِمَام دليفري"
+          },
+          {
+            title: "الملتقى – لوحات تحكم الأعمال",
+            description: "لوحات تحكم إدارية مخصصة لصالونات وعيادات وأعمال الخدمات لإدارة العمليات.",
+            link: "#al-multaqa-case-study",
+            linkText: "عرض دراسة حالة الملتقى"
+          }
+        ]
       },
       nav: {
         home: "الرئيسية",
@@ -88,23 +146,20 @@ export default function Home({ params }) {
       {/* Services Overview */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">My Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <h3 className="text-xl font-bold text-primary mb-3">PropTech Platforms</h3>
-              <p className="text-text mb-4">Custom real estate solutions for Gulf market</p>
-              <Link href={`/${locale}/services`} className="text-accent font-semibold hover:underline">Learn more →</Link>
-            </div>
-            <div className="text-center p-6">
-              <h3 className="text-xl font-bold text-primary mb-3">Bilingual Websites</h3>
-              <p className="text-text mb-4">Arabic & English sites with RTL support</p>
-              <Link href={`/${locale}/services`} className="text-accent font-semibold hover:underline">Learn more →</Link>
-            </div>
-            <div className="text-center p-6">
-              <h3 className="text-xl font-bold text-primary mb-3">E-commerce</h3>
-              <p className="text-text mb-4">Stores with Gulf payment integration</p>
-              <Link href={`/${locale}/services`} className="text-accent font-semibold hover:underline">Learn more →</Link>
-            </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">{t.services.title}</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {t.services.items.map((service, index) => (
+              <div key={index} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
+                <p className="text-text mb-4">{service.description}</p>
+                <Link 
+                  href={service.link} 
+                  className="text-accent font-semibold hover:underline inline-flex items-center"
+                >
+                  → {service.linkText}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
