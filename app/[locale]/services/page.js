@@ -17,7 +17,7 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "Starter",
-              price: "$1,500",
+              price: "$750",
               features: [
                 "Custom Payment Plan Calculator",
                 "Bilingual (EN/AR) Landing Page",
@@ -28,7 +28,7 @@ export default function Portfolio({ params }) {
             },
             {
               name: "Professional",
-              price: "$3,500",
+              price: "$1,750",
               features: [
                 "Everything in Starter",
                 "Full Admin Dashboard",
@@ -36,11 +36,11 @@ export default function Portfolio({ params }) {
                 "Interactive Site Map",
                 "Virtual Tour Integration (360° photos/video)",
               ],
-              note: "Pricing starts from $3,500",
+              note: "Pricing starts from $1,750",
             },
             {
               name: "Enterprise",
-              price: "$7,000+",
+              price: "$3,500+",
               features: [
                 "Fully custom platform with CRM, lead management, and advanced analytics",
               ],
@@ -55,13 +55,13 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "Essential",
-              price: "$900",
+              price: "$450",
               features: ["Core Dashboard UI", "Appointment Scheduler", "Customer Database", "Basic Reporting"],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "Growth",
-              price: "$1,800",
+              price: "$900",
               features: [
                 "Everything in Essential",
                 "Payment Tracking & Invoicing",
@@ -69,11 +69,11 @@ export default function Portfolio({ params }) {
                 "Advanced Analytics & Charts",
                 "Bilingual (EN/AR) Support",
               ],
-              note: "Pricing starts from $1,800",
+              note: "Pricing starts from $900",
             },
             {
               name: "Custom",
-              price: "$3,000+",
+              price: "$1,500+",
               features: ["Tailored to your specific workflow (inventory, commissions, etc.)"],
               note: "Custom Solution",
             },
@@ -86,7 +86,7 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "Online Store",
-              price: "$1,200",
+              price: "$600",
               features: [
                 "Bilingual E-commerce Site",
                 "Product Catalog & Cart",
@@ -97,18 +97,18 @@ export default function Portfolio({ params }) {
             },
             {
               name: "Delivery Pro",
-              price: "$2,200",
+              price: "$1,100",
               features: [
                 "Everything in Online Store",
                 "Driver Dashboard (Map Integration)",
                 "Order Tracking & Status Updates",
                 "Driver Earnings Tracker",
               ],
-              note: "Pricing starts from $2,200",
+              note: "Pricing starts from $1,100",
             },
             {
               name: "Custom Logistics",
-              price: "$4,500+",
+              price: "$2,250+",
               features: ["Full fleet management, route optimization, etc."],
               note: "Custom Solution",
             },
@@ -121,24 +121,24 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "Starter Setup",
-              price: "$800",
+              price: "$400",
               features: ["Unified Inbox UI (Simulated)", "Canned Responses Library", "Basic Customer History"],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "AI Automation",
-              price: "$2,500",
+              price: "$1,250",
               features: [
                 "Everything in Starter",
                 "AI Reply Integration (OpenAI API)",
                 "Automated Ticket Tagging",
                 "Performance Analytics",
               ],
-              note: "Pricing starts from $2,500",
+              note: "Pricing starts from $1,250",
             },
             {
               name: "Full Custom",
-              price: "$5,000+",
+              price: "$2,500+",
               features: ["Multi-channel integration (WhatsApp Business API, Instagram, etc.)"],
               note: "Custom Solution",
             },
@@ -167,7 +167,7 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "المبتدئ",
-              price: "$1,500",
+              price: "$750",
               features: [
                 "حاسبة خطة الدفع المخصصة",
                 "صفحة هبوط ثنائية اللغة (EN/AR)",
@@ -178,7 +178,7 @@ export default function Portfolio({ params }) {
             },
             {
               name: "المهني",
-              price: "$3,500",
+              price: "$1,750",
               features: [
                 "كل شيء في المبتدئ",
                 "لوحة تحكم كاملة",
@@ -186,11 +186,11 @@ export default function Portfolio({ params }) {
                 "خريطة تفاعلية",
                 "تكامل الجولات الافتراضية (صور/فيديو 360°)",
               ],
-              note: "تبدأ الأسعار من $3,500",
+              note: "تبدأ الأسعار من $1,750",
             },
             {
               name: "المؤسسة",
-              price: "$7,000+",
+              price: "$3,500+",
               features: ["منصة مخصصة بالكامل مع CRM وإدارة العملاء والتحليلات المتقدمة"],
               note: "حل مخصص",
             },
@@ -203,13 +203,13 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "الأساسي",
-              price: "$900",
+              price: "$450",
               features: ["واجهة لوحة التحكم الأساسية", "جدولة المواعيد", "قاعدة بيانات العملاء", "التقارير الأساسية"],
               note: "مدة المشروع النموذجية 4-6 أسابيع",
             },
             {
               name: "النمو",
-              price: "$1,800",
+              price: "$900",
               features: [
                 "كل شيء في الأساسي",
                 "تتبع المدفوعات والفواتير",
@@ -217,11 +217,11 @@ export default function Portfolio({ params }) {
                 "تحليلات ورسوم بيانية متقدمة",
                 "دعم ثنائي اللغة (EN/AR)",
               ],
-              note: "تبدأ الأسعار من $1,800",
+              note: "تبدأ الأسعار من $900",
             },
             {
               name: "مخصص",
-              price: "$3,000+",
+              price: "$1,500+",
               features: ["مصمم حسب سير العمل الخاص بك (المخزون، العمولات، إلخ)"],
               note: "حل مخصص",
             },
@@ -234,7 +234,7 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "المتجر الإلكتروني",
-              price: "$1,200",
+              price: "$600",
               features: [
                 "موقع تجارة إلكترونية ثنائي اللغة",
                 "كتالوج المنتجات وعربة التسوق",
@@ -245,18 +245,18 @@ export default function Portfolio({ params }) {
             },
             {
               name: "التوصيل الاحترافي",
-              price: "$2,200",
+              price: "$1,100",
               features: [
                 "كل شيء في المتجر الإلكتروني",
                 "لوحة سائق (تكامل الخريطة)",
                 "تتبع الطلبات وتحديث الحالة",
                 "متعقب أرباح السائقين",
               ],
-              note: "تبدأ الأسعار من $2,200",
+              note: "تبدأ الأسعار من $1,100",
             },
             {
               name: "الخدمات اللوجستية المخصصة",
-              price: "$4,500+",
+              price: "$2,250+",
               features: ["إدارة الأسطول بالكامل، تحسين المسارات، إلخ"],
               note: "حل مخصص",
             },
@@ -269,24 +269,24 @@ export default function Portfolio({ params }) {
           packages: [
             {
               name: "إعداد المبتدئ",
-              price: "$800",
+              price: "$400",
               features: ["واجهة صندوق وارد موحدة (محاكاة)", "مكتبة الردود الجاهزة", "تاريخ العملاء الأساسي"],
               note: "مدة المشروع النموذجية 4-6 أسابيع",
             },
             {
               name: "أتمتة الذكاء الاصطناعي",
-              price: "$2,500",
+              price: "$1,250",
               features: [
                 "كل شيء في المبتدئ",
                 "تكامل الردود بالذكاء الاصطناعي (OpenAI API)",
                 "تصنيف التذاكر تلقائيًا",
                 "تحليلات الأداء",
               ],
-              note: "تبدأ الأسعار من $2,500",
+              note: "تبدأ الأسعار من $1,250",
             },
             {
               name: "مخصص بالكامل",
-              price: "$5,000+",
+              price: "$2,500+",
               features: ["تكامل متعدد القنوات (WhatsApp Business API، Instagram، إلخ)"],
               note: "حل مخصص",
             },
