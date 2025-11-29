@@ -7,36 +7,36 @@ export default function Home({ params }) {
     en: {
       hero: {
         title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
-        subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
+        subtitle: "Fast, mobile-first, culturally-aware web applications designed for Gulf businesses",
         viewWork: "View My Work",
         contactMe: "Contact Me"
       },
       services: {
-        title: "My Services",
+        title: "Professional Services",
         items: [
           {
-            title: "Bayt Elite – Property Tech",
-            description: "Custom platforms for real estate developers with payment calculators & virtual tours.",
-            link: "#bayt-elite-case-study",
-            linkText: "View the Bayt Elite Case Study"
+            title: "Property Technology Solutions",
+            description: "We deliver intuitive platforms for real estate businesses, featuring financial transparency, interactive virtual tours, and multi-calendar support to streamline client engagement and sales conversion.",
+            link: "#property-tech-case",
+            linkText: "View Case Study"
           },
           {
-            title: "Tawasul AI – Business Automation",
-            description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
-            link: "#tawasul-ai-case-study",
-            linkText: "View the Tawasul AI Case Study"
+            title: "Business Automation Systems",
+            description: "Centralize customer interactions across messaging apps and email with AI-assisted dashboards, reducing response times while maintaining context-aware, professional communication.",
+            link: "#business-automation-case",
+            linkText: "View Case Study"
           },
           {
-            title: "Zimam Delivery – Logistics Tech",
-            description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
-            link: "#zimam-delivery-case-study",
-            linkText: "View the Zimam Delivery Case Study"
+            title: "Logistics & Delivery Platforms",
+            description: "Optimize last-mile operations with driver-focused dashboards, real-time tracking, offline capabilities, and analytics, improving efficiency and minimizing operational errors.",
+            link: "#logistics-case",
+            linkText: "View Case Study"
           },
           {
-            title: "Al-Multaqa – Business Dashboards",
-            description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
-            link: "#al-multaqa-case-study",
-            linkText: "View the Al-Multaqa Case Study"
+            title: "Operational Dashboards",
+            description: "Empower service businesses with data-driven dashboards for scheduling, payments, client tracking, and multilingual support—allowing managers to make informed decisions quickly and confidently.",
+            link: "#dashboard-case",
+            linkText: "View Case Study"
           }
         ]
       },
@@ -51,36 +51,36 @@ export default function Home({ params }) {
     ar: {
       hero: {
         title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
-        subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
+        subtitle: "تطبيقات ويب سريعة وملائمة للجوال، مصممة خصيصًا لشركات الخليج",
         viewWork: "شاهد أعمالي",
         contactMe: "اتصل بي"
       },
       services: {
-        title: "خدماتي",
+        title: "خدمات احترافية",
         items: [
           {
-            title: "بيت إيليت – تقنية العقارات",
-            description: "منصات مخصصة لمطوري العقارات مع حاسبات الدفع والجولات الافتراضية.",
-            link: "#bayt-elite-case-study",
-            linkText: "عرض دراسة حالة بيت إيليت"
+            title: "حلول تقنية العقارات",
+            description: "نوفر منصات سهلة الاستخدام لشركات العقارات، مع شفافية مالية كاملة، جولات افتراضية تفاعلية، ودعم متعدد للتقويمات لتسهيل التعامل مع العملاء وزيادة المبيعات.",
+            link: "#property-tech-case",
+            linkText: "عرض دراسة الحالة"
           },
           {
-            title: "تواصل AI – أتمتة الأعمال",
-            description: "مراكز خدمة عملاء مدعومة بالذكاء الاصطناعي لإدارة الاستفسارات من واتساب وإنستغرام والبريد الإلكتروني.",
-            link: "#tawasul-ai-case-study",
-            linkText: "عرض دراسة حالة تواصل AI"
+            title: "أنظمة أتمتة الأعمال",
+            description: "جمع كل تفاعلات العملاء من تطبيقات المراسلة والبريد الإلكتروني في لوحة واحدة مدعومة بالذكاء الاصطناعي، لتقليل وقت الاستجابة مع الحفاظ على التواصل الاحترافي والسياقي.",
+            link: "#business-automation-case",
+            linkText: "عرض دراسة الحالة"
           },
           {
-            title: "زِمَام دليفري – تقنية الخدمات اللوجستية",
-            description: "لوحات تحكم السائقين وأدوات إدارة التوصيل لشركات الخدمات اللوجستية من الميل الأخير.",
-            link: "#zimam-delivery-case-study",
-            linkText: "عرض دراسة حالة زِمَام دليفري"
+            title: "منصات الخدمات اللوجستية والتوصيل",
+            description: "تحسين عمليات الميل الأخير عبر لوحات تحكم موجهة للسائقين، تتبع لحظي، دعم العمل دون اتصال، وتحليلات دقيقة لتقليل الأخطاء وزيادة الكفاءة.",
+            link: "#logistics-case",
+            linkText: "عرض دراسة الحالة"
           },
           {
-            title: "الملتقى – لوحات تحكم الأعمال",
-            description: "لوحات تحكم إدارية مخصصة لصالونات وعيادات وأعمال الخدمات لإدارة العمليات.",
-            link: "#al-multaqa-case-study",
-            linkText: "عرض دراسة حالة الملتقى"
+            title: "لوحات التحكم التشغيلية",
+            description: "تمكين الأعمال الخدمية بلوحات تحكم قائمة على البيانات للجدولة، المدفوعات، تتبع العملاء، ودعم متعدد اللغات، مما يتيح للمديرين اتخاذ قرارات سريعة وواعية.",
+            link: "#dashboard-case",
+            linkText: "عرض دراسة الحالة"
           }
         ]
       },
@@ -98,12 +98,11 @@ export default function Home({ params }) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header with Navigation */}
+      {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
           <div className="flex space-x-4 rtl:space-x-reverse">
-            {/* FIXED: <a> → <Link> (no text changed) */}
             <Link href="/en" className="text-text hover:text-primary">EN</Link>
             <span className="text-gray-300">|</span>
             <Link href="/ar" className="text-text hover:text-primary">AR</Link>
@@ -118,17 +117,12 @@ export default function Home({ params }) {
         </nav>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="py-20 px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-            {t.hero.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">
-            {t.hero.subtitle}
-          </p>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">{t.hero.title}</h1>
+          <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">{t.hero.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* FIXED: Added prefetch and kept text exactly */}
             <Link
               href={`/${locale}/portfolio`}
               prefetch={true}
@@ -136,7 +130,6 @@ export default function Home({ params }) {
             >
               {t.hero.viewWork}
             </Link>
-
             <Link
               href={`/${locale}/contact`}
               className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
@@ -147,13 +140,13 @@ export default function Home({ params }) {
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Services */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">{t.services.title}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {t.services.items.map((service, index) => (
-              <div key={index} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+              <div key={index} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow bg-gray-50">
                 <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
                 <p className="text-text mb-4">{service.description}</p>
                 <Link

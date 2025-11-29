@@ -3,380 +3,456 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Portfolio({ params }) {
-  const locale = params?.slug?.[0] || "en";
+export default function Services({ params }) {
+  const locale = params?.locale || "en";
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggle = (id) =>
+    setOpenIndexes((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]));
 
   const content = {
     en: {
-      title: " Services",
-      subtitle: "Premium web solutions tailored for Gulf businesses",
+      pageTitle: "Services",
+      subtitle: "Premium digital solutions engineered for Gulf businesses",
       services: [
         {
           name: "Premium Property Platform",
-          tagline: "From off-plan sales to luxury listings, I build the tools that close deals.",
+          tagline: "Modern tools for brokers, developers, and luxury real estate agencies.",
           packages: [
             {
               name: "Starter",
-              price: "$750",
+              price: "$950",
               features: [
-                "Custom Payment Plan Calculator",
-                "Bilingual (EN/AR) Landing Page",
-                "5 Property Listings",
-                "Contact & WhatsApp Integration",
+                "Clean property catalog",
+                "Fast mobile-first pages",
+                "Basic lead form (WhatsApp)",
+                "Developer branding",
               ],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "Professional",
-              price: "$1,750",
+              price: "$1,950",
               features: [
-                "Everything in Starter",
-                "Full Admin Dashboard",
-                "Hijri/Gregorian Date Integration",
-                "Interactive Site Map",
-                "Virtual Tour Integration (360° photos/video)",
+                "Full listing system",
+                "Off-plan project pages",
+                "Multi-agent lead routing",
+                "PDF brochure generator",
+                "Light analytics & performance tuning",
               ],
-              note: "Pricing starts from $1,750",
+              note: "Pricing starts from $1,950",
             },
             {
               name: "Enterprise",
               price: "$3,500+",
               features: [
-                "Fully custom platform with CRM, lead management, and advanced analytics",
+                "Advanced CRM + pipeline",
+                "Unit availability & inventory",
+                "Interactive floor plans",
+                "API & third-party integrations",
               ],
-              note: "Custom Solution",
+              note: "Custom solution — timeframe depends on scope",
             },
           ],
-          caseStudyLink: "#premium-property-case",
+          caseStudyLink: "/portfolio/property-tech",
         },
+
         {
           name: "Business Management Dashboard",
-          tagline: "Automate your scheduling, payments, and customer tracking in one place.",
+          tagline: "Automate operations, payments, and scheduling in one place.",
           packages: [
             {
               name: "Essential",
-              price: "$450",
-              features: ["Core Dashboard UI", "Appointment Scheduler", "Customer Database", "Basic Reporting"],
+              price: "$650",
+              features: [
+                "Booking calendar",
+                "Client database",
+                "Simple staff panel",
+                "Mobile-friendly UI",
+              ],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "Growth",
-              price: "$900",
+              price: "$1,200",
               features: [
-                "Everything in Essential",
-                "Payment Tracking & Invoicing",
-                "Staff/Resource Management",
-                "Advanced Analytics & Charts",
-                "Bilingual (EN/AR) Support",
+                "Multi-staff scheduling",
+                "Wallet/payments tracking",
+                "Invoices & receipts",
+                "Task automation",
               ],
-              note: "Pricing starts from $900",
+              note: "Pricing starts from $1,200",
             },
             {
               name: "Custom",
-              price: "$1,500+",
-              features: ["Tailored to your specific workflow (inventory, commissions, etc.)"],
-              note: "Custom Solution",
+              price: "$2,500+",
+              features: ["Custom modules, API connections, secure multi-branch dashboards"],
+              note: "Custom solution — tailored timeline",
             },
           ],
-          caseStudyLink: "#business-dashboard-case",
+          caseStudyLink: "/portfolio/business-automation",
         },
+
         {
           name: "E-Commerce & Delivery Suite",
-          tagline: "Build a seamless online store and empower your delivery fleet.",
+          tagline: "Sell online and manage delivery operations smoothly.",
           packages: [
             {
               name: "Online Store",
-              price: "$600",
+              price: "$1,000",
               features: [
-                "Bilingual E-commerce Site",
-                "Product Catalog & Cart",
-                "Integrated Payment Gateway (Stripe/Tap)",
-                "Basic Order Management",
+                "Professional storefront",
+                "Secure checkout",
+                "Product & catalog management",
+                "Payments integration",
               ],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "Delivery Pro",
-              price: "$1,100",
+              price: "$1,450",
               features: [
-                "Everything in Online Store",
-                "Driver Dashboard (Map Integration)",
-                "Order Tracking & Status Updates",
-                "Driver Earnings Tracker",
+                "Driver assignment & tracking",
+                "Delivery status updates",
+                "Branch & order management",
+                "Live order updates for customers",
               ],
-              note: "Pricing starts from $1,100",
+              note: "Pricing starts from $1,450",
             },
             {
               name: "Custom Logistics",
-              price: "$2,250+",
-              features: ["Full fleet management, route optimization, etc."],
-              note: "Custom Solution",
+              price: "$3,000+",
+              features: ["Full fleet system, route optimization, warehouse tools"],
+              note: "Custom solution — scope varies",
             },
           ],
-          caseStudyLink: "#ecommerce-delivery-case",
+          caseStudyLink: "/portfolio/logistics-tech",
         },
+
         {
           name: "Customer Service AI Hub",
-          tagline: "Stop losing customers in the noise. Centralize and automate your support.",
+          tagline: "Centralize and automate customer support with AI assistance.",
           packages: [
             {
               name: "Starter Setup",
-              price: "$400",
-              features: ["Unified Inbox UI (Simulated)", "Canned Responses Library", "Basic Customer History"],
+              price: "$850",
+              features: [
+                "Unified inbox setup",
+                "Basic AI replies",
+                "Knowledge base structure",
+                "Auto-tagging",
+              ],
               note: "Based on typical 4-6 week project scope",
             },
             {
               name: "AI Automation",
-              price: "$1,250",
+              price: "$1,350",
               features: [
-                "Everything in Starter",
-                "AI Reply Integration (OpenAI API)",
-                "Automated Ticket Tagging",
-                "Performance Analytics",
+                "Custom AI workflows",
+                "Multi-language responses",
+                "Lead qualification",
+                "Performance analytics",
               ],
-              note: "Pricing starts from $1,250",
+              note: "Pricing starts from $1,350",
             },
             {
               name: "Full Custom",
-              price: "$2,500+",
-              features: ["Multi-channel integration (WhatsApp Business API, Instagram, etc.)"],
-              note: "Custom Solution",
+              price: "$3,000+",
+              features: ["Deep automation, CRM connections, advanced AI training"],
+              note: "Custom solution — enterprise timelines",
             },
           ],
-          caseStudyLink: "#customer-service-ai-case",
+          caseStudyLink: "/portfolio/customer-service-ai",
         },
       ],
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-      },
       ctaText: "View Case Study",
       showDetails: "Show Details",
       hideDetails: "Hide Details",
+      nav: { home: "Home", services: "Services", portfolio: "Portfolio", about: "About", contact: "Contact" },
     },
+
     ar: {
-      title: "أعمالي وخدماتي",
-      subtitle: "حلول ويب مميزة مخصصة لأعمال الخليج",
+      pageTitle: "الخدمات",
+      subtitle: "حلول رقمية احترافية مصممة لأعمال الخليج",
       services: [
         {
-          name: "منصة العقارات المميزة",
-          tagline: "من المبيعات المسبقة إلى القوائم الفاخرة، أبني الأدوات التي تُنجز الصفقات.",
+          name: "منصة العقار المتقدمة",
+          tagline: "حلول حديثة للوكلاء العقاريين والمطوّرين وشركات العقارات الفاخرة.",
           packages: [
             {
-              name: "المبتدئ",
-              price: "$750",
+              name: "باقة البداية",
+              price: "٩٥٠$",
               features: [
-                "حاسبة خطة الدفع المخصصة",
-                "صفحة هبوط ثنائية اللغة (EN/AR)",
-                "5 قوائم عقارية",
-                "تكامل البريد واتساب",
+                "كتالوج عقارات مرتب",
+                "صفحات سريعة ومناسبة للجوال",
+                "نموذج تسجيل العملاء → واتساب",
+                "هوية ومظهر احترافي",
               ],
-              note: "مدة المشروع النموذجية 4-6 أسابيع",
+              note: "مدة النموذجية للمشروع 4-6 أسابيع",
             },
             {
-              name: "المهني",
-              price: "$1,750",
+              name: "باقة الاحتراف",
+              price: "١٩٥٠$",
               features: [
-                "كل شيء في المبتدئ",
-                "لوحة تحكم كاملة",
-                "تكامل التاريخ الهجري/الميلادي",
-                "خريطة تفاعلية",
-                "تكامل الجولات الافتراضية (صور/فيديو 360°)",
+                "نظام قوائم متكامل",
+                "صفحات مشاريع البيع على الخارطة",
+                "توزيع العملاء على عدة وكلاء",
+                "توليد كتيّب PDF تلقائي",
+                "تحليلات أساسية وتحسين أداء",
               ],
-              note: "تبدأ الأسعار من $1,750",
+              note: "تبدأ الأسعار من ١٩٥٠$",
             },
             {
-              name: "المؤسسة",
-              price: "$3,500+",
-              features: ["منصة مخصصة بالكامل مع CRM وإدارة العملاء والتحليلات المتقدمة"],
-              note: "حل مخصص",
+              name: "باقة المؤسسات",
+              price: "٣٥٠٠$+",
+              features: [
+                "CRM متقدّم مع مراحل البيع",
+                "نظام توافر الوحدات",
+                "مخططات تفاعلية",
+                "تكاملات مع أنظمة خارجية",
+              ],
+              note: "حل مخصص — يعتمد على نطاق المشروع",
             },
           ],
-          caseStudyLink: "#premium-property-case",
+          caseStudyLink: "/portfolio/property-tech",
         },
+
         {
           name: "لوحة إدارة الأعمال",
-          tagline: "أتمتة جدولة المواعيد والمدفوعات وتتبع العملاء في مكان واحد.",
+          tagline: "أتمتة الجدولة، المدفوعات، وإدارة العملاء في مكان واحد.",
           packages: [
             {
-              name: "الأساسي",
-              price: "$450",
-              features: ["واجهة لوحة التحكم الأساسية", "جدولة المواعيد", "قاعدة بيانات العملاء", "التقارير الأساسية"],
-              note: "مدة المشروع النموذجية 4-6 أسابيع",
+              name: "الباقة الأساسية",
+              price: "٦٥٠$",
+              features: ["تقويم الحجز", "قاعدة بيانات العملاء", "لوحة للموظفين", "واجهة صديقة للموبايل"],
+              note: "مدة النموذجية للمشروع 4-6 أسابيع",
             },
             {
-              name: "النمو",
-              price: "$900",
+              name: "باقة النمو",
+              price: "١٢٠٠$",
               features: [
-                "كل شيء في الأساسي",
-                "تتبع المدفوعات والفواتير",
-                "إدارة الموظفين/الموارد",
-                "تحليلات ورسوم بيانية متقدمة",
-                "دعم ثنائي اللغة (EN/AR)",
+                "جدولة متعددة للموظفين",
+                "تتبع المدفوعات والمحفظة",
+                "الفواتير والإيصالات",
+                "أتمتة المهام",
               ],
-              note: "تبدأ الأسعار من $900",
+              note: "تبدأ الأسعار من ١٢٠٠$",
             },
             {
-              name: "مخصص",
-              price: "$1,500+",
-              features: ["مصمم حسب سير العمل الخاص بك (المخزون، العمولات، إلخ)"],
-              note: "حل مخصص",
+              name: "حل مخصص",
+              price: "٢٥٠٠$+",
+              features: ["وحدات مخصّصة، تكاملات API، لوحات متعددة الفروع"],
+              note: "حل مخصّص — جدول زمني مخصص",
             },
           ],
-          caseStudyLink: "#business-dashboard-case",
+          caseStudyLink: "/portfolio/business-automation",
         },
+
         {
-          name: "حل التجارة الإلكترونية والتوصيل",
-          tagline: "بناء متجر إلكتروني سلس وتمكين أسطول التوصيل الخاص بك.",
+          name: "مجموعة التجارة والتوصيل",
+          tagline: "متجر إلكتروني سلس ونظام توصيل ذكي يناسب السوق المحلي.",
           packages: [
             {
               name: "المتجر الإلكتروني",
-              price: "$600",
-              features: [
-                "موقع تجارة إلكترونية ثنائي اللغة",
-                "كتالوج المنتجات وعربة التسوق",
-                "بوابة دفع متكاملة (Stripe/Tap)",
-                "إدارة الطلبات الأساسية",
-              ],
-              note: "مدة المشروع النموذجية 4-6 أسابيع",
+              price: "١٠٠٠$",
+              features: ["واجهة متجر احترافية", "دفع آمن", "إدارة المنتجات", "ربط بوابات الدفع"],
+              note: "مدة النموذجية للمشروع 4-6 أسابيع",
             },
             {
-              name: "التوصيل الاحترافي",
-              price: "$1,100",
-              features: [
-                "كل شيء في المتجر الإلكتروني",
-                "لوحة سائق (تكامل الخريطة)",
-                "تتبع الطلبات وتحديث الحالة",
-                "متعقب أرباح السائقين",
-              ],
-              note: "تبدأ الأسعار من $1,100",
+              name: "باقة التوصيل برو",
+              price: "١٤٥٠$",
+              features: ["تعيين وتتبع السائقين", "حالة الطلب", "إدارة الفروع", "تحديثات مباشرة للعميل"],
+              note: "تبدأ الأسعار من ١٤٥٠$",
             },
             {
-              name: "الخدمات اللوجستية المخصصة",
-              price: "$2,250+",
-              features: ["إدارة الأسطول بالكامل، تحسين المسارات، إلخ"],
-              note: "حل مخصص",
+              name: "لوجستيات مخصّصة",
+              price: "٣٠٠٠$+",
+              features: ["نظام أسطول كامل، تحسين المسارات، أدوات المستودعات"],
+              note: "حل مخصص — يعتمد على النطاق",
             },
           ],
-          caseStudyLink: "#ecommerce-delivery-case",
+          caseStudyLink: "/portfolio/logistics-tech",
         },
+
         {
-          name: "مركز خدمة العملاء بالذكاء الاصطناعي",
-          tagline: "توقف عن فقد العملاء وسط الضوضاء. مركز ودرب الدعم تلقائيًا.",
+          name: "مركز دعم العملاء بالذكاء الاصطناعي",
+          tagline: "جمع وأتمتة رسائل العملاء عبر القنوات مع مساعدة AI.",
           packages: [
             {
-              name: "إعداد المبتدئ",
-              price: "$400",
-              features: ["واجهة صندوق وارد موحدة (محاكاة)", "مكتبة الردود الجاهزة", "تاريخ العملاء الأساسي"],
-              note: "مدة المشروع النموذجية 4-6 أسابيع",
+              name: "الإعداد الأساسي",
+              price: "٨٥٠$",
+              features: ["إعداد صندوق موحد", "ردود AI أساسية", "بناء قاعدة معرفة", "تصنيف تلقائي"],
+              note: "مدة النموذجية للمشروع 4-6 أسابيع",
             },
             {
-              name: "أتمتة الذكاء الاصطناعي",
-              price: "$1,250",
-              features: [
-                "كل شيء في المبتدئ",
-                "تكامل الردود بالذكاء الاصطناعي (OpenAI API)",
-                "تصنيف التذاكر تلقائيًا",
-                "تحليلات الأداء",
-              ],
-              note: "تبدأ الأسعار من $1,250",
+              name: "أتمتة الذكاء",
+              price: "١٣٥٠$",
+              features: ["مهام AI مخصّصة", "ردود متعددة اللغات", "تأهيل العملاء", "تحليلات الأداء"],
+              note: "تبدأ الأسعار من ١٣٥٠$",
             },
             {
-              name: "مخصص بالكامل",
-              price: "$2,500+",
-              features: ["تكامل متعدد القنوات (WhatsApp Business API، Instagram، إلخ)"],
-              note: "حل مخصص",
+              name: "حل مخصص",
+              price: "٣٠٠٠$+",
+              features: ["أتمتة عميقة، ربط CRM، تدريب AI متقدّم"],
+              note: "حل مخصص — للمؤسسات",
             },
           ],
-          caseStudyLink: "#customer-service-ai-case",
+          caseStudyLink: "/portfolio/customer-service-ai",
         },
       ],
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-      },
       ctaText: "عرض دراسة الحالة",
       showDetails: "عرض التفاصيل",
       hideDetails: "إخفاء التفاصيل",
+      nav: { home: "الرئيسية", services: "الخدمات", portfolio: "الأعمال", about: "عني", contact: "اتصل" },
     },
   };
 
   const t = content[locale] || content.en;
-  const [openIndexes, setOpenIndexes] = useState([]);
-
-  const toggleDetails = (index) => {
-    setOpenIndexes((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
 
   return (
-    <div className="min-h-screen bg-background px-4">
+    <div className="min-h-screen bg-neutral-50 text-neutral-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-4">
-          <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
-          <div className="flex space-x-4 rtl:space-x-reverse">
-            <Link href="/en" className="text-text hover:text-primary">EN</Link>
-            <span className="text-gray-300">|</span>
-            <Link href="/ar" className="text-text hover:text-primary">AR</Link>
-          </div>
-        </div>
-        <nav className="max-w-7xl mx-auto flex space-x-6 rtl:space-x-reverse text-sm py-2">
-          <Link href={`/${locale}`} className="text-text hover:text-primary">{t.nav.home}</Link>
-          <Link href={`/${locale}/services`} className="text-text hover:text-primary">{t.nav.services}</Link>
-          <Link href={`/${locale}/portfolio`} className="text-primary font-semibold">{t.nav.portfolio}</Link>
-          <Link href={`/${locale}/about`} className="text-text hover:text-primary">{t.nav.about}</Link>
-          <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{t.nav.contact}</Link>
-        </nav>
-      </header>
+      <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
+            Faruk Aminu
+          </Link>
 
-      {/* Page Title */}
-      <div className="max-w-6xl mx-auto text-center my-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t.title}</h1>
-        <p className="text-xl text-text">{t.subtitle}</p>
-      </div>
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex gap-6 text-sm">
+              <Link href={`/${locale}`} className="hover:text-primary-600">
+                {t.nav.home}
+              </Link>
+              <Link href={`/${locale}/services`} className="text-primary-700 font-semibold">
+                {t.nav.services}
+              </Link>
+              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">
+                {t.nav.portfolio}
+              </Link>
+              <Link href={`/${locale}/about`} className="hover:text-primary-600">
+                {t.nav.about}
+              </Link>
+              <Link href={`/${locale}/contact`} className="hover:text-primary-600">
+                {t.nav.contact}
+              </Link>
+            </nav>
 
-      {/* Services List */}
-      <div className="max-w-6xl mx-auto space-y-12">
-        {t.services.map((service, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-            <h2 className="text-2xl font-bold text-primary mb-2">{service.name}</h2>
-            <p className="text-text mb-4 italic">{service.tagline}</p>
-
-            {service.packages.map((pkg, i) => (
-              <div key={i} className="border-t border-gray-200 py-4">
-                <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleDetails(`${index}-${i}`)}>
-                  <h3 className="text-lg font-semibold">{pkg.name} - {pkg.price}</h3>
-                  <span className="text-accent font-semibold">
-                    {openIndexes.includes(`${index}-${i}`) ? t.hideDetails : t.showDetails}
-                  </span>
-                </div>
-                {openIndexes.includes(`${index}-${i}`) && (
-                  <ul className="mt-2 list-disc list-inside text-text">
-                    {pkg.features.map((f, j) => (
-                      <li key={j}>{f}</li>
-                    ))}
-                    <li className="mt-2 italic text-sm">{pkg.note}</li>
-                  </ul>
-                )}
-              </div>
-            ))}
-
-            <div className="mt-4 text-right">
-              <Link href={service.caseStudyLink} className="bg-accent text-white px-6 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
-                {t.ctaText}
+            <div className="flex items-center gap-3 text-sm">
+              <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">
+                EN
+              </Link>
+              <span className="text-gray-300">|</span>
+              <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">
+                AR
               </Link>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </header>
+
+      {/* Page header */}
+      <main className="max-w-6xl mx-auto px-4 py-12">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary-700">{t.pageTitle}</h1>
+          <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">{t.subtitle}</p>
+        </div>
+
+        {/* Services list */}
+        <div className="space-y-8">
+          {t.services.map((svc, sIdx) => (
+            <section
+              key={sIdx}
+              className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden"
+            >
+              <div className="px-6 py-6 md:px-10 md:py-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-primary-800">{svc.name}</h2>
+                    <p className="mt-2 text-neutral-600">{svc.tagline}</p>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={svc.caseStudyLink}
+                      className="inline-flex items-center bg-gradient-to-r from-primary-600 to-primary-400 text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:brightness-105"
+                    >
+                      {t.ctaText}
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Packages */}
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  {svc.packages.map((pkg, pIdx) => {
+                    const id = `${sIdx}-${pIdx}`;
+                    const opened = openIndexes.includes(id);
+                    return (
+                      <div
+                        key={id}
+                        className={`rounded-xl p-5 border ${
+                          opened ? "border-primary-200 bg-primary-50/40" : "border-gray-200 bg-white"
+                        } shadow-sm`}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h3 className="text-lg font-semibold text-primary-800">{pkg.name}</h3>
+                            <div className="mt-1 text-2xl font-extrabold text-accent-600">{pkg.price}</div>
+                            <p className="mt-2 text-sm text-neutral-500">{pkg.note}</p>
+                          </div>
+
+                          <button
+                            onClick={() => toggle(id)}
+                            aria-expanded={opened}
+                            className="ml-4 inline-flex items-center gap-2 rounded-md px-3 py-2 border border-gray-200 hover:bg-gray-50 text-sm"
+                          >
+                            <span className="text-sm font-medium text-accent-600">
+                              {opened ? t.hideDetails : t.showDetails}
+                            </span>
+                            <svg
+                              className={`w-4 h-4 transform transition-transform ${opened ? "rotate-180" : ""}`}
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden
+                            >
+                              <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                        </div>
+
+                        {opened && (
+                          <div className="mt-4 text-sm text-neutral-700">
+                            <ul className="list-disc list-inside space-y-2">
+                              {pkg.features.map((f, i) => (
+                                <li key={i}>{f}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-neutral-600 mb-4">
+            {locale === "ar"
+              ? "هل تحتاج إلى حل مخصص؟ تواصل معي لتحديد نطاق وموعد العرض."
+              : "Need a custom solution? Get in touch and we'll scope your project and timeline."}
+          </p>
+          <Link
+            href={`/${locale}/contact`}
+            className="inline-flex items-center bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:brightness-105"
+          >
+            {locale === "ar" ? "تواصل معي" : "Contact Me"}
+          </Link>
+        </div>
+      </main>
     </div>
   );
 }
