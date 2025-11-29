@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export default function Portfolio({ params }) {
-  const locale = params?.locale || 'en';
-  
+  const locale = params?.slug?.[0] || 'en';
+
   const content = {
     en: {
       title: "Portfolio",
@@ -15,7 +15,7 @@ export default function Portfolio({ params }) {
       },
       nav: {
         home: "Home",
-        services: "Services", 
+        services: "Services",
         about: "About",
         contact: "Contact"
       }
@@ -32,7 +32,7 @@ export default function Portfolio({ params }) {
       nav: {
         home: "الرئيسية",
         services: "الخدمات",
-        about: "عني", 
+        about: "عني",
         contact: "اتصل"
       }
     }
@@ -42,6 +42,7 @@ export default function Portfolio({ params }) {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
@@ -60,14 +61,14 @@ export default function Portfolio({ params }) {
         </nav>
       </header>
 
+      {/* Featured Project Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t.title}</h1>
             <p className="text-xl text-text">{t.subtitle}</p>
           </div>
-          
-          {/* Featured Project */}
+
           <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
             <h2 className="text-2xl font-bold text-primary mb-6">{t.featured.title}</h2>
             <div className="bg-gray-200 h-64 rounded-lg mb-6 flex items-center justify-center">
@@ -97,7 +98,7 @@ export default function Portfolio({ params }) {
 
 export async function generateStaticParams() {
   return [
-    { locale: 'en' },
-    { locale: 'ar' }
+    { slug: ['en'] },
+    { slug: ['ar'] }
   ];
 }

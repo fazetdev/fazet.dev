@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home({ params }) {
   const locale = params?.slug?.[0] || 'en';
-  
+
   const content = {
     en: {
       hero: {
@@ -23,7 +23,7 @@ export default function Home({ params }) {
           {
             title: "Tawasul AI – Business Automation",
             description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
-            link: "#tawasul-ai-case-study", 
+            link: "#tawasul-ai-case-study",
             linkText: "View the Tawasul AI Case Study"
           },
           {
@@ -103,9 +103,10 @@ export default function Home({ params }) {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
           <div className="flex space-x-4 rtl:space-x-reverse">
-            <a href="/en" className="text-text hover:text-primary">EN</a>
+            {/* FIXED: <a> → <Link> (no text changed) */}
+            <Link href="/en" className="text-text hover:text-primary">EN</Link>
             <span className="text-gray-300">|</span>
-            <a href="/ar" className="text-text hover:text-primary">AR</a>
+            <Link href="/ar" className="text-text hover:text-primary">AR</Link>
           </div>
         </div>
         <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
@@ -127,14 +128,17 @@ export default function Home({ params }) {
             {t.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href={`/${locale}/portfolio`} 
+            {/* FIXED: Added prefetch and kept text exactly */}
+            <Link
+              href={`/${locale}/portfolio`}
+              prefetch={true}
               className="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
             >
               {t.hero.viewWork}
             </Link>
-            <Link 
-              href={`/${locale}/contact`} 
+
+            <Link
+              href={`/${locale}/contact`}
               className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
             >
               {t.hero.contactMe}
@@ -152,8 +156,8 @@ export default function Home({ params }) {
               <div key={index} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
                 <p className="text-text mb-4">{service.description}</p>
-                <Link 
-                  href={service.link} 
+                <Link
+                  href={service.link}
                   className="text-accent font-semibold hover:underline inline-flex items-center"
                 >
                   → {service.linkText}

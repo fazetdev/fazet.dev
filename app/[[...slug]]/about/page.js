@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function About({ params }) {
   const locale = params?.slug?.[0] || 'en';
-  
+
   const content = {
     en: {
       title: "Faruk Bashir Aminu",
@@ -15,7 +15,8 @@ export default function About({ params }) {
       nav: {
         home: "Home",
         services: "Services",
-        portfolio: "Portfolio", 
+        portfolio: "Portfolio",
+        about: "About",
         contact: "Contact"
       }
     },
@@ -31,6 +32,7 @@ export default function About({ params }) {
         home: "الرئيسية",
         services: "الخدمات",
         portfolio: "الأعمال",
+        about: "عني",
         contact: "اتصل"
       }
     }
@@ -54,7 +56,7 @@ export default function About({ params }) {
           <Link href={`/${locale}`} className="text-text hover:text-primary">{t.nav.home}</Link>
           <Link href={`/${locale}/services`} className="text-text hover:text-primary">{t.nav.services}</Link>
           <Link href={`/${locale}/portfolio`} className="text-text hover:text-primary">{t.nav.portfolio}</Link>
-          <Link href={`/${locale}/about`} className="text-primary font-semibold">About</Link>
+          <Link href={`/${locale}/about`} className="text-primary font-semibold">{t.nav.about}</Link>
           <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{t.nav.contact}</Link>
         </nav>
       </header>
@@ -65,14 +67,14 @@ export default function About({ params }) {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.title}</h1>
           </div>
-          
+
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="space-y-6 text-lg text-text leading-relaxed">
               {t.sections.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
-            
+
             <div className="mt-8 p-4 bg-accent/10 rounded-lg border border-accent/20">
               <p className="text-text text-center">
                 <strong>Available in Gulf Standard Time (GST +4)</strong>
