@@ -1,7 +1,9 @@
-import Link from 'next/link';
+"use client";
+
+import Link from "next/link";
 
 export default function About({ params }) {
-  const locale = params?.slug?.[0] || 'en';
+  const locale = params?.slug?.[0] || "en";
 
   const content = {
     en: {
@@ -47,9 +49,9 @@ export default function About({ params }) {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
           <div className="flex space-x-4 rtl:space-x-reverse">
-            <a href="/en/about" className="text-text hover:text-primary">EN</a>
+            <Link href="/en/about" className="text-text hover:text-primary">EN</Link>
             <span className="text-gray-300">|</span>
-            <a href="/ar/about" className="text-text hover:text-primary">AR</a>
+            <Link href="/ar/about" className="text-text hover:text-primary">AR</Link>
           </div>
         </div>
         <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
@@ -63,21 +65,23 @@ export default function About({ params }) {
 
       {/* About Content */}
       <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.title}</h1>
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          {/* Profile Image */}
+          <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-accent shadow-lg flex-shrink-0">
+            <img src="/images/faruk.jpg" alt="Faruk Aminu" className="object-cover w-full h-full" />
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <div className="space-y-6 text-lg text-text leading-relaxed">
-              {t.sections.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.title}</h1>
+            <div className="space-y-4 text-lg text-text leading-relaxed">
+              {t.sections.map((para, index) => (
+                <p key={index}>{para}</p>
               ))}
             </div>
 
-            <div className="mt-8 p-4 bg-accent/10 rounded-lg border border-accent/20">
-              <p className="text-text text-center">
-                <strong>Available in Gulf Standard Time (GST +4)</strong>
+            <div className="mt-8 p-4 bg-accent/10 rounded-lg border border-accent/20 text-center">
+              <p className="text-text font-semibold">
+                {locale === "en" ? "Available in Gulf Standard Time (GST +4)" : "متاح بتوقيت الخليج (GST +4)"}
               </p>
             </div>
           </div>

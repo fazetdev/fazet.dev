@@ -1,217 +1,96 @@
 import Link from 'next/link';
 
-export default function Services({ params }) {
+export default function Home({ params }) {
   const locale = params?.slug?.[0] || 'en';
 
   const content = {
     en: {
-      title: "Services",
-      subtitle: "Premium web solutions engineered for Gulf business growth",
-      services: [
-        {
-          title: "Premium Property Platform",
-          description: "From off-plan sales to luxury listings, I build the tools that close deals.",
-          packages: [
-            {
-              name: "Starter",
-              price: "$1,500",
-              features: [
-                "Custom Payment Plan Calculator",
-                "Bilingual (EN/AR) Landing Page",
-                "5 Property Listings",
-                "Contact & WhatsApp Integration"
-              ],
-              note: "Based on typical 2-3 week project scope"
-            },
-            {
-              name: "Professional",
-              price: "$3,500",
-              features: [
-                "Everything in Starter +",
-                "Full Admin Dashboard",
-                "Hijri/Gregorian Date Integration",
-                "Interactive Site Map",
-                "Virtual Tour Integration (360° photos/video)"
-              ],
-              note: "Based on typical 4-6 week project scope"
-            },
-            {
-              name: "Enterprise",
-              price: "$7,000+",
-              features: [
-                "Fully custom platform with CRM",
-                "Advanced lead management",
-                "Real-time analytics dashboard",
-                "Custom API integrations",
-                "Priority support & maintenance"
-              ],
-              note: "Tailored to your specific requirements"
-            }
-          ],
-          caseStudy: {
-            text: "View Bayt Elite Case Study",
-            link: "/portfolio/bayt-elite"
+      hero: {
+        title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
+        subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
+        viewWork: "View My Work",
+        contactMe: "Contact Me"
+      },
+      services: {
+        title: "My Services",
+        items: [
+          {
+            title: "Property Tech",
+            description: "Custom platforms for real estate developers with payment calculators & virtual tours.",
+            link: "/portfolio/property-tech",
+            linkText: "View Case Study"
+          },
+          {
+            title: "Business Automation",
+            description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
+            link: "/portfolio/business-automation",
+            linkText: "View Case Study"
+          },
+          {
+            title: "Logistics Tech",
+            description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
+            link: "/portfolio/logistics-tech",
+            linkText: "View Case Study"
+          },
+          {
+            title: "Business Dashboards",
+            description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
+            link: "/portfolio/business-dashboards",
+            linkText: "View Case Study"
           }
-        },
-        {
-          title: "AI Business Automation Suite",
-          description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
-          packages: [
-            {
-              name: "Starter",
-              price: "$1,200",
-              features: [
-                "Unified Inbox Setup",
-                "2 Channel Integration (WhatsApp + Email)",
-                "Basic AI Response Templates",
-                "7-day History Storage"
-              ],
-              note: "Based on typical 2-3 week project scope"
-            },
-            {
-              name: "Professional",
-              price: "$2,800",
-              features: [
-                "Everything in Starter +",
-                "Multi-channel Integration (WhatsApp, Instagram, Email)",
-                "Custom AI Training",
-                "30-day History Storage",
-                "Basic Analytics Dashboard"
-              ],
-              note: "Based on typical 4-6 week project scope"
-            },
-            {
-              name: "Enterprise",
-              price: "$5,500+",
-              features: [
-                "Custom AI Model Development",
-                "Unlimited History Storage",
-                "Advanced Analytics & Reporting",
-                "CRM Integration",
-                "24/7 Priority Support"
-              ],
-              note: "Tailored to your specific requirements"
-            }
-          ],
-          caseStudy: {
-            text: "View Tawasul AI Case Study",
-            link: "/portfolio/tawasul-ai"
-          }
-        },
-        {
-          title: "Logistics Management System",
-          description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
-          packages: [
-            {
-              name: "Starter",
-              price: "$1,800",
-              features: [
-                "Driver Mobile Dashboard",
-                "Basic Route Optimization",
-                "Real-time Tracking",
-                "Delivery Status Updates"
-              ],
-              note: "Based on typical 3-4 week project scope"
-            },
-            {
-              name: "Professional",
-              price: "$4,200",
-              features: [
-                "Everything in Starter +",
-                "Advanced Route Algorithms",
-                "Fleet Management Console",
-                "Performance Analytics",
-                "Customer Notification System"
-              ],
-              note: "Based on typical 5-7 week project scope"
-            },
-            {
-              name: "Enterprise",
-              price: "$8,000+",
-              features: [
-                "Custom Logistics Platform",
-                "AI-powered Route Optimization",
-                "Multi-warehouse Support",
-                "Custom API Integrations",
-                "Dedicated Account Manager"
-              ],
-              note: "Tailored to your specific requirements"
-            }
-          ],
-          caseStudy: {
-            text: "View Zimam Delivery Case Study",
-            link: "/portfolio/zimam-delivery"
-          }
-        },
-        {
-          title: "Business Intelligence Dashboards",
-          description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
-          packages: [
-            {
-              name: "Starter",
-              price: "$1,000",
-              features: [
-                "Basic Admin Dashboard",
-                "Appointment Management",
-                "Customer Database",
-                "Basic Reporting"
-              ],
-              note: "Based on typical 2-3 week project scope"
-            },
-            {
-              name: "Professional",
-              price: "$2,500",
-              features: [
-                "Everything in Starter +",
-                "Advanced Analytics",
-                "Inventory Management",
-                "Multi-location Support",
-                "Custom Report Builder"
-              ],
-              note: "Based on typical 4-5 week project scope"
-            },
-            {
-              name: "Enterprise",
-              price: "$5,000+",
-              features: [
-                "Custom Business Intelligence Suite",
-                "Real-time Data Sync",
-                "Advanced Security Features",
-                "Custom Module Development",
-                "White-label Solution"
-              ],
-              note: "Tailored to your specific requirements"
-            }
-          ],
-          caseStudy: {
-            text: "View Al-Multaqa Case Study",
-            link: "/portfolio/al-multaqa"
-          }
-        }
-      ],
+        ]
+      },
       nav: {
         home: "Home",
+        services: "Services",
         portfolio: "Portfolio",
         about: "About",
         contact: "Contact"
-      },
-      customSolution: "Need a custom solution?",
-      contactCta: "Let's discuss your project"
+      }
     },
     ar: {
-      title: "الخدمات",
-      subtitle: "حلول ويب متميزة مصممة لنمو الأعمال في الخليج",
-      services: [
-        // Arabic services content exactly as in your original code
-      ],
+      hero: {
+        title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
+        subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
+        viewWork: "شاهد أعمالي",
+        contactMe: "اتصل بي"
+      },
+      services: {
+        title: "خدماتي",
+        items: [
+          {
+            title: "تقنية العقارات",
+            description: "منصات مخصصة لمطوري العقارات مع حاسبات الدفع والجولات الافتراضية.",
+            link: "/portfolio/property-tech",
+            linkText: "عرض دراسة الحالة"
+          },
+          {
+            title: "أتمتة الأعمال",
+            description: "مراكز خدمة عملاء مدعومة بالذكاء الاصطناعي لإدارة الاستفسارات من واتساب وإنستغرام والبريد الإلكتروني.",
+            link: "/portfolio/business-automation",
+            linkText: "عرض دراسة الحالة"
+          },
+          {
+            title: "تقنية الخدمات اللوجستية",
+            description: "لوحات تحكم السائقين وأدوات إدارة التوصيل لشركات الخدمات اللوجستية من الميل الأخير.",
+            link: "/portfolio/logistics-tech",
+            linkText: "عرض دراسة الحالة"
+          },
+          {
+            title: "لوحات تحكم الأعمال",
+            description: "لوحات تحكم إدارية مخصصة لصالونات وعيادات وأعمال الخدمات لإدارة العمليات.",
+            link: "/portfolio/business-dashboards",
+            linkText: "عرض دراسة الحالة"
+          }
+        ]
+      },
       nav: {
         home: "الرئيسية",
+        services: "الخدمات",
         portfolio: "الأعمال",
         about: "عني",
         contact: "اتصل"
-      },
-      customSolution: "هل تحتاج إلى حل مخصص؟",
-      contactCta: "لنتحدث عن مشروعك"
+      }
     }
   };
 
@@ -224,86 +103,60 @@ export default function Services({ params }) {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
           <div className="flex space-x-4 rtl:space-x-reverse">
-            <a href="/en/services" className="text-text hover:text-primary">EN</a>
+            <Link href="/en" className="text-text hover:text-primary">EN</Link>
             <span className="text-gray-300">|</span>
-            <a href="/ar/services" className="text-text hover:text-primary">AR</a>
+            <Link href="/ar" className="text-text hover:text-primary">AR</Link>
           </div>
         </div>
         <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
-          <Link href={`/${locale}`} className="text-text hover:text-primary">{t.nav.home}</Link>
-          <Link href={`/${locale}/services`} className="text-primary font-semibold">{locale === 'ar' ? 'الخدمات' : 'Services'}</Link>
+          <Link href={`/${locale}`} className="text-primary font-semibold">{t.nav.home}</Link>
+          <Link href={`/${locale}/services`} className="text-text hover:text-primary">{t.nav.services}</Link>
           <Link href={`/${locale}/portfolio`} className="text-text hover:text-primary">{t.nav.portfolio}</Link>
           <Link href={`/${locale}/about`} className="text-text hover:text-primary">{t.nav.about}</Link>
           <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{t.nav.contact}</Link>
         </nav>
       </header>
 
-      {/* Services Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t.title}</h1>
-            <p className="text-xl text-text max-w-3xl mx-auto">{t.subtitle}</p>
+      {/* Hero Section */}
+      <section className="py-20 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">{t.hero.title}</h1>
+          <p className="text-xl md:text-2xl text-text mb-8 max-w-3xl mx-auto">{t.hero.subtitle}</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href={`/${locale}/portfolio`}
+              className="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
+            >
+              {t.hero.viewWork}
+            </Link>
+
+            <Link
+              href={`/${locale}/contact`}
+              className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+            >
+              {t.hero.contactMe}
+            </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-20">
-            {t.services.map((service, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-                {/* Service Header */}
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-primary mb-4">{service.title}</h2>
-                  <p className="text-xl text-text max-w-2xl mx-auto">{service.description}</p>
-                </div>
-
-                {/* Packages */}
-                <div className="grid lg:grid-cols-3 gap-8 mb-8">
-                  {service.packages.map((pkg, pkgIndex) => (
-                    <div key={pkgIndex} className={`rounded-xl p-6 border-2 ${pkg.name === 'Professional' || pkg.name === 'المحترف' ? 'border-accent bg-accent/5 transform scale-105 shadow-lg' : 'border-gray-200'} transition-all hover:shadow-xl`}>
-                      <div className="text-center mb-6">
-                        <h3 className="text-xl font-bold text-primary mb-2">{pkg.name}</h3>
-                        <div className="text-3xl font-bold text-accent mb-2">{pkg.price}</div>
-                        <p className="text-sm text-text/70">{pkg.note}</p>
-                      </div>
-
-                      <ul className="space-y-3 mb-6">
-                        {pkg.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start">
-                            <span className="text-accent mr-2 mt-1">•</span>
-                            <span className="text-text">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {(pkg.name === 'Professional' || pkg.name === 'المحترف') && (
-                        <div className="text-center">
-                          <span className="inline-block bg-accent text-white text-sm px-3 py-1 rounded-full">
-                            {locale === 'ar' ? 'الأكثر طلباً' : 'Most Popular'}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Case Study */}
-                <div className="text-center border-t border-gray-200 pt-8">
-                  <Link href={service.caseStudy.link} className="inline-flex items-center bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-                    {service.caseStudy.text}
-                  </Link>
-                </div>
+      {/* Services Overview */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">{t.services.title}</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {t.services.items.map((service, index) => (
+              <div key={index} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
+                <p className="text-text mb-4">{service.description}</p>
+                <Link
+                  href={service.link}
+                  className="text-accent font-semibold hover:underline inline-flex items-center"
+                >
+                  → {service.linkText}
+                </Link>
               </div>
             ))}
-          </div>
-
-          {/* Custom CTA */}
-          <div className="text-center mt-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
-            <h3 className="text-2xl font-bold text-primary mb-4">{t.customSolution}</h3>
-            <p className="text-text mb-6 max-w-2xl mx-auto">
-              {locale === 'en' ? "Have unique requirements? Let's build a custom solution tailored to your specific business needs." : "هل لديك متطلبات فريدة؟ لنبني حلاً مخصصًا مصممًا خصيصًا لاحتياجات عملك."}
-            </p>
-            <Link href={`/${locale}/contact`} className="inline-flex items-center bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
-              {t.contactCta}
-            </Link>
           </div>
         </div>
       </section>
