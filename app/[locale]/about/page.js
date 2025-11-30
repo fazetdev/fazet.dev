@@ -20,7 +20,8 @@ export default function About({ params }) {
         portfolio: "Portfolio",
         about: "About",
         contact: "Contact"
-      }
+      },
+      gstNote: "Available in Gulf Standard Time (GST +4)"
     },
     ar: {
       title: "فاروق بشير أمينو",
@@ -36,14 +37,18 @@ export default function About({ params }) {
         portfolio: "الأعمال",
         about: "عني",
         contact: "اتصل"
-      }
+      },
+      gstNote: "متاح بتوقيت الخليج (GST +4)"
     }
   };
 
   const t = content[locale] || content.en;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div
+      className={`min-h-screen bg-background ${locale === "ar" ? "font-arabic" : "font-english"}`}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -63,7 +68,7 @@ export default function About({ params }) {
         </nav>
       </header>
 
-      {/* About Content */}
+      {/* About Section */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Profile Image */}
@@ -71,6 +76,7 @@ export default function About({ params }) {
             <img src="/images/faruk.jpg" alt="Faruk Aminu" className="object-cover w-full h-full" />
           </div>
 
+          {/* About Text */}
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.title}</h1>
             <div className="space-y-4 text-lg text-text leading-relaxed">
@@ -80,9 +86,7 @@ export default function About({ params }) {
             </div>
 
             <div className="mt-8 p-4 bg-accent/10 rounded-lg border border-accent/20 text-center">
-              <p className="text-text font-semibold">
-                {locale === "en" ? "Available in Gulf Standard Time (GST +4)" : "متاح بتوقيت الخليج (GST +4)"}
-              </p>
+              <p className="text-text font-semibold">{t.gstNote}</p>
             </div>
           </div>
         </div>
