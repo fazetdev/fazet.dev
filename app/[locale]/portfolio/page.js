@@ -1,4 +1,6 @@
-import Link from 'next/link';
+"use client";
+
+import Link from "next/link";
 
 const content = {
   en: {
@@ -138,12 +140,12 @@ const content = {
 };
 
 export default function Portfolio({ params }) {
-  const locale = params?.slug?.[0] || 'en';
+  const locale = params?.slug?.[0] || "en";
   const t = content[locale] || content.en;
-  const isRTL = locale === 'ar';
+  const isRTL = locale === "ar";
 
   return (
-    <div className={`min-h-screen bg-background ${isRTL ? 'rtl' : 'ltr'}`}>
+    <div className={`min-h-screen bg-background ${isRTL ? "rtl font-arabic" : "ltr font-english"}`}>
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -155,35 +157,35 @@ export default function Portfolio({ params }) {
           </div>
         </div>
         <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
-          <Link href={`/${locale}`} className="text-text hover:text-primary">{locale === 'ar' ? 'الرئيسية' : 'Home'}</Link>
-          <Link href={`/${locale}/portfolio`} className="text-primary font-semibold">{locale === 'ar' ? 'الأعمال' : 'Portfolio'}</Link>
-          <Link href={`/${locale}/about`} className="text-text hover:text-primary">{locale === 'ar' ? 'عني' : 'About'}</Link>
-          <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{locale === 'ar' ? 'اتصل' : 'Contact'}</Link>
+          <Link href={`/${locale}`} className="text-text hover:text-primary">{locale === "ar" ? "الرئيسية" : "Home"}</Link>
+          <Link href={`/${locale}/portfolio`} className="text-primary font-semibold">{locale === "ar" ? "الأعمال" : "Portfolio"}</Link>
+          <Link href={`/${locale}/about`} className="text-text hover:text-primary">{locale === "ar" ? "عني" : "About"}</Link>
+          <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{locale === "ar" ? "اتصل" : "Contact"}</Link>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-4">
+        <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.hero.title}</h1>
-          <p className="text-xl md:text-2xl text-text mb-12 max-w-3xl mx-auto">{t.hero.subtitle}</p>
+          <p className="text-xl md:text-2xl text-text mb-12">{t.hero.subtitle}</p>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {t.projects.map((project, index) => (
               <div key={index} className="p-6 border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-white">
-                <h2 className="text-2xl font-bold text-primary mb-2">{project.title}</h2>
-                <p className="text-text mb-4">{project.description}</p>
-                <ul className={`mb-4 list-disc pl-5 ${isRTL ? 'rtl:text-right' : ''}`}>
+                <h2 className="text-2xl font-bold text-primary mb-3">{project.title}</h2>
+                <p className="text-text mb-3">{project.description}</p>
+                <div className={`mb-4 space-y-1 ${isRTL ? "rtl:text-right" : ""}`}>
                   {project.features.map((feat, i) => (
-                    <li key={i} className="text-text mb-1">{feat}</li>
+                    <p key={i} className="text-text">{feat}</p>
                   ))}
-                </ul>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href={project.github} className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-center">{locale === 'ar' ? 'مشروع GitHub' : 'GitHub'}</Link>
-                  <Link href={project.demo} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center">{locale === 'ar' ? 'عرض مباشر' : 'Live Demo'}</Link>
                 </div>
-                <p className="mt-4 text-sm italic text-gray-500">{project.tagline}</p>
+                <div className="flex gap-4 mb-4">
+                  <Link href={project.demo} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center">{locale === "ar" ? "عرض مباشر" : "Live Demo"}</Link>
+                  <Link href={project.github} className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-center">{locale === "ar" ? "مشروع GitHub" : "GitHub"}</Link>
+                </div>
+                <p className="text-sm italic text-gray-500">{project.tagline}</p>
               </div>
             ))}
           </div>
