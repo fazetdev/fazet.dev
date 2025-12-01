@@ -2,57 +2,45 @@
 
 import { useState, useEffect } from 'react';
 
-interface TimeZoneInfo {
-  zone: string;
-  label: string;
-  currentTime: string;
-  offset: string;
-  flag: string;
-}
-
-export default function TimeZoneDisplay({ locale = 'en' }: { locale?: string }) {
-  const initialTimes: TimeZoneInfo[] = [
+export default function TimeZoneDisplay({ locale = 'en' }) {
+  const [times, setTimes] = useState([
     { zone: 'Africa/Lagos', label: 'Lagos/Kano', currentTime: '', offset: '+1', flag: '🇳🇬' },
     { zone: 'Asia/Dubai', label: 'Dubai (UAE)', currentTime: '', offset: '+4', flag: '🇦🇪' },
     { zone: 'Asia/Riyadh', label: 'Riyadh (KSA)', currentTime: '', offset: '+3', flag: '🇸🇦' },
     { zone: 'Asia/Qatar', label: 'Doha (Qatar)', currentTime: '', offset: '+3', flag: '🇶🇦' },
     { zone: 'Asia/Kuwait', label: 'Kuwait City', currentTime: '', offset: '+3', flag: '🇰🇼' },
     { zone: 'Asia/Bahrain', label: 'Manama', currentTime: '', offset: '+3', flag: '🇧🇭' },
-  ];
+  ]);
 
-  const [times, setTimes] = useState<TimeZoneInfo[]>(initialTimes);
-  const [availability, setAvailability] = useState<string>('');
+  const [availability, setAvailability] = useState('');
 
   useEffect(() => {
     const updateTimes = () => {
       const now = new Date();
-
-      const updatedTimes = initialTimes.map(tz => {
+      const updatedTimes = times.map(tz => {
         try {
-          const dtf = new Intl.DateTimeFormat('en-US', {
+          const timeStr = now.toLocaleTimeString('en-US', {
             timeZone: tz.zone,
+            hour12: true,
             hour: 'numeric',
             minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-            timeZoneName: 'short'
+            second: '2-digit'
           });
-          const timeStr = dtf.format(now);
           return { ...tz, currentTime: timeStr };
         } catch {
           return { ...tz, currentTime: '--:-- --' };
         }
       });
-
       setTimes(updatedTimes);
 
-      // Determine availability based on Nigeria business hours
-      const lagosHour = new Intl.DateTimeFormat('en-US', {
+      // Calculate business hours
+      const lagosHour = now.toLocaleTimeString('en-US', {
         timeZone: 'Africa/Lagos',
         hour: 'numeric',
         hour12: false
-      }).format(now);
-      const lagosHourNum = parseInt(lagosHour, 10);
+      });
+      const lagosHourNum = parseInt(lagosHour);
+
       const isBusinessHours = lagosHourNum >= 9 && lagosHourNum < 17;
       setAvailability(isBusinessHours ? '🟢 Available Now' : '⏰ Outside Business Hours');
     };
@@ -89,7 +77,7 @@ export default function TimeZoneDisplay({ locale = 'en' }: { locale?: string }) 
     }
   };
 
-  const t = content[locale as keyof typeof content] || content.en;
+  const t = content[locale] || content.en;
 
   return (
     <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl shadow-lg p-6 border border-blue-200 mt-8">
@@ -99,7 +87,7 @@ export default function TimeZoneDisplay({ locale = 'en' }: { locale?: string }) 
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
           <h4 className="font-semibold text-gray-700">{t.currentTimes}</h4>
-          <span className="text-sm font-medium px-3 py-1 bg-blue-100 text-blue-800 rounded-full" aria-label="availability">
+          <span className="text-sm font-medium px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
             {availability}
           </span>
         </div>
@@ -109,9 +97,9 @@ export default function TimeZoneDisplay({ locale = 'en' }: { locale?: string }) 
             <div key={index} className="bg-white p-3 rounded-lg border border-gray-200">
               <div className="flex items-center justify-between">
                 <span className="font-medium text-gray-800">{tz.flag} {tz.label}</span>
-                <span className="text-sm text-gray-500">{tz.currentTime.split(' ')[2]}</span>
+                <span className="text-sm text-gray-500">UTC{tz.offset}</span>
               </div>
-              <div className="text-2xl font-bold text-primary mt-2">{tz.currentTime.split(' ')[0]} {tz.currentTime.split(' ')[1]}</div>
+              <div className="text-2xl font-bold text-primary mt-2">{tz.currentTime}</div>
             </div>
           ))}
         </div>

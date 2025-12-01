@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import TimeZoneDisplay from "../../components/TimeZoneDisplay.jsx";
+import TimeZoneDisplay from "../../components/TimeZoneDisplay";
 
 export default function Contact({ params }) {
   const locale = params?.slug?.[0] || "en";
