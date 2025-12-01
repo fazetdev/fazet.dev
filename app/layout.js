@@ -1,7 +1,8 @@
 import { Inter, Cairo } from 'next/font/google';
 import './globals.css';
+import Header from './components/Header';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter'
 });
@@ -16,10 +17,40 @@ export const metadata = {
   description: 'Freelance Web Developer Specialized in Gulf-Focused Digital Solutions',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params }) {
+  const locale = params?.slug?.[0] || 'en';
+
+  const content = {
+    en: {
+      nav: {
+        home: "Home",
+        services: "Services",
+        portfolio: "Portfolio",
+        about: "About",
+        contact: "Contact",
+        book: "Book"
+      },
+      // other content if needed globally
+    },
+    ar: {
+      nav: {
+        home: "الرئيسية",
+        services: "الخدمات",
+        portfolio: "الأعمال",
+        about: "عني",
+        contact: "اتصل",
+        book: "الحجز"
+      },
+      // other content if needed globally
+    }
+  };
+
+  const t = content[locale] || content.en;
+
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+    <html lang={locale}>
+      <body className={`${inter.variable} font-sans`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+        <Header locale={locale} t={t} />
         {children}
       </body>
     </html>

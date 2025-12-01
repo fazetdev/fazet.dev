@@ -147,3 +147,4 @@ export default function Home({ params }) {
     </div>
   );
 }
+import Header from './components/Header';
