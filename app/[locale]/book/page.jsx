@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import TimeZoneDisplay from "@/app/components/TimeZoneDisplay";
+import TimeZoneDisplay from "../../components/TimeZoneDisplay";
 
 export default function Book({ params }) {
   const locale = params?.slug?.[0] || "en";
