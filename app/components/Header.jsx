@@ -16,7 +16,7 @@ export default function Header({ locale, t }) {
         setIsOpen(false);
       }
     };
-    
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -56,9 +56,9 @@ export default function Header({ locale, t }) {
         {isDesktop && (
           <nav className="flex space-x-4 rtl:space-x-reverse text-sm overflow-x-auto">
             {links.map((link) => (
-              <Link 
-                key={link.href} 
-                href={link.href} 
+              <Link
+                key={link.href}
+                href={link.href}
                 className="text-text hover:text-primary font-semibold whitespace-nowrap px-2 py-1"
               >
                 {link.label}
