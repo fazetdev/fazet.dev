@@ -2,176 +2,169 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { HiMail, HiPhone, HiGlobe } from 'react-icons/hi';
+import { HiMail, HiCode, HiArrowRight } from 'react-icons/hi';
 
-export default function Footer({ locale, t }) {
-  const [showFooter, setShowFooter] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+export default function Footer({ locale = 'en' }) {
+  const [year] = useState(new Date().getFullYear());
+  const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Show footer when scrolling down, hide when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShowFooter(true); // Show when scrolling down
-      } else if (currentScrollY < lastScrollY) {
-        setShowFooter(false); // Hide when scrolling up
-      }
-      
-      setLastScrollY(currentScrollY);
+      setShowSticky(window.scrollY > 500);
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
+  // Clean, minimal translations
   const content = {
     en: {
-      title: "Let's Build Something Great",
-      subtitle: "Ready to start your web project?",
-      viewWork: "View My Work",
-      contactMe: "Contact Me",
-      quickLinks: "Quick Links",
+      // Sticky CTA
+      stickyTitle: "Interested in working together?",
+      stickyAction: "Start a Conversation",
+      
+      // Main Footer
+      brand: "Faruk Bashir Aminu",
+      tagline: "Web Developer",
+      contactTitle: "Connect",
+      quickLinks: "Explore",
       services: "Services",
       portfolio: "Portfolio",
       about: "About",
       contact: "Contact",
-      book: "Book",
-      connect: "Connect",
+      book: "Schedule",
       email: "fazetdev@gmail.com",
-      phone: "+234 798 292 1105",
-      location: "Kano, Nigeria",
-      availability: "Available for new projects",
-      copyright: "© {year} Faruk Bashir Aminu. All rights reserved.",
-      footerNote: "Gulf-focused web solutions since 2021"
+      github: "GitHub",
+      availability: "Available for select projects",
+      copyright: `© ${year} Faruk Bashir Aminu`,
+      madeWith: "Built with Next.js & Tailwind",
+      
+      // CTA Section
+      ctaTitle: "Have a project in mind?",
+      ctaSubtitle: "Let's discuss how we can bring it to life",
+      ctaButton1: "View Portfolio",
+      ctaButton2: "Send Email"
     },
     ar: {
-      title: "لنبني شيئاً رائعاً",
-      subtitle: "مستعد لبدء مشروعك على الويب؟",
-      viewWork: "شاهد أعمالي",
-      contactMe: "اتصل بي",
-      quickLinks: "روابط سريعة",
+      // Sticky CTA
+      stickyTitle: "مهتم بالعمل معاً؟",
+      stickyAction: "ابدأ محادثة",
+      
+      // Main Footer
+      brand: "فاروق بشير أمينو",
+      tagline: "مطور ويب",
+      contactTitle: "تواصل",
+      quickLinks: "استكشف",
       services: "الخدمات",
       portfolio: "الأعمال",
       about: "عني",
       contact: "اتصل",
-      book: "الحجز",
-      connect: "تواصل",
+      book: "جدولة",
       email: "fazetdev@gmail.com",
-      phone: "+٢٣٤ ٧٩٨ ٢٩٢ ١١٠٥",
-      location: "كانو، نيجيريا",
-      availability: "متاح لمشاريع جديدة",
-      copyright: "© {year} فاروق بشير أمينو. جميع الحقوق محفوظة.",
-      footerNote: "حلول ويب موجهة للخليج منذ ٢٠٢١"
+      github: "GitHub",
+      availability: "متاح لمشاريع مختارة",
+      copyright: `© ${year} فاروق بشير أمينو`,
+      madeWith: "مبني بـ Next.js & Tailwind",
+      
+      // CTA Section
+      ctaTitle: "هل لديك مشروع في الذهن؟",
+      ctaSubtitle: "لنناقش كيف يمكننا إحيائه",
+      ctaButton1: "عرض الأعمال",
+      ctaButton2: "إرسال بريد"
     }
   };
 
-  const footerContent = content[locale] || content.en;
-
-  const currentYear = new Date().getFullYear();
+  const t = content[locale] || content.en;
 
   return (
     <>
-      {/* Main Footer (always visible at bottom) */}
-      <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white mt-auto">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            {/* Left Column - Brand & Contact */}
+      {/* Simple Sticky CTA - Only appears after scrolling */}
+      {showSticky && (
+        <div className="fixed bottom-6 right-6 bg-primary text-white rounded-full shadow-xl z-50 animate-fade-in">
+          <Link 
+            href={`/${locale}/contact`}
+            className="flex items-center px-6 py-3 font-medium hover:bg-primary-dark transition-colors rounded-full"
+          >
+            <HiArrowRight className="ml-2" />
+            {t.stickyAction}
+          </Link>
+        </div>
+      )}
+
+      {/* Main Footer */}
+      <footer className="bg-gray-50 border-t border-gray-200 mt-20">
+        {/* CTA Section */}
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t.ctaTitle}</h3>
+            <p className="text-gray-600 max-w-2xl mx-auto mb-8">{t.ctaSubtitle}</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href={`/${locale}/portfolio`}
+                className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-black transition-colors inline-flex items-center justify-center"
+              >
+                {t.ctaButton1}
+              </Link>
+              <a 
+                href="mailto:fazetdev@gmail.com"
+                className="border-2 border-gray-900 text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-900 hover:text-white transition-colors inline-flex items-center justify-center"
+              >
+                <HiMail className="mr-2" />
+                {t.ctaButton2}
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-gray-300">
+            {/* Brand */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">Faruk Bashir Aminu</h3>
-              <p className="text-gray-300 mb-4">{footerContent.footerNote}</p>
-              <div className="space-y-3">
-                <div className="flex items-center">
-                  <HiMail className="mr-3 text-accent" />
-                  <a href={`mailto:${footerContent.email}`} className="text-gray-300 hover:text-white">
-                    {footerContent.email}
-                  </a>
-                </div>
-                <div className="flex items-center">
-                  <HiPhone className="mr-3 text-accent" />
-                  <a href={`https://wa.me/2347982921105`} className="text-gray-300 hover:text-white">
-                    {footerContent.phone}
-                  </a>
-                </div>
-                <div className="flex items-center">
-                  <HiGlobe className="mr-3 text-accent" />
-                  <span className="text-gray-300">{footerContent.location}</span>
-                </div>
-              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{t.brand}</h3>
+              <p className="text-gray-600 mb-4">{t.tagline}</p>
+              <p className="text-sm text-gray-500">{t.availability}</p>
             </div>
 
-            {/* Middle Column - Quick Links */}
+            {/* Quick Links */}
             <div>
-              <h4 className="text-xl font-bold mb-4">{footerContent.quickLinks}</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">{t.quickLinks}</h4>
               <ul className="space-y-2">
-                <li><Link href={`/${locale}`} className="text-gray-300 hover:text-white">{locale === 'ar' ? 'الرئيسية' : 'Home'}</Link></li>
-                <li><Link href={`/${locale}/services`} className="text-gray-300 hover:text-white">{footerContent.services}</Link></li>
-                <li><Link href={`/${locale}/portfolio`} className="text-gray-300 hover:text-white">{footerContent.portfolio}</Link></li>
-                <li><Link href={`/${locale}/about`} className="text-gray-300 hover:text-white">{footerContent.about}</Link></li>
-                <li><Link href={`/${locale}/contact`} className="text-gray-300 hover:text-white">{footerContent.contact}</Link></li>
-                <li><Link href={`/${locale}/book`} className="text-gray-300 hover:text-white">{footerContent.book}</Link></li>
+                <li><Link href={`/${locale}/services`} className="text-gray-600 hover:text-primary transition-colors">{t.services}</Link></li>
+                <li><Link href={`/${locale}/portfolio`} className="text-gray-600 hover:text-primary transition-colors">{t.portfolio}</Link></li>
+                <li><Link href={`/${locale}/about`} className="text-gray-600 hover:text-primary transition-colors">{t.about}</Link></li>
+                <li><Link href={`/${locale}/book`} className="text-gray-600 hover:text-primary transition-colors">{t.book}</Link></li>
               </ul>
             </div>
 
-            {/* Right Column - CTA */}
+            {/* Contact - Only Email & GitHub */}
             <div>
-              <h4 className="text-xl font-bold mb-4">{footerContent.title}</h4>
-              <p className="text-gray-300 mb-6">{footerContent.subtitle}</p>
-              <div className="flex flex-col space-y-3">
-                <Link 
-                  href={`/${locale}/portfolio`}
-                  className="bg-accent hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+              <h4 className="font-semibold text-gray-900 mb-4">{t.contactTitle}</h4>
+              <div className="space-y-3">
+                <a 
+                  href="mailto:fazetdev@gmail.com"
+                  className="flex items-center text-gray-600 hover:text-primary transition-colors"
                 >
-                  {footerContent.viewWork}
-                </Link>
-                <Link 
-                  href={`/${locale}/contact`}
-                  className="border-2 border-white hover:bg-white hover:text-gray-900 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+                  <HiMail className="mr-2" />
+                  {t.email}
+                </a>
+                <a 
+                  href="https://github.com/fazetdev"
+                  target="_blank"
+                  className="flex items-center text-gray-600 hover:text-primary transition-colors"
                 >
-                  {footerContent.contactMe}
-                </Link>
+                  <HiCode className="mr-2" />
+                  {t.github}
+                </a>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-700 pt-6 text-center">
-            <p className="text-gray-400">
-              {footerContent.copyright.replace('{year}', currentYear)}
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              {footerContent.availability}
+          {/* Bottom Copyright */}
+          <div className="mt-8 pt-6 border-t border-gray-300 text-center">
+            <p className="text-gray-500 text-sm">
+              {t.copyright} • {t.madeWith}
             </p>
           </div>
         </div>
       </footer>
-
-      {/* Sticky CTA Footer (appears/disappears on scroll) */}
-      <div className={`fixed ${showFooter ? 'bottom-0' : '-bottom-full'} left-0 right-0 bg-gradient-to-r from-primary to-primary-dark text-white shadow-2xl transition-all duration-500 z-50`}>
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-lg">{footerContent.title}</h3>
-              <p className="text-sm opacity-90">{footerContent.subtitle}</p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link 
-                href={`/${locale}/portfolio`}
-                className="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-center transition-colors min-w-[150px]"
-              >
-                {footerContent.viewWork}
-              </Link>
-              <Link 
-                href={`/${locale}/contact`}
-                className="border-2 border-white hover:bg-white/10 px-6 py-3 rounded-lg font-semibold text-center transition-colors min-w-[150px]"
-              >
-                {footerContent.contactMe}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

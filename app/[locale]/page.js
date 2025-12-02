@@ -6,71 +6,85 @@ export default function Home({ params }) {
   const content = {
     en: {
       hero: {
-        title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
-        subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
+        title: "Faruk Bashir Aminu",
+        subtitle: "Web Developer specializing in clean, functional digital experiences",
+        tagline: "Building for the modern web"
       },
       services: {
-        title: "My Services",
+        title: "Services",
+        subtitle: "Focused solutions for specific needs",
         items: [
           {
-            title: "Bayt Elite – Property Tech",
-            description: "Custom platforms for real estate developers with payment calculators & virtual tours.",
-            link: "#bayt-elite-case-study",
-            linkText: "Explore project"
+            title: "Web Applications",
+            description: "Custom, responsive applications built with modern frameworks.",
+            tech: "React • Next.js • Node.js"
           },
           {
-            title: "Tawasul AI – Business Automation",
-            description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
-            link: "#tawasul-ai-case-study",
-            linkText: "Explore project"
+            title: "Frontend Development",
+            description: "Pixel-perfect interfaces with focus on performance and UX.",
+            tech: "TypeScript • Tailwind • Responsive Design"
           },
           {
-            title: "Zimam Delivery – Logistics Tech",
-            description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
-            link: "#zimam-delivery-case-study",
-            linkText: "Explore project"
+            title: "Technical Consultation",
+            description: "Guidance on architecture, tools, and best practices for your project.",
+            tech: "Code Review • Architecture • Best Practices"
           },
           {
-            title: "Al-Multaqa – Business Dashboards",
-            description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
-            link: "#al-multaqa-case-study",
-            linkText: "Explore project"
+            title: "Performance Optimization",
+            description: "Improving speed, accessibility, and core web vitals.",
+            tech: "Performance • SEO • Accessibility"
           }
+        ]
+      },
+      process: {
+        title: "Approach",
+        items: [
+          "Understanding requirements and goals",
+          "Planning architecture and tech stack",
+          "Iterative development with feedback",
+          "Testing, optimization, and delivery"
         ]
       }
     },
     ar: {
       hero: {
-        title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
-        subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
+        title: "فاروق بشير أمينو",
+        subtitle: "مطور ويب متخصص في تجارب رقمية نظيفة وعملية",
+        tagline: "بناء للويب الحديث"
       },
       services: {
-        title: "خدماتي",
+        title: "الخدمات",
+        subtitle: "حلول مركزة لاحتياجات محددة",
         items: [
           {
-            title: "بيت إيليت – تقنية العقارات",
-            description: "منصات مخصصة لمطوري العقارات مع حاسبات الدفع والجولات الافتراضية.",
-            link: "#bayt-elite-case-study",
-            linkText: "عرض دراسة حالة بيت إيليت"
+            title: "تطبيقات الويب",
+            description: "تطبيقات مخصصة ومتجاوبة مبنية بأطر العمل الحديثة.",
+            tech: "React • Next.js • Node.js"
           },
           {
-            title: "تواصل AI – أتمتة الأعمال",
-            description: "مراكز خدمة عملاء مدعومة بالذكاء الاصطناعي لإدارة الاستفسارات من واتساب وإنستغرام والبريد الإلكتروني.",
-            link: "#tawasul-ai-case-study",
-            linkText: "عرض دراسة حالة تواصل AI"
+            title: "تطوير الواجهات",
+            description: "واجهات دقيقة مع التركيز على الأداء وتجربة المستخدم.",
+            tech: "TypeScript • Tailwind • تصميم متجاوب"
           },
           {
-            title: "زِمَام دليفري – تقنية الخدمات اللوجستية",
-            description: "لوحات تحكم السائقين وأدوات إدارة التوصيل لشركات الخدمات اللوجستية من الميل الأخير.",
-            link: "#zimam-delivery-case-study",
-            linkText: "عرض دراسة حالة زِمَام دليفري"
+            title: "استشارات تقنية",
+            description: "توجيه حول الهيكلة، الأدوات، وأفضل الممارسات لمشروعك.",
+            tech: "مراجعة الكود • الهيكلة • أفضل الممارسات"
           },
           {
-            title: "الملتقى – لوحات تحكم الأعمال",
-            description: "لوحات تحكم إدارية مخصصة لصالونات وعيادات وأعمال الخدمات لإدارة العمليات.",
-            link: "#al-multaqa-case-study",
-            linkText: "عرض دراسة حالة الملتقى"
+            title: "تحسين الأداء",
+            description: "تحسين السرعة، إمكانية الوصول، ومقاييس الويب الأساسية.",
+            tech: "الأداء • SEO • إمكانية الوصول"
           }
+        ]
+      },
+      process: {
+        title: "النهج",
+        items: [
+          "فهم المتطلبات والأهداف",
+          "تخطيط الهيكلة والمجموعة التقنية",
+          "تطوير تكراري مع التغذية الراجعة",
+          "الاختبار، التحسين، والتسليم"
         ]
       }
     }
@@ -79,34 +93,80 @@ export default function Home({ params }) {
   const t = content[locale] || content.en;
 
   return (
-    <div className="min-h-screen bg-background" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">{t.hero.title}</h1>
-          <p className="text-xl md:text-2xl text-text mb-12 max-w-3xl mx-auto">{t.hero.subtitle}</p>
+      <section className="pt-24 pb-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <div className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-6">
+              {t.hero.tagline}
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              {t.hero.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              {t.hero.subtitle}
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">{t.services.title}</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.services.title}</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">{t.services.subtitle}</p>
+          </div>
+          
           <div className="grid md:grid-cols-2 gap-8">
             {t.services.items.map((service, i) => (
-              <div key={i} className="text-center p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
-                <p className="text-text mb-4">{service.description}</p>
-                <Link href={service.link} className="text-accent font-semibold hover:underline inline-flex items-center">
-                  → {service.linkText}
-                </Link>
+              <div key={i} className="group">
+                <div className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                  </div>
+                  <div className="pt-4 border-t border-gray-100">
+                    <p className="text-sm text-gray-500 font-mono">{service.tech}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Optional: Add more content sections here if needed */}
+      {/* Process Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.process.title}</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.process.items.map((step, i) => (
+              <div key={i} className="text-center">
+                <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
+                  {i + 1}
+                </div>
+                <p className="text-gray-700">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Closing Note */}
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-gray-600 italic">
+            {locale === 'ar' 
+              ? "أؤمن بأن البرمجيات الجيدة تحل مشاكل حقيقية بتصميم مدروس وأداء موثوق."
+              : "I believe good software solves real problems with thoughtful design and reliable performance."}
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
