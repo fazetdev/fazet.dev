@@ -5,21 +5,36 @@ import { HiMenu, HiX } from 'react-icons/hi';
 
 export default function Header({ locale, t }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      const desktop = window.innerWidth >= 768;
-      setIsDesktop(desktop);
-      if (desktop) {
-        setIsOpen(false); // Close mobile menu on desktop
+    setIsMounted(true);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
       }
     };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  if (!isMounted) {
+    return (
+      <header className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-xl font-bold text-primary">Faruk Bashir Aminu</div>
+          <div className="w-8 h-8"></div>
+        </div>
+      </header>
+    );
+  }
+
+  const isDesktop = windowWidth >= 768;
+  const isMobile = windowWidth < 768;
 
   const links = [
     { href: `/${locale}`, label: t.nav.home },
@@ -37,15 +52,14 @@ export default function Header({ locale, t }) {
           Faruk Bashir Aminu
         </Link>
 
-        {/* Desktop Menu - shown only on desktop */}
+        {/* Desktop Menu */}
         {isDesktop && (
-          <nav className="flex space-x-4 rtl:space-x-reverse text-sm ml-4 overflow-x-auto">
+          <nav className="flex space-x-4 rtl:space-x-reverse text-sm overflow-x-auto">
             {links.map((link) => (
               <Link 
                 key={link.href} 
                 href={link.href} 
                 className="text-text hover:text-primary font-semibold whitespace-nowrap px-2 py-1"
-                title={link.label}
               >
                 {link.label}
               </Link>
@@ -53,10 +67,10 @@ export default function Header({ locale, t }) {
           </nav>
         )}
 
-        {/* Mobile Hamburger - shown only on mobile */}
-        {!isDesktop && (
+        {/* Mobile Hamburger */}
+        {isMobile && (
           <button
-            className="text-primary text-2xl shrink-0 ml-4"
+            className="text-primary text-2xl"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -65,9 +79,9 @@ export default function Header({ locale, t }) {
         )}
       </div>
 
-      {/* Mobile Menu - shown only when open AND on mobile */}
-      {isOpen && !isDesktop && (
-        <nav className="bg-white px-4 pb-4 space-y-2 rtl:space-y-reverse border-t border-gray-200">
+      {/* Mobile Menu */}
+      {isOpen && isMobile && (
+        <nav className="bg-white px-4 pb-4 space-y-2 rtl:space-x-reverse border-t border-gray-200">
           {links.map((link) => (
             <Link
               key={link.href}

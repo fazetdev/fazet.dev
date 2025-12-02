@@ -145,26 +145,8 @@ export default function Portfolio({ params }) {
   const isRTL = locale === "ar";
 
   return (
-    <div className={`min-h-screen bg-background ${isRTL ? "rtl font-arabic" : "ltr font-english"}`}>
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${locale}`} className="text-xl font-bold text-primary">Faruk Aminu</Link>
-          <div className="flex space-x-4 rtl:space-x-reverse">
-            <Link href="/en" className="text-text hover:text-primary">EN</Link>
-            <span className="text-gray-300">|</span>
-            <Link href="/ar" className="text-text hover:text-primary">AR</Link>
-          </div>
-        </div>
-        <nav className="max-w-7xl mx-auto px-4 py-2 flex space-x-6 rtl:space-x-reverse text-sm">
-          <Link href={`/${locale}`} className="text-text hover:text-primary">{locale === "ar" ? "الرئيسية" : "Home"}</Link>
-          <Link href={`/${locale}/portfolio`} className="text-primary font-semibold">{locale === "ar" ? "الأعمال" : "Portfolio"}</Link>
-          <Link href={`/${locale}/about`} className="text-text hover:text-primary">{locale === "ar" ? "عني" : "About"}</Link>
-          <Link href={`/${locale}/contact`} className="text-text hover:text-primary">{locale === "ar" ? "اتصل" : "Contact"}</Link>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
+    <div className={`min-h-screen bg-background ${isRTL ? "rtl" : "ltr"}`}>
+      {/* Hero Section - NO DUPLICATE HEADER */}
       <section className="py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.hero.title}</h1>
@@ -182,8 +164,12 @@ export default function Portfolio({ params }) {
                   ))}
                 </div>
                 <div className="flex gap-4 mb-4">
-                  <Link href={project.demo} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center">{locale === "ar" ? "عرض مباشر" : "Live Demo"}</Link>
-                  <Link href={project.github} className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-center">{locale === "ar" ? "مشروع GitHub" : "GitHub"}</Link>
+                  <Link href={project.demo} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center">
+                    {locale === "ar" ? "عرض مباشر" : "Live Demo"}
+                  </Link>
+                  <Link href={project.github} className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-center">
+                    {locale === "ar" ? "مشروع GitHub" : "GitHub"}
+                  </Link>
                 </div>
                 <p className="text-sm italic text-gray-500">{project.tagline}</p>
               </div>
