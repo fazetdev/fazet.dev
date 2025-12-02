@@ -1,29 +1,13 @@
-"use client";
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Home({ params }) {
   const locale = params?.slug?.[0] || 'en';
-  const [showStickyFooter, setShowStickyFooter] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show sticky footer when user scrolls past 300px
-      setShowStickyFooter(window.scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const content = {
     en: {
       hero: {
         title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
         subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
-        viewWork: "View My Work",
-        contactMe: "Contact Me"
       },
       services: {
         title: "My Services",
@@ -59,8 +43,6 @@ export default function Home({ params }) {
       hero: {
         title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
         subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
-        viewWork: "شاهد أعمالي",
-        contactMe: "اتصل بي"
       },
       services: {
         title: "خدماتي",
@@ -98,27 +80,11 @@ export default function Home({ params }) {
 
   return (
     <div className="min-h-screen bg-background" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Hero Section with Original CTA */}
+      {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">{t.hero.title}</h1>
           <p className="text-xl md:text-2xl text-text mb-12 max-w-3xl mx-auto">{t.hero.subtitle}</p>
-          
-          {/* Original CTA - Stays in its original position */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-            <Link 
-              href={`/${locale}/portfolio`} 
-              className="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors text-lg"
-            >
-              {t.hero.viewWork}
-            </Link>
-            <Link 
-              href={`/${locale}/contact`} 
-              className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-lg"
-            >
-              {t.hero.contactMe}
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -140,64 +106,7 @@ export default function Home({ params }) {
         </div>
       </section>
 
-      {/* Sticky Footer CTA - Appears when scrolling */}
-      <div className={`fixed ${showStickyFooter ? 'bottom-0' : '-bottom-full'} left-0 right-0 bg-white border-t border-gray-300 shadow-2xl py-4 px-4 transition-all duration-500 z-50`}>
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-lg text-primary">
-                {locale === 'ar' ? 'مستعد لبدء مشروعك؟' : 'Ready to start your project?'}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {locale === 'ar' ? 'تواصل معي الآن' : 'Get in touch now'}
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link 
-                href={`/${locale}/portfolio`} 
-                className="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors text-center min-w-[160px]"
-              >
-                {t.hero.viewWork}
-              </Link>
-              <Link 
-                href={`/${locale}/contact`} 
-                className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-center min-w-[160px]"
-              >
-                {t.hero.contactMe}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Section with another CTA */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-primary mb-8">
-            {locale === 'ar' ? 'لنبدأ العمل معاً' : "Let's work together"}
-          </h3>
-          <p className="text-xl text-text mb-10 max-w-2xl mx-auto">
-            {locale === 'ar' 
-              ? 'أحتاج إلى مشروع ويب مخصص أو استشارة؟' 
-              : 'Need a custom web project or consultation?'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href={`/${locale}/portfolio`} 
-              className="bg-accent text-white px-10 py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-colors text-lg"
-            >
-              {t.hero.viewWork}
-            </Link>
-            <Link 
-              href={`/${locale}/contact`} 
-              className="border-2 border-primary text-primary px-10 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors text-lg"
-            >
-              {t.hero.contactMe}
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Optional: Add more content sections here if needed */}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Inter, Cairo } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,7 +14,7 @@ const cairo = Cairo({
 });
 
 export const metadata = {
-  title: 'Faruk Aminu - Freelance Web Developer',
+  title: 'Faruk Bashir Aminu - Freelance Web Developer',
   description: 'Freelance Web Developer Specialized in Gulf-Focused Digital Solutions',
 };
 
@@ -30,7 +31,6 @@ export default function RootLayout({ children, params }) {
         contact: "Contact",
         book: "Book"
       },
-      // other content if needed globally
     },
     ar: {
       nav: {
@@ -41,7 +41,6 @@ export default function RootLayout({ children, params }) {
         contact: "اتصل",
         book: "الحجز"
       },
-      // other content if needed globally
     }
   };
 
@@ -49,9 +48,12 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
-      <body className={`${inter.variable} font-sans`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <body className={`${inter.variable} font-sans min-h-screen flex flex-col`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <Header locale={locale} t={t} />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer locale={locale} />
       </body>
     </html>
   );
