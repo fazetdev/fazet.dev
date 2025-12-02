@@ -19,138 +19,114 @@ export default function Book({ params }) {
 
   const content = {
     en: {
-      title: "Book Your Consultation",
-      subtitle: "Premium Web Solutions for Gulf Business Leaders",
-      heroSubtitle: "Schedule at your convenience across multiple time zones",
-      
+      title: "Book My Services",
+      subtitle: "Schedule a consultation for your web project",
+      heroSubtitle: "Choose a time that works for you across different time zones",
+
       // Timezone Section
       timezoneTitle: "Your Time Zone",
-      timezoneSubtitle: "All times automatically adjust to your location",
+      timezoneSubtitle: "Times adjust automatically to your location",
       autoDetected: "Auto-detected",
-      changeTimezone: "Change",
-      
+
       // Booking Section
       bookingTitle: "Select Appointment Time",
       bookingSubtitle: "Available slots in your local time",
-      calendlyNote: "Powered by Calendly • Secure & Professional",
-      
+      calendlyNote: "Powered by Calendly • Secure & Simple",
+
       // Contact Cards
-      contactTitle: "Alternative Booking Methods",
+      contactTitle: "Other Ways to Contact Me",
       contactSubtitle: "Prefer to schedule another way?",
       emailCard: {
         title: "Email",
         description: "For detailed project discussions",
-        action: "Send Proposal Request",
+        action: "Send Email",
         icon: "✉️"
       },
       whatsappCard: {
         title: "WhatsApp",
         description: "Quick questions & urgent requests",
-        action: "Message Directly",
+        action: "Message on WhatsApp",
         icon: "💬"
       },
       telegramCard: {
         title: "Telegram",
-        description: "Ongoing project communication",
-        action: "Start Chat",
+        description: "For ongoing communication",
+        action: "Message on Telegram",
         icon: "📱"
       },
-      
-      // Premium Guarantee
-      guaranteeTitle: "Gulf Business Guarantee",
-      guaranteeSubtitle: "Why Gulf clients choose us:",
-      guarantees: [
-        "🕒 Timezone-optimized scheduling",
-        "🌙 Respect for Gulf business hours",
-        "🤝 Dedicated Gulf account manager",
-        "💼 Professional Arabic/English support",
-        "⚡ 4-hour response time guarantee",
-        "📅 Weekend appointments available"
+
+      // Services Info
+      servicesTitle: "What to Expect",
+      servicesSubtitle: "During our consultation:",
+      services: [
+        "📋 Project requirements discussion",
+        "💡 Solution proposals and ideas",
+        "⏱️ Timeline and pricing estimate",
+        "🔧 Technical approach overview",
+        "❓ Your questions answered"
       ],
-      
+
       // Footer
-      footerTitle: "Premium Service Notice",
-      footerText: "All consultations include pre-meeting preparation, detailed follow-up notes, and actionable next steps. Serving Gulf clients since 2023.",
-      
-      // Navigation
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-        book: "Book"
-      },
-      
+      footerTitle: "Booking Information",
+      footerText: "All consultations include preparation and follow-up notes. I've been helping clients with web projects since 2021.",
+
       // CTAs
-      ctaBook: "Secure Your Slot",
+      ctaBook: "Book Your Slot",
       ctaViewContact: "View Contact Page",
       backToHome: "← Back to Home"
     },
     ar: {
-      title: "احجز استشارتك",
-      subtitle: "حلول ويب متميزة لقادة الأعمال في الخليج",
-      heroSubtitle: "جدولة في الوقت المناسب لك عبر مناطق زمنية متعددة",
-      
+      title: "احجز خدماتي",
+      subtitle: "جدولة استشارة لمشروعك على الويب",
+      heroSubtitle: "اختر الوقت المناسب لك عبر المناطق الزمنية المختلفة",
+
       // Timezone Section
       timezoneTitle: "منطقتك الزمنية",
-      timezoneSubtitle: "جميع الأوقات تتكيف تلقائياً مع موقعك",
+      timezoneSubtitle: "الأوقات تضبط تلقائياً حسب موقعك",
       autoDetected: "تم الكشف تلقائياً",
-      changeTimezone: "تغيير",
-      
+
       // Booking Section
       bookingTitle: "اختر وقت الموعد",
       bookingSubtitle: "المواعيد المتاحة بالتوقيت المحلي الخاص بك",
-      calendlyNote: "مشغل بواسطة Calendly • آمن ومهني",
-      
+      calendlyNote: "مشغل بواسطة Calendly • آمن وبسيط",
+
       // Contact Cards
-      contactTitle: "طرق الحجز البديلة",
+      contactTitle: "طرق أخرى للاتصال بي",
       contactSubtitle: "تفضل جدولة بطريقة أخرى؟",
       emailCard: {
         title: "البريد الإلكتروني",
         description: "لمناقشات المشاريع التفصيلية",
-        action: "إرسال طلب عرض",
+        action: "إرسال بريد إلكتروني",
         icon: "✉️"
       },
       whatsappCard: {
         title: "واتساب",
         description: "الأسئلة السريعة والطلبات العاجلة",
-        action: "مراسلة مباشرة",
+        action: "مراسلة على واتساب",
         icon: "💬"
       },
       telegramCard: {
         title: "تيليجرام",
-        description: "تواصل مستمر للمشروع",
-        action: "بدء محادثة",
+        description: "للتواصل المستمر",
+        action: "مراسلة على تيليجرام",
         icon: "📱"
       },
-      
-      // Premium Guarantee
-      guaranteeTitle: "ضمان أعمال الخليج",
-      guaranteeSubtitle: "لماذا يختارنا عملاء الخليج:",
-      guarantees: [
-        "🕒 جدولة مُحسّنة حسب المنطقة الزمنية",
-        "🌙 احترام ساعات العمل في الخليج",
-        "🤝 مدير حسابات مخصص للخليج",
-        "💼 دعم مهني عربي/إنجليزي",
-        "⚡ ضمان رد في غضون 4 ساعات",
-        "📅 مواعيد متاحة في عطلة نهاية الأسبوع"
+
+      // Services Info
+      servicesTitle: "ما يمكنك توقعه",
+      servicesSubtitle: "خلال استشارتنا:",
+      services: [
+        "📋 مناقشة متطلبات المشروع",
+        "💡 مقترحات وأفكار للحلول",
+        "⏱️ تقدير المدة والسعر",
+        "🔧 نظرة عامة على النهج التقني",
+        "❓ الإجابة على أسئلتك"
       ],
-      
+
       // Footer
-      footerTitle: "إشعار الخدمة المتميزة",
-      footerText: "تشمل جميع الاستشارات التحضير المسبق للاجتماع، ومذكرات متابعة مفصلة، وخطوات عملية قابلة للتنفيذ. نخدم عملاء الخليج منذ 2023.",
-      
-      // Navigation
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-        book: "احجز"
-      },
-      
+      footerTitle: "معلومات الحجز",
+      footerText: "تشمل جميع الاستشارات التحضير ومذكرات المتابعة. أساعد العملاء في مشاريع الويب منذ ٢٠٢١.",
+
       // CTAs
       ctaBook: "احجز موعدك",
       ctaViewContact: "عرض صفحة الاتصال",
@@ -165,60 +141,7 @@ export default function Book({ params }) {
       className={`min-h-screen bg-gradient-to-b from-gray-50 to-white ${locale === "ar" ? "font-arabic" : "font-english"}`}
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
-      {/* Premium Header */}
-      <header className="bg-white shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href={`/${locale}`} className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold">F</span>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                Faruk Aminu
-              </span>
-            </Link>
-            
-            <div className="flex items-center space-x-4 rtl:space-x-reverse">
-              <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse bg-blue-50 px-3 py-1.5 rounded-full">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span className="text-sm font-medium text-blue-700">Available Now</span>
-              </div>
-              <div className="flex space-x-2 rtl:space-x-reverse">
-                <Link href="/en/book" className={`px-3 py-1 rounded-lg text-sm font-medium ${locale === 'en' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}>
-                  EN
-                </Link>
-                <Link href="/ar/book" className={`px-3 py-1 rounded-lg text-sm font-medium ${locale === 'ar' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}>
-                  AR
-                </Link>
-              </div>
-            </div>
-          </div>
-          
-          <nav className="flex space-x-8 rtl:space-x-reverse py-3 border-t border-gray-100">
-            <Link href={`/${locale}`} className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              {t.nav.home}
-            </Link>
-            <Link href={`/${locale}/services`} className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              {t.nav.services}
-            </Link>
-            <Link href={`/${locale}/portfolio`} className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              {t.nav.portfolio}
-            </Link>
-            <Link href={`/${locale}/about`} className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              {t.nav.about}
-            </Link>
-            <Link href={`/${locale}/contact`} className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              {t.nav.contact}
-            </Link>
-            <Link href={`/${locale}/book`} className="text-blue-600 font-semibold relative group">
-              {t.nav.book}
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform"></span>
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section */}
+      {/* Hero Section - NO DUPLICATE HEADER */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center max-w-3xl mx-auto">
@@ -231,12 +154,6 @@ export default function Book({ params }) {
             <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
               {t.heroSubtitle}
             </p>
-            
-            {/* Premium Badge */}
-            <div className="inline-flex items-center space-x-2 rtl:space-x-reverse bg-gradient-to-r from-blue-50 to-cyan-50 px-6 py-3 rounded-full border border-blue-200 mb-12">
-              <span className="text-blue-600">🌟</span>
-              <span className="font-medium text-gray-800">Premium Gulf Business Service</span>
-            </div>
           </div>
         </div>
       </section>
@@ -264,7 +181,7 @@ export default function Book({ params }) {
                   )}
                 </div>
               </div>
-              
+
               {/* Full TimeZoneDisplay Component */}
               <TimeZoneDisplay locale={locale} />
             </div>
@@ -275,16 +192,16 @@ export default function Book({ params }) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{t.bookingTitle}</h2>
                 <p className="text-gray-600">{t.bookingSubtitle}</p>
               </div>
-              
+
               {/* Calendly Widget */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border-2 border-dashed border-gray-300 min-h-[500px] flex flex-col items-center justify-center">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border-2 border-dashed border-gray-300 min-h-[400px] flex flex-col items-center justify-center">
                 <div className="text-center max-w-md mx-auto">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl text-white">📅</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Professional Booking Calendar</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Book Your Consultation</h3>
                   <p className="text-gray-600 mb-6">
-                    Connect your Calendly, Cal.com, or custom booking system to display available time slots.
+                    Select a convenient time for your project discussion.
                   </p>
                   <div className="space-y-4">
                     <a 
@@ -303,7 +220,7 @@ export default function Book({ params }) {
             </div>
           </div>
 
-          {/* Right Column - Contact Cards & Guarantee */}
+          {/* Right Column - Contact Cards & Services Info */}
           <div className="space-y-8">
             {/* Contact Cards */}
             <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
@@ -311,7 +228,7 @@ export default function Book({ params }) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{t.contactTitle}</h2>
                 <p className="text-gray-600">{t.contactSubtitle}</p>
               </div>
-              
+
               <div className="space-y-4">
                 {/* Email Card */}
                 <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-5 hover:border-blue-300 transition-all duration-300 hover:shadow-md">
@@ -383,31 +300,30 @@ export default function Book({ params }) {
               </div>
             </div>
 
-            {/* Premium Guarantee Section */}
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl p-6 text-white">
+            {/* Services Info Section */}
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-xl p-6">
               <div className="mb-6">
-                <div className="flex items-center mb-3">
-                  <span className="text-xl mr-2">🌟</span>
-                  <h2 className="text-2xl font-bold">{t.guaranteeTitle}</h2>
-                </div>
-                <p className="text-gray-300">{t.guaranteeSubtitle}</p>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">{t.servicesTitle}</h2>
+                <p className="text-gray-600">{t.servicesSubtitle}</p>
               </div>
-              
+
               <ul className="space-y-3">
-                {t.guarantees.map((guarantee, index) => (
+                {t.services.map((service, index) => (
                   <li key={index} className="flex items-start">
-                    <span className="mr-3 rtl:mr-0 rtl:ml-3 mt-1">•</span>
-                    <span className="text-gray-200">{guarantee}</span>
+                    <span className="mr-3 rtl:mr-0 rtl:ml-3 mt-1">{service.substring(0, 3)}</span>
+                    <span className="text-gray-700">{service.substring(3)}</span>
                   </li>
                 ))}
               </ul>
-              
-              <div className="mt-8 pt-6 border-t border-gray-700">
+
+              <div className="mt-8 pt-6 border-t border-gray-300">
                 <div className="flex items-center">
-                  <div className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-400 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-sm">✓</span>
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-sm text-white">✓</span>
                   </div>
-                  <span className="text-sm text-gray-300">Gulf Business Certified Service</span>
+                  <span className="text-sm text-gray-600">
+                    {locale === "ar" ? "استشارة فردية مخصصة" : "Personalized one-on-one consultation"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -415,10 +331,10 @@ export default function Book({ params }) {
         </div>
 
         {/* Footer Notice */}
-        <div className="mt-12 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl border border-blue-200 p-8">
+        <div className="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl border border-gray-300 p-8">
           <div className="flex items-start">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
-              <span className="text-blue-600 text-xl">ℹ️</span>
+            <div className="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+              <span className="text-gray-600 text-xl">ℹ️</span>
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{t.footerTitle}</h3>
@@ -427,8 +343,8 @@ export default function Book({ params }) {
               </p>
             </div>
           </div>
-          
-          <div className="mt-6 flex justify-between items-center pt-6 border-t border-blue-200">
+
+          <div className="mt-6 flex justify-between items-center pt-6 border-t border-gray-300">
             <Link 
               href={`/${locale}`}
               className="text-blue-600 hover:text-blue-800 font-medium"
@@ -436,7 +352,7 @@ export default function Book({ params }) {
               {t.backToHome}
             </Link>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Faruk Aminu. All rights reserved.
+              © {new Date().getFullYear()} Faruk Bashir Aminu.
             </div>
           </div>
         </div>
