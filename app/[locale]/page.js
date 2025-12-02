@@ -6,85 +6,109 @@ export default function Home({ params }) {
   const content = {
     en: {
       hero: {
-        title: "Faruk Bashir Aminu",
-        subtitle: "Web Developer specializing in clean, functional digital experiences",
-        tagline: "Building for the modern web"
+        title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
+        subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
+        viewWork: "View My Work",
+        contactMe: "Contact Me",
+        experience: "3+ years experience • Gulf market specialist"
       },
       services: {
-        title: "Services",
-        subtitle: "Focused solutions for specific needs",
+        title: "Services Tailored for Gulf Businesses",
+        subtitle: "Custom solutions addressing specific regional needs",
         items: [
           {
-            title: "Web Applications",
-            description: "Custom, responsive applications built with modern frameworks.",
-            tech: "React • Next.js • Node.js"
+            title: "Bayt Elite – Property Tech",
+            description: "Custom platforms for real estate developers with payment calculators & virtual tours.",
+            tech: "Next.js • React • Arabic RTL",
+            link: "#bayt-elite-case-study",
+            linkText: "Explore project"
           },
           {
-            title: "Frontend Development",
-            description: "Pixel-perfect interfaces with focus on performance and UX.",
-            tech: "TypeScript • Tailwind • Responsive Design"
+            title: "Tawasul AI – Business Automation",
+            description: "AI-powered customer service hubs to manage inquiries from WhatsApp, Instagram & email.",
+            tech: "Node.js • AI APIs • Multi-language",
+            link: "#tawasul-ai-case-study",
+            linkText: "Explore project"
           },
           {
-            title: "Technical Consultation",
-            description: "Guidance on architecture, tools, and best practices for your project.",
-            tech: "Code Review • Architecture • Best Practices"
+            title: "Zimam Delivery – Logistics Tech",
+            description: "Driver dashboards & delivery management tools for last-mile logistics companies.",
+            tech: "React Native • Maps API • Offline-first",
+            link: "#zimam-delivery-case-study",
+            linkText: "Explore project"
           },
           {
-            title: "Performance Optimization",
-            description: "Improving speed, accessibility, and core web vitals.",
-            tech: "Performance • SEO • Accessibility"
+            title: "Al-Multaqa – Business Dashboards",
+            description: "Custom admin dashboards for salons, clinics, and service businesses to manage operations.",
+            tech: "Full Stack • Analytics • Arabic/English",
+            link: "#al-multaqa-case-study",
+            linkText: "Explore project"
           }
         ]
       },
-      process: {
-        title: "Approach",
+      why: {
+        title: "Why Gulf Businesses Choose Me",
         items: [
-          "Understanding requirements and goals",
-          "Planning architecture and tech stack",
-          "Iterative development with feedback",
-          "Testing, optimization, and delivery"
+          "Arabic/English bilingual development",
+          "Deep understanding of Gulf business culture",
+          "Experience with local payment gateways (STC Pay, etc.)",
+          "Mobile-first, WhatsApp-integrated solutions",
+          "Respect for local regulations and customs",
+          "Fast response times aligned with GST timezone"
         ]
       }
     },
     ar: {
       hero: {
-        title: "فاروق بشير أمينو",
-        subtitle: "مطور ويب متخصص في تجارب رقمية نظيفة وعملية",
-        tagline: "بناء للويب الحديث"
+        title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
+        subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
+        viewWork: "شاهد أعمالي",
+        contactMe: "اتصل بي",
+        experience: "+٣ سنوات خبرة • متخصص في سوق الخليج"
       },
       services: {
-        title: "الخدمات",
-        subtitle: "حلول مركزة لاحتياجات محددة",
+        title: "خدمات مصممة لأعمال الخليج",
+        subtitle: "حلول مخصصة تلبي الاحتياجات الإقليمية الخاصة",
         items: [
           {
-            title: "تطبيقات الويب",
-            description: "تطبيقات مخصصة ومتجاوبة مبنية بأطر العمل الحديثة.",
-            tech: "React • Next.js • Node.js"
+            title: "بيت إيليت – تقنية العقارات",
+            description: "منصات مخصصة لمطوري العقارات مع حاسبات الدفع والجولات الافتراضية.",
+            tech: "Next.js • React • دعم RTL العربي",
+            link: "#bayt-elite-case-study",
+            linkText: "عرض دراسة حالة بيت إيليت"
           },
           {
-            title: "تطوير الواجهات",
-            description: "واجهات دقيقة مع التركيز على الأداء وتجربة المستخدم.",
-            tech: "TypeScript • Tailwind • تصميم متجاوب"
+            title: "تواصل AI – أتمتة الأعمال",
+            description: "مراكز خدمة عملاء مدعومة بالذكاء الاصطناعي لإدارة الاستفسارات من واتساب وإنستغرام والبريد الإلكتروني.",
+            tech: "Node.js • واجهات برمجة الذكاء الاصطناعي • متعدد اللغات",
+            link: "#tawasul-ai-case-study",
+            linkText: "عرض دراسة حالة تواصل AI"
           },
           {
-            title: "استشارات تقنية",
-            description: "توجيه حول الهيكلة، الأدوات، وأفضل الممارسات لمشروعك.",
-            tech: "مراجعة الكود • الهيكلة • أفضل الممارسات"
+            title: "زِمَام دليفري – تقنية الخدمات اللوجستية",
+            description: "لوحات تحكم السائقين وأدوات إدارة التوصيل لشركات الخدمات اللوجستية من الميل الأخير.",
+            tech: "React Native • خرائط API • تصميم أوفلاين",
+            link: "#zimam-delivery-case-study",
+            linkText: "عرض دراسة حالة زِمَام دليفري"
           },
           {
-            title: "تحسين الأداء",
-            description: "تحسين السرعة، إمكانية الوصول، ومقاييس الويب الأساسية.",
-            tech: "الأداء • SEO • إمكانية الوصول"
+            title: "الملتقى – لوحات تحكم الأعمال",
+            description: "لوحات تحكم إدارية مخصصة لصالونات وعيادات وأعمال الخدمات لإدارة العمليات.",
+            tech: "تطوير كامل • تحليلات • عربي/إنجليزي",
+            link: "#al-multaqa-case-study",
+            linkText: "عرض دراسة حالة الملتقى"
           }
         ]
       },
-      process: {
-        title: "النهج",
+      why: {
+        title: "لماذا تختارني شركات الخليج",
         items: [
-          "فهم المتطلبات والأهداف",
-          "تخطيط الهيكلة والمجموعة التقنية",
-          "تطوير تكراري مع التغذية الراجعة",
-          "الاختبار، التحسين، والتسليم"
+          "تطوير ثنائي اللغة عربي/إنجليزي",
+          "فهم عميق لثقافة الأعمال في الخليج",
+          "خبرة في بوابات الدفع المحلية (STC Pay وغيرها)",
+          "حلول تركز على الموبايل ومتكاملة مع واتساب",
+          "احترام اللوائح والعادات المحلية",
+          "أوقات استجابة سريعة متوافقة مع توقيت الخليج"
         ]
       }
     }
@@ -94,42 +118,81 @@ export default function Home({ params }) {
 
   return (
     <div className="min-h-screen" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="inline-block px-4 py-2 bg-gray-100 rounded-full text-gray-600 text-sm font-medium mb-6">
-              {t.hero.tagline}
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              {t.hero.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {t.hero.subtitle}
+      {/* Hero Section - Gulf-focused */}
+      <section className="pt-24 pb-20 px-4 text-center bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-5xl mx-auto">
+          {/* Experience badge */}
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8">
+            <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+            {t.hero.experience}
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+            {t.hero.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+            {t.hero.subtitle}
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link 
+              href={`/${locale}/portfolio`} 
+              className="group bg-primary text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
+            >
+              {t.hero.viewWork}
+              <span className="ml-3 group-hover:translate-x-2 transition-transform">→</span>
+            </Link>
+            <Link 
+              href={`/${locale}/contact`} 
+              className="group border-2 border-primary text-primary px-10 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
+            >
+              {t.hero.contactMe}
+              <span className="ml-3 group-hover:translate-x-2 transition-transform">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section - Gulf-specific */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              {t.services.title}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {t.services.subtitle}
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.services.title}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">{t.services.subtitle}</p>
-          </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {t.services.items.map((service, i) => (
-              <div key={i} className="group">
-                <div className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
+              <div key={i} className="group relative">
+                <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-primary hover:shadow-2xl transition-all duration-500 h-full transform hover:-translate-y-2">
+                  {/* Arabic-style decorative element */}
+                  <div className="absolute top-0 right-0 w-16 h-16 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <div className="text-4xl">{locale === 'ar' ? '☪️' : '🚀'}</div>
                   </div>
-                  <div className="pt-4 border-t border-gray-100">
-                    <p className="text-sm text-gray-500 font-mono">{service.tech}</p>
+                  
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                  
+                  <div className="mb-6">
+                    <div className="inline-block px-3 py-1 bg-gray-100 text-gray-700 text-sm font-mono rounded">
+                      {service.tech}
+                    </div>
                   </div>
+                  
+                  <Link 
+                    href={service.link} 
+                    className="inline-flex items-center text-primary font-semibold hover:text-primary-dark group/link"
+                  >
+                    <span className="border-b-2 border-primary/30 group-hover/link:border-primary">
+                      {service.linkText}
+                    </span>
+                    <span className="ml-2 group-hover/link:translate-x-2 transition-transform">→</span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -137,34 +200,55 @@ export default function Home({ params }) {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t.process.title}</h2>
+      {/* Why Choose Me - Gulf-specific advantages */}
+      <section className="py-20 px-4 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {t.why.title}
+            </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.process.items.map((step, i) => (
-              <div key={i} className="text-center">
-                <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                  {i + 1}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {t.why.items.map((item, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-start">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-primary">✓</span>
+                  </div>
+                  <p className="text-gray-700 font-medium">{item}</p>
                 </div>
-                <p className="text-gray-700">{step}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Closing Note */}
-      <section className="py-12 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-gray-600 italic">
-            {locale === 'ar' 
-              ? "أؤمن بأن البرمجيات الجيدة تحل مشاكل حقيقية بتصميم مدروس وأداء موثوق."
-              : "I believe good software solves real problems with thoughtful design and reliable performance."}
-          </p>
+      {/* Final CTA */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block px-8 py-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl mb-10">
+            <p className="text-lg font-medium text-gray-700">
+              {locale === 'ar' 
+                ? "مستعد لتحويل فكرتك إلى واقع رقمي؟" 
+                : "Ready to transform your idea into a digital reality?"}
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link 
+              href={`/${locale}/portfolio`} 
+              className="bg-gray-900 text-white px-10 py-4 rounded-xl font-semibold hover:bg-black transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+            >
+              {t.hero.viewWork}
+            </Link>
+            <Link 
+              href={`/${locale}/contact`} 
+              className="border-2 border-gray-900 text-gray-900 px-10 py-4 rounded-xl font-semibold hover:bg-gray-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+            >
+              {t.hero.contactMe}
+            </Link>
+          </div>
         </div>
       </section>
     </div>
