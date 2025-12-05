@@ -19,7 +19,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children, params }) {
-  const locale = params?.locale || 'en';
+  const locale = params?.locale || 'en';   // ✅ FIXED — use locale, not slug
 
   const content = {
     en: {
@@ -30,7 +30,7 @@ export default function RootLayout({ children, params }) {
         about: "About",
         contact: "Contact",
         book: "Book"
-      }
+      },
     },
     ar: {
       nav: {
@@ -40,7 +40,7 @@ export default function RootLayout({ children, params }) {
         about: "عني",
         contact: "اتصل",
         book: "الحجز"
-      }
+      },
     }
   };
 
@@ -48,10 +48,7 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
-      <body
-        className={`${inter.variable} ${cairo.variable} font-sans min-h-screen flex flex-col`}
-        dir={locale === 'ar' ? 'rtl' : 'ltr'}
-      >
+      <body className={`${inter.variable} ${cairo.variable} font-sans min-h-screen flex flex-col`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <Header locale={locale} t={t} />
         <main className="flex-grow">
           {children}
