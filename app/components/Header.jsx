@@ -45,6 +45,19 @@ export default function Header({ locale, t }) {
     { href: `/${locale}/contact`, label: t.nav.contact },
   ];
 
+  // ----------- Language Toggle -------------
+  const oppositeLocale = locale === 'en' ? 'ar' : 'en';
+
+  const togglePath = () => {
+    if (typeof window === 'undefined') return `/${oppositeLocale}`;
+
+    const path = window.location.pathname.split('/').slice(2).join('/');
+    return `/${oppositeLocale}/${path}`;
+  };
+
+  const toggleLabel = locale === 'en' ? 'العربية' : 'English';
+  // -----------------------------------------
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -54,7 +67,7 @@ export default function Header({ locale, t }) {
 
         {/* Desktop Menu */}
         {isDesktop && (
-          <nav className="flex space-x-4 rtl:space-x-reverse text-sm overflow-x-auto">
+          <nav className="flex items-center space-x-4 rtl:space-x-reverse text-sm">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -64,6 +77,14 @@ export default function Header({ locale, t }) {
                 {link.label}
               </Link>
             ))}
+
+            {/* LANGUAGE TOGGLE BUTTON */}
+            <Link
+              href={togglePath()}
+              className="ml-4 px-3 py-1 rounded-md border border-primary text-primary font-semibold hover:bg-primary hover:text-white transition"
+            >
+              {toggleLabel}
+            </Link>
           </nav>
         )}
 
@@ -81,7 +102,7 @@ export default function Header({ locale, t }) {
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <nav className="bg-white px-4 pb-4 space-y-2 rtl:space-x-reverse border-t border-gray-200">
+        <nav className="bg-white px-4 pb-4 space-y-2 border-t border-gray-200">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -92,6 +113,15 @@ export default function Header({ locale, t }) {
               {link.label}
             </Link>
           ))}
+
+          {/* MOBILE LANG TOGGLE */}
+          <Link
+            href={togglePath()}
+            className="block mt-2 py-2 text-primary font-semibold"
+            onClick={() => setIsOpen(false)}
+          >
+            {toggleLabel}
+          </Link>
         </nav>
       )}
     </header>

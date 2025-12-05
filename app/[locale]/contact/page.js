@@ -39,7 +39,7 @@ export default function Contact({ params }) {
       },
       contacts: {
         email: "fazetdev@gmail.com",
-        linkedin: "https://linkedin.com/in/faruk-bashir-aminu",
+        linkedin: "www.linkedin.com/in/faruk-bashir-aminu-65b30b36b",
         github: "https://github.com/fazetdev",
         whatsapp: "https://wa.me/2347082921105",
         telegram: "https://t.me/fazetdev",
