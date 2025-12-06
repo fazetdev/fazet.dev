@@ -8,7 +8,9 @@ export default function Services({ params }) {
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggle = (id) =>
-    setOpenIndexes((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]));
+    setOpenIndexes((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    );
 
   const content = {
     en: {
@@ -56,7 +58,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/property-tech",
         },
-
         {
           name: "Business Management Dashboard",
           tagline: "Automate operations, payments, and scheduling in one place.",
@@ -92,7 +93,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/business-automation",
         },
-
         {
           name: "E-Commerce & Delivery Suite",
           tagline: "Sell online and manage delivery operations smoothly.",
@@ -128,7 +128,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/logistics-tech",
         },
-
         {
           name: "Customer Service AI Hub",
           tagline: "Centralize and automate customer support with AI assistance.",
@@ -168,7 +167,13 @@ export default function Services({ params }) {
       ctaText: "View Case Study",
       showDetails: "Show Details",
       hideDetails: "Hide Details",
-      nav: { home: "Home", services: "Services", portfolio: "Portfolio", about: "About", contact: "Contact" 
+      nav: {
+        home: "Home",
+        services: "Services",
+        portfolio: "Portfolio",
+        about: "About",
+        contact: "Contact",
+      },
     },
 
     ar: {
@@ -216,7 +221,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/property-tech",
         },
-
         {
           name: "لوحة إدارة الأعمال",
           tagline: "أتمتة الجدولة، المدفوعات، وإدارة العملاء في مكان واحد.",
@@ -247,7 +251,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/business-automation",
         },
-
         {
           name: "مجموعة التجارة والتوصيل",
           tagline: "متجر إلكتروني سلس ونظام توصيل ذكي يناسب السوق المحلي.",
@@ -273,7 +276,6 @@ export default function Services({ params }) {
           ],
           caseStudyLink: "/portfolio/logistics-tech",
         },
-
         {
           name: "مركز دعم العملاء بالذكاء الاصطناعي",
           tagline: "جمع وأتمتة رسائل العملاء عبر القنوات مع مساعدة AI.",
@@ -303,7 +305,13 @@ export default function Services({ params }) {
       ctaText: "عرض دراسة الحالة",
       showDetails: "عرض التفاصيل",
       hideDetails: "إخفاء التفاصيل",
-      nav: { home: "الرئيسية", services: "الخدمات", portfolio: "الأعمال", about: "عني", contact: "اتصل" },
+      nav: {
+        home: "الرئيسية",
+        services: "الخدمات",
+        portfolio: "الأعمال",
+        about: "عني",
+        contact: "اتصل",
+      },
     },
   };
 
@@ -320,31 +328,17 @@ export default function Services({ params }) {
 
           <div className="flex items-center gap-4">
             <nav className="hidden md:flex gap-6 text-sm">
-              <Link href={`/${locale}`} className="hover:text-primary-600">
-                {t.nav.home}
-              </Link>
-              <Link href={`/${locale}/services`} className="text-primary-700 font-semibold">
-                {t.nav.services}
-              </Link>
-              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">
-                {t.nav.portfolio}
-              </Link>
-              <Link href={`/${locale}/about`} className="hover:text-primary-600">
-                {t.nav.about}
-              </Link>
-              <Link href={`/${locale}/contact`} className="hover:text-primary-600">
-                {t.nav.contact}
-              </Link>
+              <Link href={`/${locale}`} className="hover:text-primary-600">{t.nav.home}</Link>
+              <Link href={`/${locale}/services`} className="text-primary-700 font-semibold">{t.nav.services}</Link>
+              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">{t.nav.portfolio}</Link>
+              <Link href={`/${locale}/about`} className="hover:text-primary-600">{t.nav.about}</Link>
+              <Link href={`/${locale}/contact`} className="hover:text-primary-600">{t.nav.contact}</Link>
             </nav>
 
             <div className="flex items-center gap-3 text-sm">
-              <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">
-                EN
-              </Link>
+              <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
               <span className="text-gray-300">|</span>
-              <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">
-                AR
-              </Link>
+              <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
             </div>
           </div>
         </div>
@@ -360,17 +354,13 @@ export default function Services({ params }) {
         {/* Services list */}
         <div className="space-y-8">
           {t.services.map((svc, sIdx) => (
-            <section
-              key={sIdx}
-              className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden"
-            >
+            <section key={sIdx} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
               <div className="px-6 py-6 md:px-10 md:py-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h2 className="text-2xl md:text-3xl font-bold text-primary-800">{svc.name}</h2>
                     <p className="mt-2 text-neutral-600">{svc.tagline}</p>
                   </div>
-
                   <div className="flex items-center gap-3">
                     <Link
                       href={svc.caseStudyLink}
@@ -387,12 +377,7 @@ export default function Services({ params }) {
                     const id = `${sIdx}-${pIdx}`;
                     const opened = openIndexes.includes(id);
                     return (
-                      <div
-                        key={id}
-                        className={`rounded-xl p-5 border ${
-                          opened ? "border-primary-200 bg-primary-50/40" : "border-gray-200 bg-white"
-                        } shadow-sm`}
-                      >
+                      <div key={id} className={`rounded-xl p-5 border ${opened ? "border-primary-200 bg-primary-50/40" : "border-gray-200 bg-white"} shadow-sm`}>
                         <div className="flex items-start justify-between">
                           <div>
                             <h3 className="text-lg font-semibold text-primary-800">{pkg.name}</h3>
@@ -405,16 +390,8 @@ export default function Services({ params }) {
                             aria-expanded={opened}
                             className="ml-4 inline-flex items-center gap-2 rounded-md px-3 py-2 border border-gray-200 hover:bg-gray-50 text-sm"
                           >
-                            <span className="text-sm font-medium text-accent-600">
-                              {opened ? t.hideDetails : t.showDetails}
-                            </span>
-                            <svg
-                              className={`w-4 h-4 transform transition-transform ${opened ? "rotate-180" : ""}`}
-                              viewBox="0 0 20 20"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              aria-hidden
-                            >
+                            <span className="text-sm font-medium text-accent-600">{opened ? t.hideDetails : t.showDetails}</span>
+                            <svg className={`w-4 h-4 transform transition-transform ${opened ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                               <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
@@ -456,4 +433,3 @@ export default function Services({ params }) {
     </div>
   );
 }
- 
