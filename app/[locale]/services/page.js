@@ -168,7 +168,6 @@ export default function Services({ params }) {
       ctaText: "View Case Study",
       showDetails: "Show Details",
       hideDetails: "Hide Details",
-      nav: { home: "Home", services: "Services", portfolio: "Portfolio", about: "About", contact: "Contact" },
     },
 
     ar: {
