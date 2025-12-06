@@ -12,11 +12,8 @@ export default function Header({ locale, t }) {
     setIsMounted(true);
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      if (window.innerWidth >= 768) {
-        setIsOpen(false);
-      }
+      if (window.innerWidth >= 768) setIsOpen(false);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -45,18 +42,14 @@ export default function Header({ locale, t }) {
     { href: `/${locale}/contact`, label: t.nav.contact },
   ];
 
-  // ----------- Language Toggle -------------
+  // --- Language Toggle ---
   const oppositeLocale = locale === 'en' ? 'ar' : 'en';
-
+  const toggleLabel = locale === 'en' ? 'العربية' : 'English';
   const togglePath = () => {
     if (typeof window === 'undefined') return `/${oppositeLocale}`;
-
     const path = window.location.pathname.split('/').slice(2).join('/');
     return `/${oppositeLocale}/${path}`;
   };
-
-  const toggleLabel = locale === 'en' ? 'العربية' : 'English';
-  // -----------------------------------------
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">

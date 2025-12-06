@@ -1,10 +1,22 @@
+'use client';
+
 import Link from 'next/link';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 export default function Home({ params }) {
   const locale = params?.slug?.[0] || 'en';
 
   const content = {
     en: {
+      nav: {
+        home: "Home",
+        services: "Services",
+        portfolio: "Portfolio",
+        about: "About",
+        contact: "Contact",
+        book: "Book"
+      },
       hero: {
         title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
         subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
@@ -59,6 +71,14 @@ export default function Home({ params }) {
       }
     },
     ar: {
+      nav: {
+        home: "الرئيسية",
+        services: "الخدمات",
+        portfolio: "الأعمال",
+        about: "عني",
+        contact: "اتصل",
+        book: "الحجز"
+      },
       hero: {
         title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
         subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
@@ -117,99 +137,93 @@ export default function Home({ params }) {
   const t = content[locale] || content.en;
 
   return (
-    // Removed redundant dir={...} as it is handled in layout.js
-    <div className="min-h-screen"> 
-      {/* Hero Section - Gulf-focused */}
-      <section className="pt-24 pb-20 px-4 text-center bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-5xl mx-auto">
-          {/* Experience badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8">
-            {/* Conditional margin to ensure the dot is on the correct side */}
-            <span className={`w-2 h-2 bg-primary rounded-full animate-pulse ${locale === 'ar' ? 'ml-2' : 'mr-2'}`}></span>
-            {t.hero.experience}
-          </div>
+    <>
+      {/* Header receives locale and translations */}
+      <Header locale={locale} t={t} />
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-            {t.hero.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-            {t.hero.subtitle}
-          </p>
+      {/* Page Content */}
+      <div className="min-h-screen"> 
+        {/* Hero Section */}
+        <section className="pt-24 pb-20 px-4 text-center bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-5xl mx-auto">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8">
+              <span className={`w-2 h-2 bg-primary rounded-full animate-pulse ${locale === 'ar' ? 'ml-2' : 'mr-2'}`}></span>
+              {t.hero.experience}
+            </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href={`/${locale}/portfolio`}
-              className="group bg-primary text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
-            >
-              {t.hero.viewWork}
-              {/* FIX: Flip arrow and hover movement for RTL */}
-              <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
-                {locale === 'ar' ? '←' : '→'}
-              </span>
-            </Link>
-            <Link
-              href={`/${locale}/contact`}
-              className="group border-2 border-primary text-primary px-10 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
-            >
-              {t.hero.contactMe}
-              {/* FIX: Flip arrow and hover movement for RTL */}
-              <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
-                {locale === 'ar' ? '←' : '→'}
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+              {t.hero.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+              {t.hero.subtitle}
+            </p>
 
-      {/* Services Section - Gulf-specific */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            {t.services.title}
-          </h2>
-          <p className="text-gray-600 text-center mb-12">
-            {t.services.subtitle}
-          </p>
-          
-          {/* Services Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {t.services.items.map((service, index) => (
-              <div key={index} className="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <p className="text-sm text-gray-500 mb-4">{service.tech}</p>
-                <Link 
-                  href={service.link}
-                  className="text-primary font-medium hover:underline inline-flex items-center"
-                >
-                  {service.linkText}
-                  {/* FIX: Flip arrow for RTL */}
-                  <span className="ml-2">{locale === 'ar' ? '←' : '→'}</span>
-                </Link>
-              </div>
-            ))}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                href={`/${locale}/portfolio`}
+                className="group bg-primary text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
+              >
+                {t.hero.viewWork}
+                <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
+                  {locale === 'ar' ? '←' : '→'}
+                </span>
+              </Link>
+              <Link
+                href={`/${locale}/contact`}
+                className="group border-2 border-primary text-primary px-10 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
+              >
+                {t.hero.contactMe}
+                <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
+                  {locale === 'ar' ? '←' : '→'}
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            {t.why.title}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {t.why.items.map((item, index) => (
-              <div key={index} className="flex items-start">
-                {/* FIX: Conditional margin for the checkmark */}
-                <span className={`text-primary mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`}>✓</span>
-                <span className="text-gray-700">{item}</span>
-              </div>
-            ))}
+        {/* Services Section */}
+        <section className="py-20 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">{t.services.title}</h2>
+            <p className="text-gray-600 text-center mb-12">{t.services.subtitle}</p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {t.services.items.map((service, index) => (
+                <div key={index} className="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <p className="text-sm text-gray-500 mb-4">{service.tech}</p>
+                  <Link 
+                    href={service.link}
+                    className="text-primary font-medium hover:underline inline-flex items-center"
+                  >
+                    {service.linkText}
+                    <span className="ml-2">{locale === 'ar' ? '←' : '→'}</span>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* Why Section */}
+        <section className="py-20 px-4 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.why.title}</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {t.why.items.map((item, index) => (
+                <div key={index} className="flex items-start">
+                  <span className={`text-primary mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`}>✓</span>
+                  <span className="text-gray-700">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <Footer locale={locale} />
+    </>
   );
 }

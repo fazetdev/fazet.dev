@@ -19,9 +19,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children, params }) {
-  // Assuming the locale is passed via the route parameter 'locale'
+  // Locale detection from URL
   const locale = params?.locale || 'en';
 
+  // Translation dictionary
   const content = {
     en: {
       nav: {
@@ -49,12 +50,17 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
-      {/* Passing 't' (translations) to Header */}
-      <body className={`${inter.variable} ${cairo.variable} font-sans min-h-screen flex flex-col`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <body
+        className={`${inter.variable} ${cairo.variable} font-sans min-h-screen flex flex-col`}
+        dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      >
+        {/* Header will receive locale and translations */}
         <Header locale={locale} t={t} />
+
         <main className="flex-grow">
           {children}
         </main>
+
         <Footer locale={locale} />
       </body>
     </html>
