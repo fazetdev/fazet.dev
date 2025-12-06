@@ -42,18 +42,27 @@ export default function Header({ locale, t }) {
     { href: `/${locale}/contact`, label: t.nav.contact },
   ];
 
-  // --- Language Toggle ---
-  const oppositeLocale = locale === 'en' ? 'ar' : 'en';
-  const toggleLabel = locale === 'en' ? 'العربية' : 'English';
+  // 🔥 FIXED: True bilingual toggle (EN/AR)
+  const oppositeLocale = locale === "en" ? "ar" : "en";
+  const toggleLabel = locale === "en" ? "AR" : "EN";
+
+  // 🔥 FIXED: Language toggle preserves current page correctly
   const togglePath = () => {
-    if (typeof window === 'undefined') return `/${oppositeLocale}`;
-    const path = window.location.pathname.split('/').slice(2).join('/');
-    return `/${oppositeLocale}/${path}`;
+    if (typeof window === "undefined") return `/${oppositeLocale}`;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+    // Remove current locale from path
+    pathParts.shift();
+
+    // Build correct translated path
+    return `/${oppositeLocale}/${pathParts.join("/")}`;
   };
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+
         <Link href={`/${locale}`} className="text-xl font-bold text-primary shrink-0">
           Faruk Bashir Aminu
         </Link>
@@ -71,7 +80,7 @@ export default function Header({ locale, t }) {
               </Link>
             ))}
 
-            {/* LANGUAGE TOGGLE BUTTON */}
+            {/* 🔥 EN/AR Toggle Button */}
             <Link
               href={togglePath()}
               className="ml-4 px-3 py-1 rounded-md border border-primary text-primary font-semibold hover:bg-primary hover:text-white transition"
@@ -107,7 +116,7 @@ export default function Header({ locale, t }) {
             </Link>
           ))}
 
-          {/* MOBILE LANG TOGGLE */}
+          {/* 🔥 Mobile EN/AR Toggle */}
           <Link
             href={togglePath()}
             className="block mt-2 py-2 text-primary font-semibold"

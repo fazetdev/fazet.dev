@@ -145,33 +145,49 @@ export default function Portfolio({ params }) {
   const isRTL = locale === "ar";
 
   return (
-    <div className={`min-h-screen bg-background ${isRTL ? "rtl" : "ltr"}`}>
-      {/* Hero Section - NO DUPLICATE HEADER */}
+    <div className={`min-h-screen bg-gradient-to-b from-gray-50 to-white ${isRTL ? "rtl" : "ltr"}`}>
+      {/* Hero Section */}
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.hero.title}</h1>
-          <p className="text-xl md:text-2xl text-text mb-12">{t.hero.subtitle}</p>
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4">{t.hero.title}</h1>
+          <p className="text-xl md:text-2xl text-gray-700 mb-16">{t.hero.subtitle}</p>
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-10">
             {t.projects.map((project, index) => (
-              <div key={index} className="p-6 border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all bg-white">
-                <h2 className="text-2xl font-bold text-primary mb-3">{project.title}</h2>
-                <p className="text-text mb-3">{project.description}</p>
-                <div className={`mb-4 space-y-1 ${isRTL ? "rtl:text-right" : ""}`}>
-                  {project.features.map((feat, i) => (
-                    <p key={i} className="text-text">{feat}</p>
-                  ))}
+              <div
+                key={index}
+                className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-200 flex flex-col justify-between"
+              >
+                <div>
+                  <h2 className="text-2xl font-bold text-primary mb-3">{project.title}</h2>
+                  <p className="text-gray-700 mb-4">{project.description}</p>
+                  <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? "rtl:text-right" : ""}`}>
+                    {project.features.map((feat, i) => (
+                      <span
+                        key={i}
+                        className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                      >
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-4 mb-4">
-                  <Link href={project.demo} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-center">
+                <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                  <Link
+                    href={project.demo}
+                    className="bg-gradient-to-r from-primary to-primary-dark text-white px-5 py-2 rounded-xl font-semibold hover:opacity-90 transition-all text-center"
+                  >
                     {locale === "ar" ? "عرض مباشر" : "Live Demo"}
                   </Link>
-                  <Link href={project.github} className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent/90 transition-colors text-center">
+                  <Link
+                    href={project.github}
+                    className="bg-gradient-to-r from-accent to-accent-dark text-white px-5 py-2 rounded-xl font-semibold hover:opacity-90 transition-all text-center"
+                  >
                     {locale === "ar" ? "مشروع GitHub" : "GitHub"}
                   </Link>
                 </div>
-                <p className="text-sm italic text-gray-500">{project.tagline}</p>
+                <p className="text-sm italic text-gray-500 mt-4">{project.tagline}</p>
               </div>
             ))}
           </div>
