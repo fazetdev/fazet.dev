@@ -19,7 +19,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children, params }) {
-  const locale = params?.locale || 'en';   // ✅ FIXED — use locale, not slug
+  // Assuming the locale is passed via the route parameter 'locale'
+  const locale = params?.locale || 'en';
 
   const content = {
     en: {
@@ -48,6 +49,7 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
+      {/* Passing 't' (translations) to Header */}
       <body className={`${inter.variable} ${cairo.variable} font-sans min-h-screen flex flex-col`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <Header locale={locale} t={t} />
         <main className="flex-grow">

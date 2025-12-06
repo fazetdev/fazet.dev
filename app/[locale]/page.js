@@ -117,13 +117,15 @@ export default function Home({ params }) {
   const t = content[locale] || content.en;
 
   return (
-    <div className="min-h-screen" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    // Removed redundant dir={...} as it is handled in layout.js
+    <div className="min-h-screen"> 
       {/* Hero Section - Gulf-focused */}
       <section className="pt-24 pb-20 px-4 text-center bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-5xl mx-auto">
           {/* Experience badge */}
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+            {/* Conditional margin to ensure the dot is on the correct side */}
+            <span className={`w-2 h-2 bg-primary rounded-full animate-pulse ${locale === 'ar' ? 'ml-2' : 'mr-2'}`}></span>
             {t.hero.experience}
           </div>
 
@@ -141,14 +143,20 @@ export default function Home({ params }) {
               className="group bg-primary text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
             >
               {t.hero.viewWork}
-              <span className="ml-3 group-hover:translate-x-2 transition-transform">→</span>
+              {/* FIX: Flip arrow and hover movement for RTL */}
+              <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
+                {locale === 'ar' ? '←' : '→'}
+              </span>
             </Link>
             <Link
               href={`/${locale}/contact`}
               className="group border-2 border-primary text-primary px-10 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl text-lg inline-flex items-center justify-center"
             >
               {t.hero.contactMe}
-              <span className="ml-3 group-hover:translate-x-2 transition-transform">→</span>
+              {/* FIX: Flip arrow and hover movement for RTL */}
+              <span className={`transition-transform ${locale === 'ar' ? 'mr-3 group-hover:-translate-x-2' : 'ml-3 group-hover:translate-x-2'}`}>
+                {locale === 'ar' ? '←' : '→'}
+              </span>
             </Link>
           </div>
         </div>
@@ -176,7 +184,8 @@ export default function Home({ params }) {
                   className="text-primary font-medium hover:underline inline-flex items-center"
                 >
                   {service.linkText}
-                  <span className="ml-2">→</span>
+                  {/* FIX: Flip arrow for RTL */}
+                  <span className="ml-2">{locale === 'ar' ? '←' : '→'}</span>
                 </Link>
               </div>
             ))}
@@ -193,7 +202,8 @@ export default function Home({ params }) {
           <div className="grid md:grid-cols-2 gap-6">
             {t.why.items.map((item, index) => (
               <div key={index} className="flex items-start">
-                <span className="text-primary mr-3 mt-1">✓</span>
+                {/* FIX: Conditional margin for the checkmark */}
+                <span className={`text-primary mt-1 ${locale === 'ar' ? 'ml-3' : 'mr-3'}`}>✓</span>
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

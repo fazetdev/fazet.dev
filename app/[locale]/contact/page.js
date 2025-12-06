@@ -51,11 +51,9 @@ export default function Contact({ params }) {
   const t = content[locale] || content.en;
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
-      dir={locale === "ar" ? "rtl" : "ltr"}
-    >
-      <section className="section-padding">
+    // FIX 1: Removed redundant dir={...}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <section className="section-padding py-20 px-4">
         <div className="max-w-3xl mx-auto">
           {/* Title */}
           <div className="text-center mb-12">
@@ -68,7 +66,7 @@ export default function Contact({ params }) {
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Professional Card */}
-            <div className="card-luxury">
+            <div className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-gray-800 text-lg mb-6 border-b pb-3">
                 {locale === "ar" ? "مهني واجتماعي" : "Professional & Social"}
               </h3>
@@ -77,9 +75,11 @@ export default function Contact({ params }) {
                   <p className="font-medium text-gray-700 mb-1">{t.labels.email}:</p>
                   <a 
                     href={`mailto:${t.contacts.email}`} 
-                    className="text-emerald-600 hover:text-emerald-700 hover:underline flex items-center"
+                    // FIX 2: Changed color to primary (Navy Blue)
+                    className="text-primary hover:text-blue-700 hover:underline flex items-center"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                     {t.contacts.email}
@@ -91,9 +91,11 @@ export default function Contact({ params }) {
                     href={t.contacts.linkedin} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-emerald-600 hover:text-emerald-700 hover:underline flex items-center"
+                    // FIX 2: Changed color to primary (Navy Blue)
+                    className="text-primary hover:text-blue-700 hover:underline flex items-center"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                     {locale === "ar" ? "فرّوق بشير أمينو" : "Faruk Bashir Aminu"}
@@ -105,9 +107,11 @@ export default function Contact({ params }) {
                     href={t.contacts.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-emerald-600 hover:text-emerald-700 hover:underline flex items-center"
+                    // FIX 2: Changed color to primary (Navy Blue)
+                    className="text-primary hover:text-blue-700 hover:underline flex items-center"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                     fazetdev
@@ -117,7 +121,7 @@ export default function Contact({ params }) {
             </div>
 
             {/* Direct Contact Card */}
-            <div className="card-luxury">
+            <div className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
               <h3 className="font-semibold text-gray-800 text-lg mb-6 border-b pb-3">
                 {locale === "ar" ? "اتصال مباشر" : "Direct Contact"}
               </h3>
@@ -128,9 +132,11 @@ export default function Contact({ params }) {
                     href={t.contacts.whatsapp} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-emerald-600 hover:text-emerald-700 hover:underline flex items-center"
+                    // FIX 2: Changed color to primary (Navy Blue)
+                    className="text-primary hover:text-blue-700 hover:underline flex items-center"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.549 4.125 1.517 5.861L.057 24l6.219-1.537A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.696 16.872c-.188.525-.939.96-1.529 1.085-.414.087-.954.195-2.793-.416-2.266-.754-3.726-2.652-3.84-2.775-.115-.123-.916-1.211-.916-2.311 0-1.1.55-1.635.825-1.925.275-.29.6-.36.825-.36.213 0 .412.005.588.01.18.006.423-.052.66.384.238.436.812 1.512.888 1.622.077.11.128.244.038.397-.09.154-.135.244-.275.384-.138.14-.29.313-.413.42-.138.115-.293.24-.126.475.167.234.739.997 1.584 1.616 1.073.78 1.981 1.018 2.317 1.126.336.108.532.087.724-.053.192-.14.82-.96 1.042-1.315.222-.355.444-.298.724-.173.28.125 1.78.838 2.085.991.306.153.508.229.584.358.077.13.077.754-.111 1.279z"/>
                     </svg>
                     +234 708 292 1105
@@ -142,9 +148,11 @@ export default function Contact({ params }) {
                     href={t.contacts.telegram} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-emerald-600 hover:text-emerald-700 hover:underline flex items-center"
+                    // FIX 2: Changed color to primary (Navy Blue)
+                    className="text-primary hover:text-blue-700 hover:underline flex items-center"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.157l-1.895 8.945c-.129.578-.466.722-.946.449l-2.615-1.926-1.26 1.213c-.14.14-.258.258-.517.258l.185-2.631 4.832-4.366c.211-.188-.046-.292-.327-.103l-5.978 3.767-2.574-.801c-.56-.174-.571-.56.118-.832l10.066-3.882c.467-.175.875.103.723.832z"/>
                     </svg>
                     @fazetdev
@@ -153,7 +161,8 @@ export default function Contact({ params }) {
                 <div>
                   <p className="font-medium text-gray-700 mb-1">{t.labels.location}:</p>
                   <div className="text-gray-600 flex items-center">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    {/* FIX 3: Conditional margin for icons */}
+                    <svg className={`w-5 h-5 ${locale === 'ar' ? 'ml-2' : 'mr-2'}`} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
                     {t.contacts.location}
@@ -165,7 +174,8 @@ export default function Contact({ params }) {
           
           {/* Booking note */}
           <div className="mt-12 text-center">
-            <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-6 inline-block">
+            {/* FIX 4: Changed background/border colors for consistency */}
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 inline-block">
               <p className="text-gray-700 mb-3">
                 {locale === "ar" 
                   ? "للحصول على موعد أو استشارة، يرجى زيارة صفحة الحجز." 
@@ -173,10 +183,14 @@ export default function Contact({ params }) {
               </p>
               <Link 
                 href={`/${locale}/book`}
-                className="btn-primary inline-flex items-center"
+                // FIX 5: Use home page button styling
+                className="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg inline-flex items-center"
               >
                 {locale === "ar" ? "اذهب إلى صفحة الحجز" : "Go to booking page"}
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                {/* FIX 6: Flip arrow and hover movement for RTL */}
+                <span className={`transition-transform ${locale === 'ar' ? 'mr-2 group-hover:-translate-x-1' : 'ml-2 group-hover:translate-x-1'}`}>
+                  {locale === "ar" ? '←' : '→'}
+                </span>
               </Link>
             </div>
           </div>
