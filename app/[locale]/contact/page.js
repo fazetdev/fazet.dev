@@ -8,14 +8,6 @@ export default function Contact({ params }) {
 
   const content = {
     en: {
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-        book: "Book"
-      },
       title: "Contact Faruk Bashir Aminu",
       subtitle: "Professional web solutions for Gulf businesses",
       labels: {
@@ -37,14 +29,6 @@ export default function Contact({ params }) {
       ctaBooking: "Go to booking page",
     },
     ar: {
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-        book: "الحجز"
-      },
       title: "اتصل بفرّوق بشير أمينو",
       subtitle: "حلول ويب مهنية لعملاء الخليج",
       labels: {
@@ -78,37 +62,14 @@ export default function Contact({ params }) {
             Faruk Aminu
           </Link>
 
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex gap-6 text-sm">
-              <Link href={`/${locale}`} className="hover:text-primary-600">
-                {t.nav.home}
-              </Link>
-              <Link href={`/${locale}/services`} className="hover:text-primary-600">
-                {t.nav.services}
-              </Link>
-              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">
-                {t.nav.portfolio}
-              </Link>
-              <Link href={`/${locale}/about`} className="hover:text-primary-600">
-                {t.nav.about}
-              </Link>
-              <Link href={`/${locale}/contact`} className="text-primary-700 font-semibold">
-                {t.nav.contact}
-              </Link>
-              <Link href={`/${locale}/book`} className="hover:text-primary-600">
-                {t.nav.book}
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-3 text-sm">
-              <Link href={`/en/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
-                EN
-              </Link>
-              <span className="text-gray-300">|</span>
-              <Link href={`/ar/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
-                AR
-              </Link>
-            </div>
+          <div className="flex items-center gap-3 text-sm">
+            <Link href={`/en/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
+              EN
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href={`/ar/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
+              AR
+            </Link>
           </div>
         </div>
       </header>
@@ -169,7 +130,7 @@ export default function Contact({ params }) {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} Faruk Aminu. All rights reserved.
+        &copy; {new Date().getFullYear()} Faruk Bashir Aminu. All rights reserved.
       </footer>
     </div>
   );

@@ -8,14 +8,6 @@ export default function Home({ params }) {
 
   const content = {
     en: {
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-        book: "Book"
-      },
       hero: {
         title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
         subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
@@ -25,14 +17,6 @@ export default function Home({ params }) {
       },
     },
     ar: {
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-        book: "الحجز"
-      },
       hero: {
         title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
         subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
@@ -60,27 +44,13 @@ export default function Home({ params }) {
             Faruk Bashir Aminu
           </Link>
 
-          {/* Nav & Language Toggle */}
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex gap-6 text-sm">
-              {Object.entries(t.nav).map(([key, label]) => (
-                <Link
-                  key={key}
-                  href={`/${locale}/${key === 'home' ? '' : key}`}
-                  className="hover:text-primary font-medium"
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-
-            <Link
-              href={getTogglePath()}
-              className="px-2 py-1 rounded border border-primary text-primary hover:bg-primary hover:text-white transition"
-            >
-              {oppositeLocale === 'en' ? 'EN' : 'AR'}
-            </Link>
-          </div>
+          {/* Language Toggle */}
+          <Link
+            href={getTogglePath()}
+            className="px-2 py-1 rounded border border-primary text-primary hover:bg-primary hover:text-white transition"
+          >
+            {oppositeLocale === 'en' ? 'EN' : 'AR'}
+          </Link>
         </div>
       </header>
 

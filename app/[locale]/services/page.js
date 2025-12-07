@@ -167,13 +167,6 @@ export default function Services({ params }) {
       ctaText: "View Case Study",
       showDetails: "Show Details",
       hideDetails: "Hide Details",
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-      },
     },
 
     ar: {
@@ -305,13 +298,6 @@ export default function Services({ params }) {
       ctaText: "عرض دراسة الحالة",
       showDetails: "عرض التفاصيل",
       hideDetails: "إخفاء التفاصيل",
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-      },
     },
   };
 
@@ -326,20 +312,10 @@ export default function Services({ params }) {
             Faruk Aminu
           </Link>
 
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex gap-6 text-sm">
-              <Link href={`/${locale}`} className="hover:text-primary-600">{t.nav.home}</Link>
-              <Link href={`/${locale}/services`} className="text-primary-700 font-semibold">{t.nav.services}</Link>
-              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">{t.nav.portfolio}</Link>
-              <Link href={`/${locale}/about`} className="hover:text-primary-600">{t.nav.about}</Link>
-              <Link href={`/${locale}/contact`} className="hover:text-primary-600">{t.nav.contact}</Link>
-            </nav>
-
-            <div className="flex items-center gap-3 text-sm">
-              <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
-              <span className="text-gray-300">|</span>
-              <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
-            </div>
+          <div className="flex items-center gap-3 text-sm">
+            <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
+            <span className="text-gray-300">|</span>
+            <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
           </div>
         </div>
       </header>

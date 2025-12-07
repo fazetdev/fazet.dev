@@ -7,14 +7,6 @@ export default function About({ params }) {
 
   const content = {
     en: {
-      nav: {
-        home: "Home",
-        services: "Services",
-        portfolio: "Portfolio",
-        about: "About",
-        contact: "Contact",
-        book: "Book"
-      },
       title: "Faruk Bashir Aminu",
       subtitle: "Professional Web Developer specializing in Gulf market solutions",
       sections: [
@@ -43,14 +35,6 @@ export default function About({ params }) {
       gstNote: "Available in Gulf Standard Time (GST +4)"
     },
     ar: {
-      nav: {
-        home: "الرئيسية",
-        services: "الخدمات",
-        portfolio: "الأعمال",
-        about: "عني",
-        contact: "اتصل",
-        book: "الحجز"
-      },
       title: "فاروق بشير أمينو",
       subtitle: "مطور ويب محترف متخصص في حلول سوق الخليج",
       sections: [
@@ -88,36 +72,13 @@ export default function About({ params }) {
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
-            Faruk Aminu
+            Faruk Bashir Aminu
           </Link>
 
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex gap-6 text-sm">
-              <Link href={`/${locale}`} className="hover:text-primary-600">
-                {t.nav.home}
-              </Link>
-              <Link href={`/${locale}/services`} className="hover:text-primary-600">
-                {t.nav.services}
-              </Link>
-              <Link href={`/${locale}/portfolio`} className="hover:text-primary-600">
-                {t.nav.portfolio}
-              </Link>
-              <Link href={`/${locale}/about`} className="text-primary-700 font-semibold">
-                {t.nav.about}
-              </Link>
-              <Link href={`/${locale}/contact`} className="hover:text-primary-600">
-                {t.nav.contact}
-              </Link>
-              <Link href={`/${locale}/book`} className="hover:text-primary-600">
-                {t.nav.book}
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-3 text-sm">
-              <Link href={`/en/about`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
-              <span className="text-gray-300">|</span>
-              <Link href={`/ar/about`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
-            </div>
+          <div className="flex items-center gap-3 text-sm">
+            <Link href={`/en/about`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
+            <span className="text-gray-300">|</span>
+            <Link href={`/ar/about`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
           </div>
         </div>
       </header>
