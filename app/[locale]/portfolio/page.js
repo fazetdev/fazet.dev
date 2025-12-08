@@ -20,8 +20,8 @@ const content = {
           "360° Tours & Walkthroughs",
           "Dual-Path Contact Form & WhatsApp"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/bayt-elite.git",
+        demo: "https://bayt-elite.vercel.app/",
         category: "Property Technology",
         tagline: "Closing off-plan property deals with financial transparency and cultural trust."
       },
@@ -35,8 +35,8 @@ const content = {
           "Customer History Panel",
           "Conversation Tagging"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/tawasul-ai.git",
+        demo: "https://tawasul-ai.vercel.app/",
         category: "SaaS & Business Automation",
         tagline: "Centralizes inquiries and cuts response time by 70%."
       },
@@ -49,8 +49,8 @@ const content = {
           "Community Notes",
           "Ultra-Mobile-First UI"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/zimam-delivery.git",
+        demo: "https://zimam-delivery.vercel.app/",
         category: "Logistics Tech",
         tagline: "Solving GCC last-mile delivery chaos with driver-centric tools."
       },
@@ -63,8 +63,8 @@ const content = {
           "Business Analytics",
           "Full Bilingual Support"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/almultaqla.git",
+        demo: "https://al-multaqla.vercel.app/",
         category: "B2B Software",
         tagline: "Automates scheduling, payments, and customer management efficiently."
       }
@@ -87,8 +87,8 @@ const content = {
           "جولات 360° ومشاهد فيديو",
           "نموذج اتصال + واتساب بنقرة واحدة"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/bayt-elite.git",
+        demo: "https://bayt-elite.vercel.app/",
         category: "تقنية العقارات",
         tagline: "إغلاق صفقات العقارات المخطط لها بشفافية مالية وثقة ثقافية."
       },
@@ -102,8 +102,8 @@ const content = {
           "لوحة تاريخ العملاء",
           "تصنيف المحادثات"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/tawasul-ai.git",
+        demo: "https://tawasul-ai.vercel.app/",
         category: "SaaS وأتمتة الأعمال",
         tagline: "مركز استفسارات موحد يقلل وقت الاستجابة بنسبة 70%."
       },
@@ -116,8 +116,8 @@ const content = {
           "ملاحظات المجتمع",
           "واجهة مستخدم مريحة للجوال"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/zimam-delivery.git",
+        demo: "https://zimam-delivery.vercel.app/",
         category: "تقنية الخدمات اللوجستية",
         tagline: "حل فوضى التوصيل الميل الأخير في الخليج بأدوات للسائقين."
       },
@@ -130,8 +130,8 @@ const content = {
           "تحليلات الأعمال",
           "دعم ثنائي اللغة كامل"
         ],
-        github: "#",
-        demo: "#",
+        github: "https://github.com/fazetdev/almultaqla.git",
+        demo: "https://al-multaqla.vercel.app/",
         category: "برمجيات B2B",
         tagline: "أتمتة الجدولة والمدفوعات وإدارة العملاء بكفاءة."
       }
