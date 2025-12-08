@@ -41,7 +41,7 @@ export default function Home({ params }) {
       <header className="bg-white sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-bold text-primary">
-            Faruk Bashir Aminu
+          
           </Link>
 
           {/* Language Toggle */}

@@ -309,7 +309,7 @@ export default function Services({ params }) {
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
-            Faruk Aminu
+          
           </Link>
 
           <div className="flex items-center gap-3 text-sm">
