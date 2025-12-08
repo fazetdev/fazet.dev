@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Added for dynamic toggle
 
 export default function Contact({ params }) {
-  const locale = params?.slug?.[0] || "en";
+  const locale = params?.locale || params?.slug?.[0] || "en"; // Fixed params access
+  const pathname = usePathname(); // Get current path for toggle
 
   const content = {
     en: {
@@ -53,28 +55,55 @@ export default function Contact({ params }) {
 
   const t = content[locale] || content.en;
 
+  // Function to get opposite locale path while preserving current route
+  const getOppositeLocalePath = () => {
+    const oppositeLocale = locale === "en" ? "ar" : "en";
+    
+    if (!pathname) return `/${oppositeLocale}/contact`;
+    
+    // Replace the locale in current path
+    const pathParts = pathname.split('/').filter(part => part);
+    
+    if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
+      // Replace locale
+      pathParts[0] = oppositeLocale;
+      return `/${pathParts.join('/')}`;
+    } else {
+      // No locale in path, add it
+      return `/${oppositeLocale}${pathname === '/' ? '' : pathname}`;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
-      {/* Header */}
+      {/* Header - Fixed toggle */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
-            
+            Faruk Aminu {/* Added name for consistency */}
           </Link>
 
           <div className="flex items-center gap-3 text-sm">
-            <Link href={`/en/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
+            {/* Dynamic EN link that preserves current page */}
+            <Link 
+              href={locale === "en" ? getOppositeLocalePath() : "/en/contact"} 
+              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "en" ? "font-bold text-primary-700" : ""}`}
+            >
               EN
             </Link>
             <span className="text-gray-300">|</span>
-            <Link href={`/ar/contact`} className="px-2 py-1 rounded hover:bg-gray-100">
+            {/* Dynamic AR link that preserves current page */}
+            <Link 
+              href={locale === "ar" ? getOppositeLocalePath() : "/ar/contact"} 
+              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "ar" ? "font-bold text-primary-700" : ""}`}
+            >
               AR
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Page content */}
+      {/* Page content - UNCHANGED */}
       <main className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-primary-700">{t.title}</h1>
@@ -117,7 +146,7 @@ export default function Contact({ params }) {
           </div>
         </div>
 
-        {/* Booking CTA */}
+        {/* Booking CTA - UNCHANGED */}
         <div className="mt-12 text-center">
           <Link
             href={`/${locale}/book`}
@@ -128,7 +157,7 @@ export default function Contact({ params }) {
         </div>
       </main>
 
-      {/* Footer */}
+      {/* Footer - UNCHANGED */}
       <footer className="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
         &copy; {new Date().getFullYear()} Faruk Bashir Aminu. All rights reserved.
       </footer>

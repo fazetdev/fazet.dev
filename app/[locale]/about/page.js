@@ -1,10 +1,13 @@
 'use client';
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function About({ params }) {
-  const locale = params?.slug?.[0] || "en";
-
+  // Fix: Use locale from params correctly
+  const locale = params?.locale || params?.slug?.[0] || "en";
+  const pathname = usePathname(); // Get current path for toggle
+  
   const content = {
     en: {
       title: "Faruk Bashir Aminu",
@@ -66,9 +69,28 @@ export default function About({ params }) {
 
   const t = content[locale] || content.en;
 
+  // Function to toggle language while keeping current page
+  const getOppositeLocalePath = () => {
+    const oppositeLocale = locale === "en" ? "ar" : "en";
+    
+    if (!pathname) return `/${oppositeLocale}/about`;
+    
+    // Replace the locale in current path
+    const pathParts = pathname.split('/').filter(part => part);
+    
+    if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
+      // Replace locale
+      pathParts[0] = oppositeLocale;
+      return `/${pathParts.join('/')}`;
+    } else {
+      // No locale in path, add it
+      return `/${oppositeLocale}${pathname === '/' ? '' : pathname}`;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
-      {/* Header */}
+      {/* Header - Fixed to match Services page */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
@@ -76,9 +98,20 @@ export default function About({ params }) {
           </Link>
 
           <div className="flex items-center gap-3 text-sm">
-            <Link href={`/en/about`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
+            {/* Fixed: Use dynamic links that preserve current route */}
+            <Link 
+              href={locale === "en" ? getOppositeLocalePath() : "/en/about"} 
+              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "en" ? "font-bold text-primary-700" : ""}`}
+            >
+              EN
+            </Link>
             <span className="text-gray-300">|</span>
-            <Link href={`/ar/about`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
+            <Link 
+              href={locale === "ar" ? getOppositeLocalePath() : "/ar/about"} 
+              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "ar" ? "font-bold text-primary-700" : ""}`}
+            >
+              AR
+            </Link>
           </div>
         </div>
       </header>
@@ -131,7 +164,7 @@ export default function About({ params }) {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
-        &copy; {new Date().getFullYear()} Faruk Aminu. All rights reserved.
+        &copy; {new Date().getFullYear()} Faruk Bashir Aminu. All rights reserved.
       </footer>
     </div>
   );
