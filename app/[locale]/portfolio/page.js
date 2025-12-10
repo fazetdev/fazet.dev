@@ -138,7 +138,7 @@ export default function Portfolio({ params }) {
   const locale = params?.locale || params?.slug?.[0] || "en";
   const t = content[locale] || content.en;
   const isRTL = locale === "ar";
-  
+
   // Placeholder for opposite locale path (needed for navigation)
   const pathname = usePathname();
   const oppositeLocale = locale === "en" ? "ar" : "en";
@@ -195,12 +195,12 @@ export default function Portfolio({ params }) {
                 <div>
                   <span className="inline-block text-sm font-semibold text-accent mb-2">{project.category}</span>
                   <h2 className="text-2xl font-bold text-primary mb-3">{project.title}</h2>
-                  
+
                   {/* Tagline (Highlight value proposition) */}
                   <p className="text-base italic text-gray-600 mb-4 font-medium border-b pb-4 border-dashed border-gray-100">{project.tagline}</p>
 
                   <p className="text-gray-700 mb-4">{project.description}</p>
-                  
+
                   {/* Feature Tags (Cleaned up) */}
                   <div className={`flex flex-wrap gap-2 mb-6 ${isRTL ? "justify-end" : "justify-start"}`}>
                     {project.features.map((feat, i) => (
@@ -214,17 +214,21 @@ export default function Portfolio({ params }) {
                   </div>
                 </div>
 
-                {/* 3. CTAs */}
+                {/* 3. CTAs - FIX APPLIED HERE */}
                 <div className="mt-auto pt-4 border-t border-gray-100">
                     <div className="flex flex-col sm:flex-row gap-3">
                         <Link
                             href={project.demo}
+                            target="_blank" // Added
+                            rel="noopener noreferrer" // Added
                             className="flex-1 bg-primary text-white px-5 py-3 rounded-xl font-bold hover:bg-primary-dark transition-all text-center shadow-md hover:shadow-lg"
                         >
                             {locale === "ar" ? "عرض مباشر" : "Live Demo"}
                         </Link>
                         <Link
                             href={project.github}
+                            target="_blank" // Added
+                            rel="noopener noreferrer" // Added
                             className="flex-1 border-2 border-accent text-accent px-5 py-3 rounded-xl font-bold hover:bg-accent hover:text-white transition-all text-center"
                         >
                             {locale === "ar" ? "مشروع GitHub" : "GitHub"}
@@ -242,7 +246,7 @@ export default function Portfolio({ params }) {
         <h2 className="text-3xl font-bold text-primary mb-3">{locale === 'ar' ? 'هل أنت مستعد لبدء مشروعك؟' : 'Ready to start your next project?'}</h2>
         <p className="text-lg text-gray-600 mb-6">{locale === 'ar' ? 'قم بجدولة استشارة مباشرة لمناقشة متطلباتك الإقليمية.' : 'Schedule a direct consultation to discuss your regional requirements.'}</p>
         <Link
-            href={`/${locale}/book`}
+            href={`/${locale}/contact`}
             className="inline-flex items-center bg-accent text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-accent-dark transition shadow-lg transform hover:scale-[1.02]"
         >
             {locale === 'ar' ? 'احجز استشارتك الآن' : 'Book Your Consultation Now'}

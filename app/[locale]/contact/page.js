@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; 
 
-// Grok's Icon Map (using simple emojis for cross-platform compatibility)
+// Grok's Icon Map 
 const icons = {
     email: '✉️',
     whatsapp: '💬',
@@ -17,17 +16,15 @@ const icons = {
 export default function Contact({ params }) {
   const locale = params?.locale || params?.slug?.[0] || "en";
   const pathname = usePathname(); 
+  const oppositeLocale = locale === "en" ? "ar" : "en";
 
   const content = {
     en: {
       title: "Get in Touch with Faruk",
       subtitle: "Prioritized communication channels for high-value Gulf clients.",
       contacts: [
-        // PRIORITY CARD 1: Email (Professional)
         { key: 'email', label: "Email Address", value: "fazetdev@gmail.com", href: "mailto:fazetdev@gmail.com", type: 'primary', icon: icons.email, description: "For project briefs, formal inquiries, and detailed proposals." },
-        // PRIORITY CARD 2: WhatsApp (Direct/Urgent)
         { key: 'whatsapp', label: "WhatsApp Chat", value: "+234 708 292 1105", href: "https://wa.me/2347082921105", type: 'accent', icon: icons.whatsapp, description: "Fastest response time for quick questions and urgent scheduling." },
-        // SECONDARY CONTACTS (Grouped)
         { key: 'linkedin', label: "LinkedIn", value: "/faruk-bashir-aminu", href: "https://www.linkedin.com/in/faruk-bashir-aminu-65b30b36b", type: 'secondary', icon: icons.linkedin },
         { key: 'github', label: "GitHub", value: "/fazetdev", href: "https://github.com/fazetdev", type: 'secondary', icon: icons.github },
         { key: 'telegram', label: "Telegram", value: "@fazetdev", href: "https://t.me/fazetdev", type: 'secondary', icon: icons.telegram },
@@ -53,7 +50,6 @@ export default function Contact({ params }) {
   const t = content[locale] || content.en;
 
   const getOppositeLocalePath = () => {
-    const oppositeLocale = locale === "en" ? "ar" : "en";
     if (!pathname) return `/${oppositeLocale}/contact`;
     const pathParts = pathname.split('/').filter(part => part);
     if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
@@ -64,7 +60,6 @@ export default function Contact({ params }) {
     }
   };
 
-  // Filter contacts into groups for the 3-column layout
   const primaryContact = t.contacts.find(c => c.key === 'email');
   const accentContact = t.contacts.find(c => c.key === 'whatsapp');
   const secondaryContacts = t.contacts.filter(c => c.type === 'secondary');
@@ -72,7 +67,6 @@ export default function Contact({ params }) {
   // Custom Card Component for Priority Contacts
   const PriorityCard = ({ contact }) => {
     const isAccent = contact.type === 'accent';
-    // ASSUMING PRIMARY is Navy and ACCENT is Gold/Teal
     const bgColor = isAccent ? 'bg-accent text-white' : 'bg-primary text-white';
     const hoverColor = isAccent ? 'hover:bg-accent-dark' : 'hover:bg-primary-dark';
     
@@ -92,8 +86,8 @@ export default function Contact({ params }) {
   };
 
   return (
-    <div className={`min-h-screen bg-neutral-50 text-neutral-900 ${locale === 'ar' ? 'font-arabic' : 'font-sans'}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Header (Simplified) */}
+    <div className={`min-h-screen bg-neutral-50 text-neutral-900 ${locale === 'ar' ? 'font-arabic' : 'font-english'}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Header */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary hover:text-accent transition">
@@ -121,12 +115,12 @@ export default function Contact({ params }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Email Card (Primary Navy) */}
           <div className="lg:col-span-1">
-            <PriorityCard contact={primaryContact} />
+            {primaryContact && <PriorityCard contact={primaryContact} />}
           </div>
 
           {/* WhatsApp Card (Accent Gold/Teal) */}
           <div className="lg:col-span-1">
-            <PriorityCard contact={accentContact} />
+            {accentContact && <PriorityCard contact={accentContact} />}
           </div>
 
           {/* SECONDARY CONTACTS - Grouped */}

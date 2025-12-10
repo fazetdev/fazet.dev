@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Added for dynamic toggle
 
 export default function Services({ params }) {
-  const locale = params?.locale || "en";
+  const locale = params?.locale || params?.slug?.[0] || "en";
+  const pathname = usePathname();
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggle = (id) =>
@@ -13,6 +15,7 @@ export default function Services({ params }) {
     );
 
   const content = {
+    // ... (content remains unchanged for brevity and focus)
     en: {
       pageTitle: "Services",
       subtitle: "Premium digital solutions engineered for Gulf businesses",
@@ -31,6 +34,7 @@ export default function Services({ params }) {
                 "Developer branding",
               ],
               note: "Based on typical 4-6 week project scope",
+              highlight: false,
             },
             {
               name: "Professional",
@@ -43,6 +47,7 @@ export default function Services({ params }) {
                 "Light analytics & performance tuning",
               ],
               note: "Pricing starts from $1,950",
+              highlight: true, // Mark as preferred package
             },
             {
               name: "Enterprise",
@@ -54,6 +59,7 @@ export default function Services({ params }) {
                 "API & third-party integrations",
               ],
               note: "Custom solution — timeframe depends on scope",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/property-tech",
@@ -72,6 +78,7 @@ export default function Services({ params }) {
                 "Mobile-friendly UI",
               ],
               note: "Based on typical 4-6 week project scope",
+              highlight: false,
             },
             {
               name: "Growth",
@@ -83,12 +90,14 @@ export default function Services({ params }) {
                 "Task automation",
               ],
               note: "Pricing starts from $1,200",
+              highlight: true,
             },
             {
               name: "Custom",
               price: "$2,500+",
               features: ["Custom modules, API connections, secure multi-branch dashboards"],
               note: "Custom solution — tailored timeline",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/business-automation",
@@ -107,6 +116,7 @@ export default function Services({ params }) {
                 "Payments integration",
               ],
               note: "Based on typical 4-6 week project scope",
+              highlight: false,
             },
             {
               name: "Delivery Pro",
@@ -118,12 +128,14 @@ export default function Services({ params }) {
                 "Live order updates for customers",
               ],
               note: "Pricing starts from $1,450",
+              highlight: true,
             },
             {
               name: "Custom Logistics",
               price: "$3,000+",
               features: ["Full fleet system, route optimization, warehouse tools"],
               note: "Custom solution — scope varies",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/logistics-tech",
@@ -142,6 +154,7 @@ export default function Services({ params }) {
                 "Auto-tagging",
               ],
               note: "Based on typical 4-6 week project scope",
+              highlight: false,
             },
             {
               name: "AI Automation",
@@ -153,12 +166,14 @@ export default function Services({ params }) {
                 "Performance analytics",
               ],
               note: "Pricing starts from $1,350",
+              highlight: true,
             },
             {
               name: "Full Custom",
               price: "$3,000+",
               features: ["Deep automation, CRM connections, advanced AI training"],
               note: "Custom solution — enterprise timelines",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/customer-service-ai",
@@ -168,7 +183,7 @@ export default function Services({ params }) {
       showDetails: "Show Details",
       hideDetails: "Hide Details",
     },
-
+    // ... (Arabic content with highlight: true added to Growth/Professional tiers)
     ar: {
       pageTitle: "الخدمات",
       subtitle: "حلول رقمية احترافية مصممة لأعمال الخليج",
@@ -187,6 +202,7 @@ export default function Services({ params }) {
                 "هوية ومظهر احترافي",
               ],
               note: "مدة النموذجية للمشروع 4-6 أسابيع",
+              highlight: false,
             },
             {
               name: "باقة الاحتراف",
@@ -199,6 +215,7 @@ export default function Services({ params }) {
                 "تحليلات أساسية وتحسين أداء",
               ],
               note: "تبدأ الأسعار من ١٩٥٠$",
+              highlight: true,
             },
             {
               name: "باقة المؤسسات",
@@ -210,6 +227,7 @@ export default function Services({ params }) {
                 "تكاملات مع أنظمة خارجية",
               ],
               note: "حل مخصص — يعتمد على نطاق المشروع",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/property-tech",
@@ -223,6 +241,7 @@ export default function Services({ params }) {
               price: "٦٥٠$",
               features: ["تقويم الحجز", "قاعدة بيانات العملاء", "لوحة للموظفين", "واجهة صديقة للموبايل"],
               note: "مدة النموذجية للمشروع 4-6 أسابيع",
+              highlight: false,
             },
             {
               name: "باقة النمو",
@@ -234,12 +253,14 @@ export default function Services({ params }) {
                 "أتمتة المهام",
               ],
               note: "تبدأ الأسعار من ١٢٠٠$",
+              highlight: true,
             },
             {
               name: "حل مخصص",
               price: "٢٥٠٠$+",
               features: ["وحدات مخصّصة، تكاملات API، لوحات متعددة الفروع"],
               note: "حل مخصّص — جدول زمني مخصص",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/business-automation",
@@ -253,18 +274,26 @@ export default function Services({ params }) {
               price: "١٠٠٠$",
               features: ["واجهة متجر احترافية", "دفع آمن", "إدارة المنتجات", "ربط بوابات الدفع"],
               note: "مدة النموذجية للمشروع 4-6 أسابيع",
+              highlight: false,
             },
             {
               name: "باقة التوصيل برو",
               price: "١٤٥٠$",
-              features: ["تعيين وتتبع السائقين", "حالة الطلب", "إدارة الفروع", "تحديثات مباشرة للعميل"],
+              features: [
+                "تعيين وتتبع السائقين",
+                "حالة الطلب",
+                "إدارة الفروع",
+                "تحديثات مباشرة للعميل",
+              ],
               note: "تبدأ الأسعار من ١٤٥٠$",
+              highlight: true,
             },
             {
               name: "لوجستيات مخصّصة",
               price: "٣٠٠٠$+",
               features: ["نظام أسطول كامل، تحسين المسارات، أدوات المستودعات"],
               note: "حل مخصص — يعتمد على النطاق",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/logistics-tech",
@@ -278,18 +307,26 @@ export default function Services({ params }) {
               price: "٨٥٠$",
               features: ["إعداد صندوق موحد", "ردود AI أساسية", "بناء قاعدة معرفة", "تصنيف تلقائي"],
               note: "مدة النموذجية للمشروع 4-6 أسابيع",
+              highlight: false,
             },
             {
               name: "أتمتة الذكاء",
               price: "١٣٥٠$",
-              features: ["مهام AI مخصّصة", "ردود متعددة اللغات", "تأهيل العملاء", "تحليلات الأداء"],
+              features: [
+                "مهام AI مخصّصة",
+                "ردود متعددة اللغات",
+                "تأهيل العملاء",
+                "تحليلات الأداء",
+              ],
               note: "تبدأ الأسعار من ١٣٥٠$",
+              highlight: true,
             },
             {
               name: "حل مخصص",
               price: "٣٠٠٠$+",
               features: ["أتمتة عميقة، ربط CRM، تدريب AI متقدّم"],
               note: "حل مخصص — للمؤسسات",
+              highlight: false,
             },
           ],
           caseStudyLink: "/portfolio/customer-service-ai",
@@ -300,22 +337,37 @@ export default function Services({ params }) {
       hideDetails: "إخفاء التفاصيل",
     },
   };
-
+  
   const t = content[locale] || content.en;
+  const oppositeLocale = locale === "en" ? "ar" : "en";
+
+  const getTogglePath = () => {
+    if (!pathname) return `/${oppositeLocale}/services`;
+    const pathParts = pathname.split('/').filter(Boolean);
+    if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
+      pathParts[0] = oppositeLocale;
+      return `/${pathParts.join('/')}`;
+    }
+    return `/${oppositeLocale}${pathname === '/' ? '' : pathname}`;
+  };
+
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900">
+    <div className={`min-h-screen bg-neutral-50 ${locale === 'ar' ? 'font-arabic' : 'font-english'}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Header */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
-          
+          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary hover:text-accent transition">
+             Fazet.dev
           </Link>
 
           <div className="flex items-center gap-3 text-sm">
-            <Link href={`/en/services`} className="px-2 py-1 rounded hover:bg-gray-100">EN</Link>
-            <span className="text-gray-300">|</span>
-            <Link href={`/ar/services`} className="px-2 py-1 rounded hover:bg-gray-100">AR</Link>
+            <Link 
+              href={getTogglePath()} 
+              className="px-3 py-1 bg-gray-50 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition"
+            >
+              {oppositeLocale.toUpperCase()}
+            </Link>
           </div>
         </div>
       </header>
@@ -323,24 +375,26 @@ export default function Services({ params }) {
       {/* Page header */}
       <main className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-700">{t.pageTitle}</h1>
-          <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">{t.subtitle}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary">{t.pageTitle}</h1>
+          <p className="mt-4 text-xl text-gray-700 max-w-2xl mx-auto">{t.subtitle}</p>
         </div>
 
         {/* Services list */}
         <div className="space-y-8">
           {t.services.map((svc, sIdx) => (
-            <section key={sIdx} className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+            <section key={sIdx} className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
               <div className="px-6 py-6 md:px-10 md:py-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-primary-800">{svc.name}</h2>
-                    <p className="mt-2 text-neutral-600">{svc.tagline}</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-primary">{svc.name}</h2>
+                    <p className="mt-2 text-gray-600">{svc.tagline}</p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  
+                  {/* Case Study CTA */}
+                  <div className="flex items-center gap-3 flex-shrink-0">
                     <Link
                       href={svc.caseStudyLink}
-                      className="inline-flex items-center bg-gradient-to-r from-primary-600 to-primary-400 text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:brightness-105"
+                      className="inline-flex items-center bg-accent text-white px-5 py-2 rounded-xl font-semibold shadow-md hover:bg-accent-dark transition"
                     >
                       {t.ctaText}
                     </Link>
@@ -348,34 +402,42 @@ export default function Services({ params }) {
                 </div>
 
                 {/* Packages */}
-                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                <div className="mt-8 grid gap-6 md:grid-cols-3">
                   {svc.packages.map((pkg, pIdx) => {
                     const id = `${sIdx}-${pIdx}`;
                     const opened = openIndexes.includes(id);
+                    
+                    const isHighlighted = pkg.highlight;
+                    const borderClass = isHighlighted ? "border-accent ring-2 ring-accent/50" : "border-gray-200";
+                    const headerClass = isHighlighted ? "text-accent" : "text-primary";
+                    const priceClass = isHighlighted ? "text-accent" : "text-primary";
+                    const bgClass = isHighlighted ? "bg-white" : "bg-neutral-50";
+
                     return (
-                      <div key={id} className={`rounded-xl p-5 border ${opened ? "border-primary-200 bg-primary-50/40" : "border-gray-200 bg-white"} shadow-sm`}>
+                      <div key={id} className={`rounded-xl p-6 border ${borderClass} ${bgClass} shadow-lg transition-all`}>
                         <div className="flex items-start justify-between">
                           <div>
-                            <h3 className="text-lg font-semibold text-primary-800">{pkg.name}</h3>
-                            <div className="mt-1 text-2xl font-extrabold text-accent-600">{pkg.price}</div>
-                            <p className="mt-2 text-sm text-neutral-500">{pkg.note}</p>
+                            <h3 className={`text-xl font-extrabold ${headerClass}`}>{pkg.name}</h3>
+                            <div className={`mt-1 text-3xl font-extrabold ${priceClass}`}>{pkg.price}</div>
+                            <p className="mt-2 text-sm text-gray-500">{pkg.note}</p>
                           </div>
 
+                          {/* Toggle Button */}
                           <button
                             onClick={() => toggle(id)}
                             aria-expanded={opened}
-                            className="ml-4 inline-flex items-center gap-2 rounded-md px-3 py-2 border border-gray-200 hover:bg-gray-50 text-sm"
+                            className={`ml-4 rtl:mr-4 rtl:ml-0 inline-flex items-center gap-2 rounded-lg px-3 py-2 border border-gray-300 hover:bg-gray-100 text-sm transition`}
                           >
-                            <span className="text-sm font-medium text-accent-600">{opened ? t.hideDetails : t.showDetails}</span>
-                            <svg className={`w-4 h-4 transform transition-transform ${opened ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                            <span className="text-sm font-medium text-gray-700">{opened ? t.hideDetails : t.showDetails}</span>
+                            <svg className={`w-4 h-4 text-gray-600 transform transition-transform ${opened ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                               <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
                         </div>
 
                         {opened && (
-                          <div className="mt-4 text-sm text-neutral-700">
-                            <ul className="list-disc list-inside space-y-2">
+                          <div className="mt-5 text-base text-gray-700 border-t border-dashed border-gray-200 pt-4">
+                            <ul className="list-disc list-inside space-y-2 marker:text-primary">
                               {pkg.features.map((f, i) => (
                                 <li key={i}>{f}</li>
                               ))}
@@ -393,14 +455,14 @@ export default function Services({ params }) {
 
         {/* Bottom CTA */}
         <div className="mt-12 text-center">
-          <p className="text-neutral-600 mb-4">
+          <p className="text-xl font-semibold text-gray-700 mb-4">
             {locale === "ar"
               ? "هل تحتاج إلى حل مخصص؟ تواصل معي لتحديد نطاق وموعد العرض."
               : "Need a custom solution? Get in touch and we'll scope your project and timeline."}
           </p>
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex items-center bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:brightness-105"
+            className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition shadow-xl"
           >
             {locale === "ar" ? "تواصل معي" : "Contact Me"}
           </Link>
