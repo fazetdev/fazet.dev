@@ -53,22 +53,22 @@ export default function About({ params }) {
   const t = content[locale] || content.en;
 
   const getOppositeLocalePath = () => {
-    if (!pathname) return `/${oppositeLocale}/about`;
+    if (!pathname) return ;
     const pathParts = pathname.split('/').filter(Boolean);
     if (pathParts[0] === "en" || pathParts[0] === "ar") pathParts[0] = oppositeLocale;
-    return `/${pathParts.join('/')}`;
+    return ;
   };
 
   // Utility class for subtle entrance animation
   const animationClass = "animate-in fade-in-0 slide-in-from-bottom-2 duration-700 ease-out";
 
   return (
-    <div className={`min-h-screen bg-neutral-50 text-neutral-900 ${locale === 'ar' ? 'font-arabic' : 'font-sans'}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div className={} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       {/* Header */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
           {/* Ensure strong brand identity */}
-          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary hover:text-accent transition">Fazet.dev</Link>
+          <Link href={} className="text-xl font-extrabold tracking-tight text-primary hover:text-accent transition">Fazet.dev</Link>
           <div className="flex items-center gap-3 text-sm">
             {/* Hover state animation for language switch */}
             <Link href={getOppositeLocalePath()} className="px-3 py-1 bg-gray-50 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition duration-200 ease-in-out transform hover:scale-105">
@@ -79,7 +79,7 @@ export default function About({ params }) {
       </header>
 
       {/* About Section - Apply subtle animation here */}
-      <main className={`max-w-6xl mx-auto px-4 py-16 ${animationClass}`}>
+      <main className={}>
         <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
           
           {/* Professional Headshot */}

@@ -1,17 +1,22 @@
+
 'use client';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { usePathname } from 'next/navigation'; // RECOMMENDED: Use for path access
 
 export default function Header({ locale, t }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
+  const pathname = usePathname(); // Get current path from hook
 
   useEffect(() => {
     setIsMounted(true);
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      // Close menu automatically if screen resizes to desktop size
       if (window.innerWidth >= 768) setIsOpen(false);
     };
     handleResize();
@@ -21,9 +26,10 @@ export default function Header({ locale, t }) {
 
   if (!isMounted) {
     return (
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white shadow-sm border-b border-gray-200" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-xl font-bold text-primary">Faruk Bashir Aminu</div>
+          {/* Use brand name from translations (if available), otherwise fallback */}
+          <div className="text-xl font-bold text-primary">{t?.brand || "Fazet.dev"}</div>
           <div className="w-8 h-8"></div>
         </div>
       </header>
@@ -32,6 +38,7 @@ export default function Header({ locale, t }) {
 
   const isDesktop = windowWidth >= 768;
   const isMobile = windowWidth < 768;
+  const isRTL = locale === 'ar';
 
   const links = [
     { href: `/${locale}`, label: t.nav.home },
@@ -42,29 +49,35 @@ export default function Header({ locale, t }) {
     { href: `/${locale}/contact`, label: t.nav.contact },
   ];
 
-  // 🔥 FIXED: True bilingual toggle (EN/AR)
+  // FIXED: True bilingual toggle logic using usePathname
   const oppositeLocale = locale === "en" ? "ar" : "en";
   const toggleLabel = locale === "en" ? "AR" : "EN";
 
-  // 🔥 FIXED: Language toggle preserves current page correctly
   const togglePath = () => {
-    if (typeof window === "undefined") return `/${oppositeLocale}`;
+    // If pathname is not available (e.g., initial server render fallback), return root
+    if (!pathname) return `/${oppositeLocale}`; 
+    
+    // Split the path, remove the current locale (first segment), and replace with opposite locale
+    const pathParts = pathname.split("/").filter(Boolean);
+    
+    // Check if the first part is the locale (to prevent errors on root or odd paths)
+    if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
+        pathParts[0] = oppositeLocale;
+    } else {
+        // If no locale is in the path (e.g., root '/'), prepend the opposite locale
+        return `/${oppositeLocale}${pathname}`;
+    }
 
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-
-    // Remove current locale from path
-    pathParts.shift();
-
-    // Build correct translated path
-    return `/${oppositeLocale}/${pathParts.join("/")}`;
+    return `/${pathParts.join("/")}`;
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className={`bg-white shadow-sm border-b border-gray-200 ${isRTL ? 'font-arabic' : 'font-english'}`} dir={isRTL ? "rtl" : "ltr"}>
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
 
-        <Link href={`/${locale}`} className="text-xl font-bold text-primary shrink-0">
-          Faruk Bashir Aminu
+        {/* Brand Link - Sourced from translations */}
+        <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary shrink-0 hover:text-accent transition-colors">
+          {t?.brand || "Fazet.dev"}
         </Link>
 
         {/* Desktop Menu */}
@@ -74,16 +87,17 @@ export default function Header({ locale, t }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-text hover:text-primary font-semibold whitespace-nowrap px-2 py-1"
+                // FIXED: Color classes
+                className="text-gray-700 hover:text-primary font-semibold whitespace-nowrap px-2 py-1 transition-colors"
               >
                 {link.label}
               </Link>
             ))}
 
-            {/* 🔥 EN/AR Toggle Button */}
+            {/* EN/AR Toggle Button */}
             <Link
               href={togglePath()}
-              className="ml-4 px-3 py-1 rounded-md border border-primary text-primary font-semibold hover:bg-primary hover:text-white transition"
+              className="ml-4 rtl:mr-4 rtl:ml-0 px-3 py-1 rounded-md border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all"
             >
               {toggleLabel}
             </Link>
@@ -93,36 +107,37 @@ export default function Header({ locale, t }) {
         {/* Mobile Hamburger */}
         {isMobile && (
           <button
-            className="text-primary text-2xl"
+            className="text-primary text-2xl p-1"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <HiX /> : <HiMenu />}
+            {isOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
           </button>
         )}
       </div>
 
       {/* Mobile Menu */}
       {isOpen && isMobile && (
-        <nav className="bg-white px-4 pb-4 space-y-2 border-t border-gray-200">
+        <nav className="bg-white px-4 pb-4 space-y-1 border-t border-gray-200">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block text-text hover:text-primary font-semibold py-2"
+              // FIXED: Color classes
+              className="block text-gray-800 hover:text-primary font-semibold py-3 border-b border-dashed border-gray-100 last:border-b-0 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
             </Link>
           ))}
 
-          {/* 🔥 Mobile EN/AR Toggle */}
+          {/* Mobile EN/AR Toggle */}
           <Link
             href={togglePath()}
-            className="block mt-2 py-2 text-primary font-semibold"
+            className="block mt-4 py-2 text-primary font-bold text-center border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            {toggleLabel}
+            {t.nav.languageToggleLabel || `View in ${oppositeLocale.toUpperCase()}`}
           </Link>
         </nav>
       )}
