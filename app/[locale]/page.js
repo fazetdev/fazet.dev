@@ -1,29 +1,35 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Added for dynamic toggle
+import { usePathname } from 'next/navigation';
 
 export default function Home({ params }) {
   const locale = params?.locale || params?.slug?.[0] || 'en';
-  const pathname = usePathname(); // Added to get current path
-  
+  const pathname = usePathname();
+
+  // --- GROK'S CUSTOM COLOR VARIABLES (Defined in Tailwind Config) ---
+  // primary: #051C37 (Deep Navy)
+  // accent: #B8860B (Deep Gold)
+
   const content = {
     en: {
       hero: {
-        title: "Freelance Web Developer Specialized in Gulf-Focused Digital Solutions",
-        subtitle: "Building fast, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar",
-        viewWork: "View My Work",
-        contactMe: "Contact Me",
-        experience: "3+ years experience • Gulf market specialist"
+        title: "Freelance Web Developer Specialized in ",
+        accent: "Gulf-Focused Digital Solutions",
+        subtitle: "Building high-performance, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar.",
+        viewWork: "View Portfolio",
+        contactMe: "Start a Project",
+        experience: "3+ Years Experience • Regional Expert"
       },
     },
     ar: {
       hero: {
-        title: "مطور ويب مستقل متخصص في الحلول الرقمية الموجهة للخليج",
-        subtitle: "نبني تطبيقات ويب سريعة وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر",
-        viewWork: "شاهد أعمالي",
-        contactMe: "اتصل بي",
-        experience: "+٣ سنوات خبرة • متخصص في سوق الخليج"
+        title: "مطور ويب مستقل متخصص في ",
+        accent: "الحلول الرقمية الموجهة للخليج",
+        subtitle: "نبني تطبيقات ويب عالية الأداء وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر.",
+        viewWork: "شاهد الأعمال",
+        contactMe: "ابدأ مشروعًا",
+        experience: "+٣ سنوات خبرة • خبير إقليمي"
       },
     }
   };
@@ -31,76 +37,88 @@ export default function Home({ params }) {
   const t = content[locale] || content.en;
   const oppositeLocale = locale === 'en' ? 'ar' : 'en';
 
-  // Fixed toggle path function
   const getTogglePath = () => {
     if (!pathname) return `/${oppositeLocale}`;
-    
-    const pathParts = pathname.split('/').filter(part => part);
-    
+    const pathParts = pathname.split('/').filter(Boolean);
     if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
-      // Replace locale in current path
       pathParts[0] = oppositeLocale;
       return `/${pathParts.join('/')}`;
-    } else {
-      // No locale in path, add it
-      return `/${oppositeLocale}`;
     }
+    return `/${oppositeLocale}`;
   };
 
+  // --- GROK'S UI/UX: Enforce RTL for Arabic ---
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white sticky top-0 z-40 border-b border-gray-200">
+    <div 
+      className={`min-h-screen bg-white ${locale === 'ar' ? 'font-arabic' : 'font-sans'}`}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+    >
+      {/* Header - Assuming you will move this logic to a separate Header.jsx component later */}
+      <header className="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
-          <Link href={`/${locale}`} className="text-xl font-bold text-primary">
-             {/* Added name for consistency */}
+          <Link href={`/${locale}`} className="text-xl font-extrabold text-primary hover:text-accent transition">
+            Fazet.dev
           </Link>
-
-          {/* Language Toggle - Fixed */}
+          
+          {/* Language Toggle - Simplified to show only the opposite locale */}
           <div className="flex items-center gap-3 text-sm">
             <Link
-              href={locale === "en" ? getTogglePath() : "/en"}
-              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "en" ? "font-bold text-primary" : ""}`}
+              href={getTogglePath()}
+              className="px-3 py-1 bg-gray-50 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition"
             >
-              EN
-            </Link>
-            <span className="text-gray-300">|</span>
-            <Link
-              href={locale === "ar" ? getTogglePath() : "/ar"}
-              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "ar" ? "font-bold text-primary" : ""}`}
-            >
-              AR
+              {oppositeLocale.toUpperCase()}
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section - UNCHANGED */}
-      <main className="text-center py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <p className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-8">
-            <span className={`w-2 h-2 bg-primary rounded-full animate-pulse ${locale === 'ar' ? 'ml-2' : 'mr-2'}`}></span>
+      {/* Hero Section - The high-authority block */}
+      <main className="py-20 sm:py-32 px-4">
+        <div className={`max-w-5xl mx-auto ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+          
+          {/* Experience Banner (High-Trust Signal) */}
+          <p className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-8">
+            {/* Using me/ms for margin-end/margin-start—ensure your Tailwind config supports logical properties */}
+            <span className={`w-2 h-2 bg-accent rounded-full animate-pulse ${locale === 'ar' ? 'ms-2' : 'me-2'}`}></span>
             {t.hero.experience}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">{t.hero.title}</h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-12">{t.hero.subtitle}</p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+          {/* Hero Title (Navy and Gold) */}
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-primary leading-tight">
+            {t.hero.title}
+            <span className="text-accent block sm:inline-block mt-1 sm:mt-0">{t.hero.accent}</span>
+          </h1>
+
+          {/* Subtitle (The Value Proposition) */}
+          <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl">
+            {t.hero.subtitle}
+          </p>
+
+          {/* CTA Buttons (Authority & Action) */}
+          <div className={`flex flex-col sm:flex-row gap-5 ${locale === 'ar' ? 'sm:justify-end' : 'sm:justify-start'}`}>
             <Link
               href={`/${locale}/portfolio`}
-              className="bg-primary text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-dark transition shadow-lg"
+              className="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition shadow-lg transform hover:scale-[1.02]"
             >
               {t.hero.viewWork}
             </Link>
             <Link
               href={`/${locale}/contact`}
-              className="border-2 border-primary text-primary px-10 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition shadow-lg"
+              className="border-2 border-accent text-accent px-10 py-4 rounded-xl font-bold text-lg hover:bg-accent hover:text-white transition shadow-lg transform hover:scale-[1.02]"
             >
               {t.hero.contactMe}
             </Link>
           </div>
         </div>
       </main>
+
+      {/* Placeholder for Trust Signals */}
+      <section className="max-w-7xl mx-auto px-4 py-16 text-center border-t border-gray-100">
+        <h2 className="text-2xl font-bold text-gray-400">Trusted by modern businesses in the Gulf region.</h2>
+        {/* Replace this comment with logos of companies/industries you have served */}
+        {/* This section is key to the "No Pic, High Trust" strategy. */}
+      </section>
+
     </div>
   );
 }

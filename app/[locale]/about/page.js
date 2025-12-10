@@ -4,35 +4,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function About({ params }) {
-  // Fix: Use locale from params correctly
   const locale = params?.locale || params?.slug?.[0] || "en";
-  const pathname = usePathname(); // Get current path for toggle
-  
+  const pathname = usePathname();
+  const oppositeLocale = locale === "en" ? "ar" : "en";
+
   const content = {
     en: {
       title: "Faruk Bashir Aminu",
       subtitle: "Professional Web Developer specializing in Gulf market solutions",
       sections: [
-        "A professional web developer specializing in the digital needs of the Gulf market.",
-        "My focus is on delivering fast, reliable, and culturally-aware web solutions that understand the business landscape of Saudi Arabia, the UAE, and Qatar.",
-        "I prioritize clear communication (including WhatsApp), respect for fast timelines, and building solutions that truly fit the local market.",
-        "With a strong English-speaking tech background from Nigeria, I bring international standards with local market understanding."
+        "I specialize in delivering high-performance, mobile-first, culturally-aware web solutions tailored for businesses in Saudi Arabia, UAE, and Qatar.",
+        "Clear communication (including WhatsApp), fast turnaround, and precise understanding of local business practices are my priorities.",
+        "I combine international standards with regional insights, ensuring your digital solutions are effective and reliable."
       ],
       skills: {
         title: "Technical Skills",
         categories: [
-          {
-            name: "Frontend",
-            items: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5/CSS3"]
-          },
-          {
-            name: "Backend",
-            items: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs"]
-          },
-          {
-            name: "Tools & Others",
-            items: ["Git/GitHub", "Vercel/Netlify", "Figma", "Webpack", "Responsive Design"]
-          }
+          { name: "Frontend", items: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5/CSS3"] },
+          { name: "Backend", items: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs"] },
+          { name: "Tools & Others", items: ["Git/GitHub", "Vercel/Netlify", "Figma", "Webpack", "Responsive Design"] }
         ]
       },
       gstNote: "Available in Gulf Standard Time (GST +4)"
@@ -41,26 +31,16 @@ export default function About({ params }) {
       title: "فاروق بشير أمينو",
       subtitle: "مطور ويب محترف متخصص في حلول سوق الخليج",
       sections: [
-        "مطور ويب محترف متخصص في الاحتياجات الرقمية لسوق الخليج.",
-        "أركز على تقديم حلول ويب سريعة وموثوقة ومراعية للثقافة تفهم بيئة الأعمال في السعودية والإمارات وقطر.",
-        "أولويّاتي هي التواصل الواضح (بما في ذلك واتساب)، واحترام الجداول الزمنية السريعة، وبناء حلول تناسب السوق المحلي حقًا.",
-        "بخلفية تقنية قوية في التحدث باللغة الإنجليزية من نيجيريا، أجمع بين المعايير الدولية وفهم السوق المحلي."
+        "أتخصص في تقديم حلول ويب عالية الأداء وملائمة للجوال ومراعية للثقافة للشركات في السعودية والإمارات وقطر.",
+        "أعطي الأولوية للتواصل الواضح (بما في ذلك واتساب)، والسرعة في التنفيذ، وفهم دقيق لممارسات الأعمال المحلية.",
+        "أدمج المعايير الدولية مع الرؤى الإقليمية لضمان حلول رقمية فعالة وموثوقة."
       ],
       skills: {
         title: "المهارات التقنية",
         categories: [
-          {
-            name: "Frontend",
-            items: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5/CSS3"]
-          },
-          {
-            name: "Backend",
-            items: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs"]
-          },
-          {
-            name: "أدوات أخرى",
-            items: ["Git/GitHub", "Vercel/Netlify", "Figma", "Webpack", "التصميم المتجاوب"]
-          }
+          { name: "Frontend", items: ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML5/CSS3"] },
+          { name: "Backend", items: ["Node.js", "Express", "MongoDB", "Firebase", "REST APIs"] },
+          { name: "أدوات أخرى", items: ["Git/GitHub", "Vercel/Netlify", "Figma", "Webpack", "التصميم المتجاوب"] }
         ]
       },
       gstNote: "متاح بتوقيت الخليج (GST +4)"
@@ -69,81 +49,55 @@ export default function About({ params }) {
 
   const t = content[locale] || content.en;
 
-  // Function to toggle language while keeping current page
   const getOppositeLocalePath = () => {
-    const oppositeLocale = locale === "en" ? "ar" : "en";
-    
     if (!pathname) return `/${oppositeLocale}/about`;
-    
-    // Replace the locale in current path
-    const pathParts = pathname.split('/').filter(part => part);
-    
-    if (pathParts.length > 0 && (pathParts[0] === 'en' || pathParts[0] === 'ar')) {
-      // Replace locale
-      pathParts[0] = oppositeLocale;
-      return `/${pathParts.join('/')}`;
-    } else {
-      // No locale in path, add it
-      return `/${oppositeLocale}${pathname === '/' ? '' : pathname}`;
-    }
+    const pathParts = pathname.split('/').filter(Boolean);
+    if (pathParts[0] === "en" || pathParts[0] === "ar") pathParts[0] = oppositeLocale;
+    return `/${pathParts.join('/')}`;
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900">
-      {/* Header - Fixed to match Services page */}
+    <div className={`min-h-screen bg-neutral-50 text-neutral-900 ${locale === 'ar' ? 'font-arabic' : 'font-sans'}`} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Header */}
       <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary-700">
-            
-          </Link>
-
+          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-primary hover:text-accent transition">Fazet.dev</Link>
           <div className="flex items-center gap-3 text-sm">
-            {/* Fixed: Use dynamic links that preserve current route */}
-            <Link 
-              href={locale === "en" ? getOppositeLocalePath() : "/en/about"} 
-              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "en" ? "font-bold text-primary-700" : ""}`}
-            >
-              EN
-            </Link>
-            <span className="text-gray-300">|</span>
-            <Link 
-              href={locale === "ar" ? getOppositeLocalePath() : "/ar/about"} 
-              className={`px-2 py-1 rounded hover:bg-gray-100 ${locale === "ar" ? "font-bold text-primary-700" : ""}`}
-            >
-              AR
+            <Link href={getOppositeLocalePath()} className="px-3 py-1 bg-gray-50 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition">
+              {oppositeLocale.toUpperCase()}
             </Link>
           </div>
         </div>
       </header>
 
-      {/* About Content */}
-      <main className="max-w-6xl mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
-          <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-primary shadow-lg flex-shrink-0">
+      {/* About Section */}
+      <main className="max-w-6xl mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
+          {/* Professional Headshot */}
+          <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary shadow-lg flex-shrink-0">
             <img src="/images/faruk.jpg" alt={t.title} className="object-cover w-full h-full" />
           </div>
 
+          {/* Bio and Expertise */}
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t.title}</h1>
             <p className="text-xl text-text mb-6">{t.subtitle}</p>
             <div className="space-y-4 text-lg text-text leading-relaxed">
-              {t.sections.map((para, index) => (
-                <p key={index}>{para}</p>
-              ))}
+              {t.sections.map((para, i) => <p key={i}>{para}</p>)}
             </div>
           </div>
         </div>
 
-        {/* Skills */}
+        {/* Skills Section */}
         <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
           <h2 className="text-2xl font-bold text-primary mb-6">{t.skills.title}</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {t.skills.categories.map((category, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-4">
-                <h3 className="font-bold text-lg text-gray-800 mb-3">{category.name}</h3>
+            {t.skills.categories.map((cat, i) => (
+              <div key={i} className="bg-gray-50 rounded-lg p-4">
+                <h3 className="font-bold text-lg text-gray-800 mb-3">{cat.name}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {category.items.map((skill, i) => (
-                    <span key={i} className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">{skill}</span>
+                  {cat.items.map((skill, j) => (
+                    <span key={j} className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">{skill}</span>
                   ))}
                 </div>
               </div>
@@ -151,7 +105,7 @@ export default function About({ params }) {
           </div>
         </div>
 
-        {/* Availability Note */}
+        {/* Availability / Gulf Time Note */}
         <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-gray-50 rounded-xl border border-primary/20 text-center">
           <p className="text-lg font-semibold text-text">{t.gstNote}</p>
           <p className="text-gray-600 mt-2">
