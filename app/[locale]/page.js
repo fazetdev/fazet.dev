@@ -7,19 +7,15 @@ export default function Home({ params }) {
   const locale = params?.locale || params?.slug?.[0] || 'en';
   const pathname = usePathname();
 
-  // --- GROK'S CUSTOM COLOR VARIABLES (Defined in Tailwind Config) ---
-  // primary: #051C37 (Deep Navy)
-  // accent: #B8860B (Deep Gold)
-
   const content = {
     en: {
       hero: {
         title: "Freelance Web Developer Specialized in ",
         accent: "Gulf-Focused Digital Solutions",
         subtitle: "Building high-performance, mobile-first, and culturally-aware web applications for businesses in Saudi Arabia, UAE, and Qatar.",
-        viewWork: "View Portfolio",
-        contactMe: "Start a Project",
-        experience: "3+ Years Experience • Regional Expert"
+        viewWork: "View Portfolio", 
+        contactMe: "Start a Project", 
+        experience: "3+ Years Experience • Regional Expert" 
       },
     },
     ar: {
@@ -50,20 +46,20 @@ export default function Home({ params }) {
   // --- GROK'S UI/UX: Enforce RTL for Arabic ---
   return (
     <div 
-      className={`min-h-screen bg-white ${locale === 'ar' ? 'font-arabic' : 'font-sans'}`}
+      className={`min-h-screen bg-white ${locale === 'ar' ? 'font-arabic' : 'font-english'}`}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
-      {/* Header - Assuming you will move this logic to a separate Header.jsx component later */}
+      {/* Header */}
       <header className="bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
           <Link href={`/${locale}`} className="text-xl font-extrabold text-primary hover:text-accent transition">
             Fazet.dev
           </Link>
           
-          {/* Language Toggle - Simplified to show only the opposite locale */}
+          {/* Language Toggle */}
           <div className="flex items-center gap-3 text-sm">
             <Link
-              href={getTogglePath()}
+              href={getTogglePath()} 
               className="px-3 py-1 bg-gray-50 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition"
             >
               {oppositeLocale.toUpperCase()}
@@ -72,29 +68,29 @@ export default function Home({ params }) {
         </div>
       </header>
 
-      {/* Hero Section - The high-authority block */}
+      {/* Hero Section */}
       <main className="py-20 sm:py-32 px-4">
         <div className={`max-w-5xl mx-auto ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           
-          {/* Experience Banner (High-Trust Signal) */}
+          {/* Experience Banner (Fixed margin for tailwindcss-rtl) */}
           <p className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-8">
-            {/* Using me/ms for margin-end/margin-start—ensure your Tailwind config supports logical properties */}
-            <span className={`w-2 h-2 bg-accent rounded-full animate-pulse ${locale === 'ar' ? 'ms-2' : 'me-2'}`}></span>
+            {/* The margin is now explicitly set using mr-2 and reversed in RTL */}
+            <span className={`w-2 h-2 bg-accent rounded-full animate-pulse mr-2 rtl:ml-2 rtl:mr-0`}></span>
             {t.hero.experience}
           </p>
 
-          {/* Hero Title (Navy and Gold) */}
+          {/* Hero Title */}
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-primary leading-tight">
             {t.hero.title}
             <span className="text-accent block sm:inline-block mt-1 sm:mt-0">{t.hero.accent}</span>
           </h1>
 
-          {/* Subtitle (The Value Proposition) */}
+          {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl">
             {t.hero.subtitle}
           </p>
 
-          {/* CTA Buttons (Authority & Action) */}
+          {/* CTA Buttons */}
           <div className={`flex flex-col sm:flex-row gap-5 ${locale === 'ar' ? 'sm:justify-end' : 'sm:justify-start'}`}>
             <Link
               href={`/${locale}/portfolio`}
@@ -115,8 +111,6 @@ export default function Home({ params }) {
       {/* Placeholder for Trust Signals */}
       <section className="max-w-7xl mx-auto px-4 py-16 text-center border-t border-gray-100">
         <h2 className="text-2xl font-bold text-gray-400">Trusted by modern businesses in the Gulf region.</h2>
-        {/* Replace this comment with logos of companies/industries you have served */}
-        {/* This section is key to the "No Pic, High Trust" strategy. */}
       </section>
 
     </div>
